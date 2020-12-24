@@ -1,5 +1,6 @@
 import os
 import discord
+import random
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -10,6 +11,7 @@ ServerName = os.getenv("DISCORD_SERV")
 client = discord.Client()
 
 
+# on launch
 @client.event
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
@@ -20,11 +22,13 @@ async def on_ready():
         f'{guild.name}(id: {guild.id})'
     )
 
+    # num members
+    count = guild.member_count
     members = '\n - '.join([member.name for member in guild.members])
     print(f'Guild Members:\n - {members}')
 
 
-# 
+# primary listener
 @client.event
 async def on_message(_message):
     if _message.author == client.user:
