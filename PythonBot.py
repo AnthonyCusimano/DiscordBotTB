@@ -4,9 +4,9 @@ import discord
 from dotenv import load_dotenv
 
 load_dotenv()
-# currently errors if we don't hardcode the token
-TOKEN = os.getenv('DISCORD_TOKEN')
+TOKEN = os.getenv("DISCORD_TOKEN")
 client = discord.Client()
+
 
 @client.event
 async def on_ready():
