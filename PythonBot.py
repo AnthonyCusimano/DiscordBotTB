@@ -37,17 +37,26 @@ async def on_ready():
 #
 @LOLE.command(name="ping")
 async def ping(ctx):
-    await ctx.channel.send("pong")
+    await ctx.channel.send("Yo")
 
 
 #
 @LOLE.command(name="d6")
-async def d6(ctx, _DC = 1):
+async def d6(ctx, _DC=1):
     # result of all our die rolls
     T_Return = 0
     # treating number of dice as an int
     for x in range(int(_DC)):
         T_Return += randrange(1, 6)
+    await ctx.channel.send(T_Return)
+
+
+#
+@LOLE.command(name="di")
+async def di(ctx):
+    # result of all our die rolls
+    T_Return = randrange(1, 6)
+    T_Return += randrange(1, 8)
     await ctx.channel.send(T_Return)
 
 #
