@@ -1,43 +1,54 @@
 import os
 import discord
-import random
+from random import randrange
 
 from dotenv import load_dotenv
 load_dotenv()
 
+from discord.ext import commands
+
 TOKEN = os.getenv("DISCORD_TOKEN")
 ServerName = os.getenv("DISCORD_SERV")
 
-client = discord.Client()
+# LOLE = discord.Client()
+LOLE = commands.Bot(command_prefix="!")
+
+# prefix
+# STATIC_BOT_PREFIX = "!LOLE"
 
 
 # on launch
-@client.event
+@LOLE.event
 async def on_ready():
-    print(f'{client.user} has connected to Discord!')
-    guild = discord.utils.get(client.guilds, name=ServerName)
+    print(f'{LOLE.user} has connected to Discord!')
+    guild = discord.utils.get(LOLE.guilds, name=ServerName)
 
     print(
-        f'{client.user} is connected to the following guild:\n'
+        f'{LOLE.user} is connected to the following guild:\n'
         f'{guild.name}(id: {guild.id})'
     )
 
     # num members
-    count = guild.member_count
+    T_MemberCount = guild.member_count
     members = '\n - '.join([member.name for member in guild.members])
     print(f'Guild Members:\n - {members}')
 
 
-# primary listener
-@client.event
-async def on_message(_message):
-    if _message.author == client.user:
-        return
+#
+@LOLE.command(name="ping")
+async def ping(ctx):
+    await ctx.channel.send("pong")
 
-    # gamer check
-    if "gamer" in _message.content.lower():
-        T_Response = "Gamer!"
-        await _message.channel.send(T_Response)
 
 #
-client.run(TOKEN)
+@LOLE.command(name="d6")
+async def d6(ctx, _DC = 1):
+    # result of all our die rolls
+    T_Return = 0
+    # treating number of dice as an int
+    for x in range(int(_DC)):
+        T_Return += randrange(1, 6)
+    await ctx.channel.send(T_Return)
+
+#
+LOLE.run(TOKEN)
