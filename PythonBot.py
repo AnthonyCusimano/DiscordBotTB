@@ -59,5 +59,11 @@ async def di(ctx):
     T_Return += randrange(1, 8)
     await ctx.channel.send(T_Return)
 
+
+@LOLE.command(name="iq")
+async def iq(ctx):
+    T_Return = randrange(1, 200)
+    await ctx.channel.send("user has {} iq".format(T_Return))
+
 #
 LOLE.run(TOKEN)
