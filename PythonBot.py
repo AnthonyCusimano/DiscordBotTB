@@ -1,20 +1,18 @@
 import os
 import discord
+
 from random import randrange
+
+from discord.ext import commands
 
 from dotenv import load_dotenv
 load_dotenv()
-
-from discord.ext import commands
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 ServerName = os.getenv("DISCORD_SERV")
 
 # LOLE = discord.Client()
-LOLE = commands.Bot(command_prefix="!")
-
-# prefix
-# STATIC_BOT_PREFIX = "!LOLE"
+LOLE = commands.Bot(command_prefix=os.getenv("COMMAND_PREFIX"), case_insensitive=True)
 
 
 # on launch
