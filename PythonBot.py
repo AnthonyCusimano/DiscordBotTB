@@ -11,7 +11,6 @@ load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 ServerName = os.getenv("DISCORD_SERV")
 
-# LOLE = discord.Client()
 LOLE = commands.Bot(command_prefix=os.getenv("COMMAND_PREFIX"), case_insensitive=True)
 
 
@@ -50,6 +49,18 @@ async def d6(ctx, _DC=1):
 
 
 #
+@LOLE.command(name="d20")
+async def d20(ctx):
+    await ctx.channel.send(randrange(1, 20))
+
+
+#
+@LOLE.command(name="d100")
+async def d20(ctx):
+    await ctx.channel.send(randrange(1, 100))
+
+
+#
 @LOLE.command(name="di")
 async def di(ctx):
     # result of all our die rolls
@@ -58,10 +69,11 @@ async def di(ctx):
     await ctx.channel.send(T_Return)
 
 
+#
 @LOLE.command(name="iq")
 async def iq(ctx):
     T_Return = randrange(1, 200)
     await ctx.channel.send("{user} has {T_Return} iq".format(user=ctx.message.author.mention, T_Return=T_Return))
 
-#
+# go
 LOLE.run(TOKEN)
