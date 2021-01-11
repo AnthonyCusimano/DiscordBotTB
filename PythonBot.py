@@ -14,6 +14,46 @@ ServerName = os.getenv("DISCORD_SERV")
 LOLE = commands.Bot(command_prefix=os.getenv("COMMAND_PREFIX"), case_insensitive=True)
 
 
+class DiceRolls(commands.Cog):
+    """lole"""
+
+    # TODO have D6 return the results on each individual die
+    @commands.command(name="d6")
+    async def d6(self, ctx, _DC=1):
+        # result of all our die rolls
+        T_Return = 0
+        # treating number of dice as an int
+        for x in range(int(_DC)):
+            T_Return += randrange(1, 6)
+        await ctx.channel.send(T_Return)
+
+    #
+    @commands.command(name="d16")
+    async def d16(self, ctx):
+        await ctx.channel.send(randrange(1, 16))
+
+    #
+    @commands.command(name="d20")
+    async def d20(self, ctx):
+        await ctx.channel.send(randrange(1, 20))
+
+    #
+    @commands.command(name="d100")
+    async def d100(self, ctx):
+        await ctx.channel.send(randrange(1, 100))
+
+    # lole
+    @commands.command(name="di")
+    async def di(self, ctx):
+        # result of all our die rolls
+        T_Return = randrange(1, 6)
+        T_Return += randrange(1, 8)
+        await ctx.channel.send(T_Return)
+
+
+LOLE.add_cog(DiceRolls())
+
+
 # on launch
 @LOLE.event
 async def on_ready():
@@ -37,36 +77,6 @@ async def ping(ctx):
     await ctx.channel.send("Yo")
 
 
-#
-@LOLE.command(name="d6")
-async def d6(ctx, _DC=1):
-    # result of all our die rolls
-    T_Return = 0
-    # treating number of dice as an int
-    for x in range(int(_DC)):
-        T_Return += randrange(1, 6)
-    await ctx.channel.send(T_Return)
-
-
-#
-@LOLE.command(name="d20")
-async def d20(ctx):
-    await ctx.channel.send(randrange(1, 20))
-
-
-#
-@LOLE.command(name="d100")
-async def d20(ctx):
-    await ctx.channel.send(randrange(1, 100))
-
-
-#
-@LOLE.command(name="di")
-async def di(ctx):
-    # result of all our die rolls
-    T_Return = randrange(1, 6)
-    T_Return += randrange(1, 8)
-    await ctx.channel.send(T_Return)
 
 
 #
