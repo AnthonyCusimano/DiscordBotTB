@@ -22,9 +22,29 @@ class DiceRolls(commands.Cog):
     async def d6(self, ctx, _DC=1):
         # result of all our die rolls
         T_Return = 0
+        # making sure you can't call a thousand thousand dice down
+        if _DC > 50:
+            _DC = 50
+        # some real number of dice pls
+        elif _DC < 1:
+            _DC = 1
         # treating number of dice as an int
         for x in range(int(_DC)):
             T_Return += randrange(1, 6)
+        await ctx.channel.send(T_Return)
+
+    #
+    @commands.command(name="d10")
+    async def d10(self, ctx, _DC=1, _verb="False"):
+        # total result of all die rolls
+        T_Return = ""
+        for x in range(int(_DC)):
+            if not _verb:
+                T_Return += randrange(1, 10)
+
+            else:
+                T_Return += "{}, ".format(randrange(1, 10))
+
         await ctx.channel.send(T_Return)
 
     #
