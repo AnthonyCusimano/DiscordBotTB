@@ -14,6 +14,16 @@ ServerName = os.getenv("DISCORD_SERV")
 LOLE = commands.Bot(command_prefix=os.getenv("COMMAND_PREFIX"), case_insensitive=True)
 
 
+#
+def DiceCallCheck(_int):
+    #
+    if _int > 50:
+        return 50
+    #
+    if _int < 1:
+        return 1
+
+
 class DiceRolls(commands.Cog):
     """lole"""
 
@@ -22,12 +32,9 @@ class DiceRolls(commands.Cog):
     async def d6(self, ctx, _DC=1):
         # result of all our die rolls
         T_Return = 0
-        # making sure you can't call a thousand thousand dice down
-        if _DC > 50:
-            _DC = 50
-        # some real number of dice pls
-        elif _DC < 1:
-            _DC = 1
+        # TODO for some reason DiceCallCheck can fail if using the default value for _DC
+        if _DC != 1:
+            _DC = DiceCallCheck(_DC)
         # treating number of dice as an int
         for x in range(int(_DC)):
             T_Return += randrange(1, 6)
