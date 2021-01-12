@@ -2,6 +2,7 @@ import os
 import discord
 
 from random import randrange
+from random import choice
 
 from discord.ext import commands
 
@@ -12,6 +13,10 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 ServerName = os.getenv("DISCORD_SERV")
 
 LOLE = commands.Bot(command_prefix=os.getenv("COMMAND_PREFIX"), case_insensitive=True)
+
+sectionOne = ["Blue ", "Red "]
+
+sectionTwo = ["Dragon", "Turtle"]
 
 
 #
@@ -81,6 +86,12 @@ class DiceRolls(commands.Cog):
 LOLE.add_cog(DiceRolls())
 
 
+def FormTavernName():
+    T_Return = choice(sectionOne)
+    T_Return += choice(sectionTwo)
+    return T_Return
+
+
 # on launch
 @LOLE.event
 async def on_ready():
@@ -104,13 +115,17 @@ async def ping(ctx):
     await ctx.channel.send("Yo")
 
 
-
-
 #
 @LOLE.command(name="iq")
 async def iq(ctx):
     T_Return = randrange(1, 200)
     await ctx.channel.send("{user} has {T_Return} iq".format(user=ctx.message.author.mention, T_Return=T_Return))
+
+
+#
+@LOLE.command(name="tavern")
+async def tavern(ctx):
+    await ctx.channel.send(FormTavernName())
 
 # go
 LOLE.run(TOKEN)
