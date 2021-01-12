@@ -36,6 +36,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d6")
     async def d6(self, ctx, _DC=1):
         # result of all our die rolls
+        # T_Test = int(_DC)
         T_Return = 0
         # TODO for some reason DiceCallCheck can fail if using the default value for _DC
         if _DC != 1:
@@ -45,6 +46,7 @@ class DiceRolls(commands.Cog):
             T_Return += randrange(1, 6)
         await ctx.channel.send(T_Return)
 
+    #
     @commands.command(name="df")
     async def df(self, ctx, _DC=4):
         T_Return = int(0)
@@ -60,17 +62,27 @@ class DiceRolls(commands.Cog):
 
     #
     @commands.command(name="d10")
-    async def d10(self, ctx, _DC=1, _verb="False"):
+    async def d10(self, ctx, _DC=1):
         # total result of all die rolls
         T_Return = ""
         for x in range(int(_DC)):
-            if not _verb:
-                T_Return += randrange(1, 10)
-
-            else:
-                T_Return += "{}, ".format(randrange(1, 10))
+            T_Return += randrange(1, 10)
 
         await ctx.channel.send(T_Return)
+
+    #
+    @commands.command(name="d10s")
+    async def d10f(self, ctx, _DC=1):
+        T_Return = 0
+        T_Die = 0
+        # _DC = DiceCallCheck(_DC)
+        for x in range(int(_DC)):
+            T_Die = randrange(1, 10)
+            if T_Die > 6:
+                T_Return += 1
+
+        T_ReturnS = str("{} successes").format(T_Return)
+        await ctx.channel.send(T_ReturnS)
 
     #
     @commands.command(name="d16")
