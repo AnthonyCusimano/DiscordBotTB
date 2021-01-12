@@ -45,6 +45,19 @@ class DiceRolls(commands.Cog):
             T_Return += randrange(1, 6)
         await ctx.channel.send(T_Return)
 
+    @commands.command(name="df")
+    async def df(self, ctx, _DC=4):
+        T_Return = int(0)
+        T_Die = 0
+        # _DC = DiceCallCheck(_DC)
+        for x in range(int(_DC)):
+            T_Die = randrange(1, 6)
+            if T_Die > 4:
+                T_Return += 1
+            elif T_Die < 3:
+                T_Return -= 1
+        await ctx.channel.send(T_Return)
+
     #
     @commands.command(name="d10")
     async def d10(self, ctx, _DC=1, _verb="False"):
