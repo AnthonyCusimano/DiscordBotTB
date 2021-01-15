@@ -14,12 +14,13 @@ ServerName = os.getenv("DISCORD_SERV")
 
 LOLE = commands.Bot(command_prefix=os.getenv("COMMAND_PREFIX"), case_insensitive=True)
 
+# tavern name garbage
+# TODO create external tool for this
 sectionOne = ["Blue ", "Red "]
-
 sectionTwo = ["Dragon", "Turtle"]
 
 
-#
+# TODO broken LOLE
 def DiceCallCheck(_int):
     #
     if _int > 50:
@@ -29,6 +30,7 @@ def DiceCallCheck(_int):
         return 1
 
 
+# TODO move this to it's own .py
 class DiceRolls(commands.Cog):
     """lole"""
 
@@ -46,7 +48,7 @@ class DiceRolls(commands.Cog):
             T_Return += randrange(1, 6)
         await ctx.channel.send(T_Return)
 
-    #
+    #fudge dice
     @commands.command(name="df")
     async def df(self, ctx, _DC=4):
         T_Return = int(0)
@@ -70,7 +72,8 @@ class DiceRolls(commands.Cog):
 
         await ctx.channel.send(T_Return)
 
-    #
+    # exalted style successes
+    # TODO I forget if 0's are crit successes in exalted LOLE
     @commands.command(name="d10s")
     async def d10f(self, ctx, _DC=1):
         T_Return = 0
@@ -108,6 +111,7 @@ class DiceRolls(commands.Cog):
         await ctx.channel.send(T_Return)
 
 
+# hook up the dice roller
 LOLE.add_cog(DiceRolls())
 
 
