@@ -16,11 +16,12 @@ LOLE = commands.Bot(command_prefix=os.getenv("COMMAND_PREFIX"), case_insensitive
 
 # tavern name garbage
 # TODO create external tool for this
-sectionOne = ["Blue ", "Red "]
+sectionOne = ["Blue", "Red"]
 sectionTwo = ["Dragon", "Turtle"]
 
 
 # TODO broken LOLE
+# just replace with TypeError catch
 def DiceCallCheck(_int):
     #
     if _int > 50:
@@ -48,12 +49,11 @@ class DiceRolls(commands.Cog):
             T_Return += randrange(1, 6)
         await ctx.channel.send(T_Return)
 
-    #fudge dice
+    # fudge dice
     @commands.command(name="df")
     async def df(self, ctx, _DC=4):
         T_Return = int(0)
         T_Die = 0
-        # _DC = DiceCallCheck(_DC)
         for x in range(int(_DC)):
             T_Die = randrange(1, 6)
             if T_Die > 4:
@@ -115,6 +115,7 @@ class DiceRolls(commands.Cog):
 LOLE.add_cog(DiceRolls())
 
 
+# 
 def FormTavernName():
     T_Return = choice(sectionOne)
     T_Return += choice(sectionTwo)
