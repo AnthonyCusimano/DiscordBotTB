@@ -1,12 +1,9 @@
-import os
-import discord
-
 from random import randrange
-from random import choice
 
 from discord.ext import commands
 
 
+# rolls dice man
 class DiceRolls(commands.Cog):
     """lole"""
 
@@ -76,6 +73,7 @@ class DiceRolls(commands.Cog):
         await ctx.channel.send(randrange(1, 100))
 
     # lole
+    # returns a D6 roll + a D8 roll
     @commands.command(name="di")
     async def di(self, ctx):
         # result of all our die rolls
