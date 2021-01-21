@@ -1,0 +1,4 @@
+Blue,Red,standing,foaming,falling,boiling,teetering,agile,hooked,missing,Leaping,tattered,yellow,green,blind,drunken,red,black,purple,blue,alabaster,greased,sleeping,slumbering,smoking,lonely
+Dragon,Turtle,River
+Michael,Keith,Archibald,Mathilda
+hall,tavern,inn,room & board,roof & walls,bar,alehouse,pub,saloon,hostelry,taproom,pothouse,public house,hotel,boarding house,auberge,lodge,bed and breakfast
