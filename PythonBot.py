@@ -17,10 +17,16 @@ ServerName = os.getenv("DISCORD_SERV")
 
 LOLE = commands.Bot(command_prefix=os.getenv("COMMAND_PREFIX"), case_insensitive=True)
 
-# tavern name garbage
-# TODO create external tool for this
-sectionOne = ["Blue", "Red"]
-sectionTwo = ["Dragon", "Turtle"]
+# Reading
+# with open('Tavern.txt') as f:
+#     lines = f.readlines()
+tavernLines = []
+# should close automatically
+# TODO could probably go one by one with readline
+with open("Tavern.txt") as f:
+          tavernLines = f.readlines()
+tavernOne = tavernLines[0].split(',')
+tavernTwo = tavernLines[1].split(',')
 
 
 # TODO broken LOLE
@@ -40,8 +46,9 @@ LOLE.add_cog(DiceRolls())
 
 # 
 def FormTavernName():
-    T_Return = choice(sectionOne)
-    T_Return += choice(sectionTwo)
+    T_Return = choice(tavernOne)
+    T_Return += ' '
+    T_Return += choice(tavernTwo)
     return T_Return
 
 
@@ -60,6 +67,11 @@ async def on_ready():
     T_MemberCount = guild.member_count
     members = '\n - '.join([member.name for member in guild.members])
     print(f'Guild Members:\n - {members}')
+
+
+# TODO find use case and properly implement
+async def on_close():
+    print("Closing my guy")
 
 
 #
