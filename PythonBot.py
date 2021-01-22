@@ -88,7 +88,7 @@ async def iq(ctx):
 
 
 #
-@LOLE.command(name="tavern")
+@LOLE.command(name="tavern", aliases=["tavernName", "inn", "innName"])
 async def tavern(ctx):
     await ctx.channel.send(FormTavernName())
 
