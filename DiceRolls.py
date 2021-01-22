@@ -7,6 +7,21 @@ from discord.ext import commands
 class DiceRolls(commands.Cog):
     """lole"""
 
+    #
+    @commands.command(name="d3")
+    async def d3(self, ctx):
+        await ctx.channel.send(randrange(1, 3))
+
+    #
+    @commands.command(name="d4")
+    async def d4(self, ctx):
+        await ctx.channel.send(randrange(1, 4))
+
+    #
+    @commands.command(name="d5")
+    async def d5(self, ctx):
+        await ctx.channel.send(randrange(1, 5))
+
     # TODO have D6 return the results on each individual die
     @commands.command(name="d6")
     async def d6(self, ctx, _DC=1):
@@ -31,6 +46,16 @@ class DiceRolls(commands.Cog):
             elif T_Die < 3:
                 T_Return -= 1
         await ctx.channel.send(T_Return)
+
+    #
+    @commands.command(name="d7")
+    async def d7(self, ctx):
+        await ctx.channel.send(randrange(1, 7))
+
+    #
+    @commands.command(name="d8")
+    async def d8(self, ctx):
+        await ctx.channel.send(randrange(1, 8))
 
     #
     @commands.command(name="d10")
@@ -66,6 +91,16 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d20")
     async def d20(self, ctx):
         await ctx.channel.send(randrange(1, 20))
+
+    #
+    @commands.command(name="d24", _DC=1)
+    async def d24(self, ctx):
+        await ctx.channel.send(randrange(1, 24))
+
+    #
+    @commands.command(name="d30")
+    async def d30(self, ctx):
+        await ctx.channel.send(randrange(1, 30))
 
     #
     @commands.command(name="d100")
