@@ -1,4 +1,5 @@
 from DiceRolls import DiceRolls
+from NameGenerators import NameGenerators
 
 # need these still
 import os
@@ -40,16 +41,9 @@ def DiceCallCheck(_int):
         return 1
 
 
-# hook up the dice roller
+# hook up the dice roller & tavern name generator
 LOLE.add_cog(DiceRolls())
-
-
-# 
-def FormTavernName():
-    T_Return = choice(tavernOne)
-    T_Return += ' '
-    T_Return += choice(tavernTwo)
-    return T_Return
+LOLE.add_cog(NameGenerators())
 
 
 # on launch
@@ -86,11 +80,6 @@ async def iq(ctx):
     T_Return = randrange(1, 200)
     await ctx.channel.send("{user} has {T_Return} iq".format(user=ctx.message.author.mention, T_Return=T_Return))
 
-
-#
-@LOLE.command(name="tavern", aliases=["tavernName", "inn", "innName"])
-async def tavern(ctx):
-    await ctx.channel.send(FormTavernName())
 
 # go
 LOLE.run(TOKEN)
