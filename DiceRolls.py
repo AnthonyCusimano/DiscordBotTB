@@ -59,11 +59,13 @@ class DiceRolls(commands.Cog):
 
     #
     @commands.command(name="d10")
-    async def d10(self, ctx, _DC=1):
+    async def d10(self, ctx, _DC=int(1)):
         # total result of all die rolls
         T_Return = ""
-        for x in range(int(_DC)):
-            T_Return += randrange(1, 10)
+        for x in range(_DC):
+            T_Return += str(randrange(1, 10))
+            if x != _DC - 1:
+                T_Return += ", "
 
         await ctx.channel.send(T_Return)
 
