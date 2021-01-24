@@ -59,15 +59,23 @@ class DiceRolls(commands.Cog):
 
     #
     @commands.command(name="d10")
-    async def d10(self, ctx, _DC=int(1)):
-        # total result of all die rolls
-        T_Return = ""
-        for x in range(_DC):
-            T_Return += str(randrange(1, 10))
-            if x != _DC - 1:
-                T_Return += ", "
+    async def d10(self, ctx, _DC=1):
+        try:
+            T_DC = int(_DC)
+            if T_DC < 1:
+                raise TypeError
+        except TypeError:
+            print("Im in the the except block")
+            await ctx.channel.send("LOLE!")
 
-        await ctx.channel.send(T_Return)
+        else:
+            # total result of all die rolls
+            T_Return = ""
+            for x in range(T_DC):
+                T_Return += str(randrange(1, 10))
+                if x != T_DC - 1:
+                    T_Return += ", "
+            await ctx.channel.send(T_Return)
 
     # exalted style successes
     # TODO I forget if 0's are crit successes in exalted LOLE
