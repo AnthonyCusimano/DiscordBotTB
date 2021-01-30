@@ -7,8 +7,12 @@ with open("Tavern.txt") as f:
     tavernLines = f.readlines()
 tavernOne = tavernLines[0].split(',')
 tavernTwo = tavernLines[1].split(',')
+tavernThree = tavernLines[2].split(',')
+tavernFour = tavernLines[3].split(',')
 tavernOne[-1] = tavernOne[-1][:-1]
 tavernTwo[-1] = tavernTwo[-1][:-1]
+tavernThree[-1] = tavernThree[-1][:-1]
+# ignoring bottom line
 
 with open("City.txt") as c:
     cityLines = c.readlines()
@@ -21,14 +25,14 @@ cityOne[-1] = cityOne[-1][:-1]
 
 #
 def FormTavernName():
-    T_TypeRando = randrange(0, 50)
+    T_TypeRando = randrange(0, 75)
     T_Return = ""
     if T_TypeRando > 25:
         T_Return = choice(tavernOne)
         T_Return += ' '
         T_Return += choice(tavernTwo)
     # type two
-    else:
+    elif T_TypeRando > 50:
         T_Return = choice(tavernTwo)
         # making sure you can't have a "wagon and wagon"
         T_ReturnProtection = T_Return
@@ -37,6 +41,12 @@ def FormTavernName():
             T_ReturnTwo = choice(tavernTwo)
         T_Return += " and "
         T_Return += T_ReturnTwo
+
+    # type three
+    else:
+        T_Return = choice(tavernThree)
+        T_Return += ' '
+        T_Return += choice(tavernFour)
     return T_Return
 
 
