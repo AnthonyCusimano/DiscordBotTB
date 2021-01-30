@@ -10,6 +10,14 @@ tavernTwo = tavernLines[1].split(',')
 tavernOne[-1] = tavernOne[-1][:-1]
 tavernTwo[-1] = tavernTwo[-1][:-1]
 
+with open("City.txt") as c:
+    cityLines = c.readlines()
+cityOne = cityLines[0].split(',')
+cityTwo = cityLines[1].split(',')
+cityOne[-1] = cityOne[-1][:-1]
+# unneeded for bottom line
+# cityTwo[-1] = cityTwo[-1][:-1]
+
 
 #
 def FormTavernName():
@@ -33,6 +41,20 @@ def FormTavernName():
 
 
 #
+def FormCityName():
+    T_TypeRando = randrange(0, 2)
+    T_Return = ""
+    if T_TypeRando < 1:
+        T_Return = "The "
+        T_Return += choice(cityOne)
+        T_Return += " City"
+    else:
+        T_Return = "City of "
+        T_Return += choice(cityTwo)
+    return T_Return
+
+
+#
 class NameGenerators(commands.Cog):
 
     #
@@ -41,6 +63,6 @@ class NameGenerators(commands.Cog):
         await ctx.channel.send(FormTavernName())
 
     #
-    @commands.command(name="townAlias", aliases=["town"])
-    async def townAlias(self, ctx):
-        await ctx.channel.send("under construction command")
+    @commands.command(name="cityAlias", aliases=["city"])
+    async def cityAlias(self, ctx):
+        await ctx.channel.send(FormCityName())
