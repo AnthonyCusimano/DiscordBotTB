@@ -7,6 +7,8 @@ with open("Tavern.txt") as f:
     tavernLines = f.readlines()
 tavernOne = tavernLines[0].split(',')
 tavernTwo = tavernLines[1].split(',')
+tavernOne[-1] = tavernOne[-1][:-1]
+tavernTwo[-1] = tavernTwo[-1][:-1]
 
 
 #
