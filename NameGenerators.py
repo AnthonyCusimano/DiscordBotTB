@@ -27,8 +27,8 @@ def FormTavernName():
         T_ReturnTwo = choice(tavernTwo)
         while T_ReturnTwo == T_ReturnProtection:
             T_ReturnTwo = choice(tavernTwo)
-        T_Return += ' and '
-        T_Return += choice(tavernTwo)
+        T_Return += " and "
+        T_Return += T_ReturnTwo
     return T_Return
 
 
