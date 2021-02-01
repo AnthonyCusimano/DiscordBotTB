@@ -3,12 +3,6 @@ from random import randrange
 from discord.ext import commands
 
 
-#
-# def setclass_error(self, ctx, error):
-#    if isinstance(error, commands.MissingRequiredArgument):
-#        await ctx.channel.send("Oops! You didn't.")
-
-
 # rolls dice man
 class DiceRolls(commands.Cog):
     """lole"""
@@ -87,16 +81,13 @@ class DiceRolls(commands.Cog):
                 if x != T_DC - 1:
                     T_Return += ", "
             if T_DC > 1:
+                # bold for visual clarity
+                # sending more info back for multiple dice
                 await ctx.channel.send("The total is: **" + str(T_ReturnTotal) + "** : " + T_Return)
             else:
                 await ctx.channel.send(T_Return)
         except (TypeError, ValueError):
             await ctx.channel.send("Please send a real number for number of dice")
-
-    @d10.error
-    async def d10_error(self, ctx, error):
-        if isinstance(error, commands.BadArgument):
-            await ctx.send("Please send a real number for number of dice")
 
     # exalted style successes
     # TODO I forget if 0's are crit successes in exalted LOLE
@@ -147,3 +138,8 @@ class DiceRolls(commands.Cog):
         T_Return = randrange(1, 6)
         T_Return += randrange(1, 8)
         await ctx.channel.send(T_Return)
+
+    # core error handler for this cog
+    async def cog_command_error(self, ctx, error):
+        if isinstance(error, commands.BadArgument):
+            await ctx.send("Please send a real number for number of dice")
