@@ -3,6 +3,12 @@ from random import randrange
 from discord.ext import commands
 
 
+#
+# def setclass_error(self, ctx, error):
+#    if isinstance(error, commands.MissingRequiredArgument):
+#        await ctx.channel.send("Oops! You didn't.")
+
+
 # rolls dice man
 class DiceRolls(commands.Cog):
     """lole"""
@@ -59,8 +65,7 @@ class DiceRolls(commands.Cog):
 
     #
     @commands.command(name="d10")
-    async def d10(self, ctx, _DC):
-        await ctx.channel.send("beginning d10")
+    async def d10(self, ctx, _DC=1):
         try:
             if not _DC:
                 T_DC = 1
@@ -71,20 +76,27 @@ class DiceRolls(commands.Cog):
                 raise TypeError
             # total result of all die rolls
             T_Return = ""
+            #TODO
+            T_ReturnTotal = 0
             for x in range(T_DC):
                 T_Return += str(randrange(1, 10))
                 if x != T_DC - 1:
                     T_Return += ", "
             await ctx.channel.send(T_Return)
         except (TypeError, ValueError):
-            print("Im in the the except block")
-            await ctx.channel.send("LOLE!")
+            await ctx.channel.send("Please send a real number for number of dice")
+
+    @d10.error
+    async def d10_error(self, ctx, error):
+        if isinstance(error, commands.BadArgument):
+            await ctx.send("???")
 
     # exalted style successes
     # TODO I forget if 0's are crit successes in exalted LOLE
     @commands.command(name="d10s")
     async def d10f(self, ctx, _DC=1):
         T_Return = 0
+        T_ReturnTotal = 0
         T_Die = 0
         # _DC = DiceCallCheck(_DC)
         for x in range(int(_DC)):
