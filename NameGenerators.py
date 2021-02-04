@@ -45,7 +45,7 @@ def FormTavernName():
     # type three
     else:
         T_Return = choice(tavernThree)
-        T_Return += ' '
+        T_Return += "'s "
         T_Return += choice(tavernFour)
     return T_Return
 
