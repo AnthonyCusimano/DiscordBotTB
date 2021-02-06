@@ -1,5 +1,7 @@
 from DiceRolls import DiceRolls
 from NameGenerators import NameGenerators
+from CharacterGenerators import CharacterGenerators
+from SpellBookGenerators import SpellBookGenerators
 
 # need these still
 import os
@@ -19,20 +21,11 @@ ServerName = os.getenv("DISCORD_SERV")
 LOLE = commands.Bot(command_prefix=os.getenv("COMMAND_PREFIX"), case_insensitive=True)
 
 
-# TODO broken LOLE
-# just replace with TypeError catch
-def DiceCallCheck(_int):
-    #
-    if _int > 50:
-        return 50
-    #
-    if _int < 1:
-        return 1
-
-
 # hook up the dice roller & tavern name generator
 LOLE.add_cog(DiceRolls())
 LOLE.add_cog(NameGenerators())
+LOLE.add_cog(CharacterGenerators())
+LOLE.add_cog(SpellBookGenerators())
 
 
 # on launch
