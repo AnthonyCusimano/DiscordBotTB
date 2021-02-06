@@ -6,8 +6,15 @@ from discord.ext import commands
 class CharacterGenerators(commands.Cog):
     print("LOLE")
 
-    # TODO make it so that the method lets the player know that RAW this character can be rerolled
-    # if their net modifier
+    #
+    @commands.command(name="fd6droplow", aliases=["4d6DropLowest", "4d6Char"])
+    async def fd6droplow(self, ctx):
+        T_Attributes = []
+        T_AttributeMods = [0, 0, 0, 0, 0, 0]
+        T_Rolls = []
+        T_TotalModifier = 0
+
+    #
     @commands.command(name="LamentationsCharacter", aliases=["Lamentations", "LOTFP"])
     async def LamentationsCharacter(self, ctx):
         # alphabetical
@@ -38,7 +45,9 @@ class CharacterGenerators(commands.Cog):
                 T_AttributeMods[i] = -1
 
             # 9-12
-            # no action
+            # still doing this cus I suck lole
+            elif T_Attributes[i] < 13:
+                T_AttributeMods[i] = 0
             # 13-15
             elif T_Attributes[i] < 16:
                 T_TotalModifier += 1
