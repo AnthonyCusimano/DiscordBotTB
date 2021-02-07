@@ -25,14 +25,21 @@ class DiceRolls(commands.Cog):
     # TODO have D6 return the results on each individual die
     @commands.command(name="d6")
     async def d6(self, ctx, _DC=1):
-        # result of all our die rolls
-        # T_Test = int(_DC)
-        T_Return = 0
-        # TODO for some reason DiceCallCheck can fail if using the default value for _DC
-        # treating number of dice as an int
-        for x in range(int(_DC)):
-            T_Return += randrange(1, 6)
-        await ctx.channel.send(T_Return)
+        try:
+            if _DC < 1:
+                raise TypeError
+            T_Return = 0
+
+            # result of all our die rolls
+            T_Test = 0
+
+            # treating number of dice as an int
+            for x in range(int(_DC)):
+                T_Return += randrange(1, 6)
+            await ctx.channel.send(T_Return)
+
+        except (TypeError, ValueError):
+            await ctx.channel.send("Please send a real number for number of dice")
 
     # fudge dice
     @commands.command(name="df")
