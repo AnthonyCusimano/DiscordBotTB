@@ -22,21 +22,31 @@ class DiceRolls(commands.Cog):
     async def d5(self, ctx):
         await ctx.channel.send(randrange(1, 5))
 
-    # TODO have D6 return the results on each individual die
+    # 
     @commands.command(name="d6")
     async def d6(self, ctx, _DC=1):
         try:
             if _DC < 1:
                 raise TypeError
-            T_Return = 0
+            T_Return = ''
 
             # result of all our die rolls
-            T_Test = 0
-
+            T_Current = 0
+            T_Total = 0
             # treating number of dice as an int
             for x in range(int(_DC)):
-                T_Return += randrange(1, 6)
-            await ctx.channel.send(T_Return)
+                T_Current = randrange(1, 6)
+                T_Total += T_Current
+                T_Return += str(T_Total)
+                #
+                if x != _DC - 1:
+                    T_Return += ", "
+
+            if _DC > 1:
+                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
+
+            else:
+                await ctx.channel.send(T_Return)
 
         except (TypeError, ValueError):
             await ctx.channel.send("Please send a real number for number of dice")
@@ -68,26 +78,21 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d10")
     async def d10(self, ctx, _DC=1):
         try:
-            if not _DC:
-                T_DC = 1
-            else:
-                T_DC = int(_DC)
-
-            if T_DC < 1:
+            if _DC < 1:
                 raise TypeError
             # total result of all die rolls
             T_Return = ""
             # each roll
             T_ReturnCurrent = 0
             T_ReturnTotal = 0
-            for x in range(T_DC):
+            for x in range(_DC):
                 T_ReturnCurrent = randrange(1, 10)
                 T_ReturnTotal += T_ReturnCurrent
                 T_Return += str(T_ReturnCurrent)
                 # not putting a coma after the final die
-                if x != T_DC - 1:
+                if x != _DC - 1:
                     T_Return += ", "
-            if T_DC > 1:
+            if _DC > 1:
                 # bold for visual clarity
                 # sending more info back for multiple dice
                 await ctx.channel.send("The total is: **" + str(T_ReturnTotal) + "** : " + T_Return)
