@@ -21,7 +21,7 @@ class DiceRolls(commands.Cog):
             for x in range(int(_DC)):
                 T_Current = randrange(1, 2)
                 T_Total += T_Current
-                T_Return += str(T_Total)
+                T_Return += str(T_Current)
                 #
                 if x != _DC - 1:
                     T_Return += ", "
@@ -49,7 +49,7 @@ class DiceRolls(commands.Cog):
             for x in range(int(_DC)):
                 T_Current = randrange(1, 3)
                 T_Total += T_Current
-                T_Return += str(T_Total)
+                T_Return += str(T_Current)
                 #
                 if x != _DC - 1:
                     T_Return += ", "
@@ -77,7 +77,7 @@ class DiceRolls(commands.Cog):
             for x in range(int(_DC)):
                 T_Current = randrange(1, 4)
                 T_Total += T_Current
-                T_Return += str(T_Total)
+                T_Return += str(T_Current)
                 #
                 if x != _DC - 1:
                     T_Return += ", "
@@ -105,7 +105,7 @@ class DiceRolls(commands.Cog):
             for x in range(int(_DC)):
                 T_Current = randrange(1, 5)
                 T_Total += T_Current
-                T_Return += str(T_Total)
+                T_Return += str(T_Current)
                 #
                 if x != _DC - 1:
                     T_Return += ", "
@@ -134,7 +134,7 @@ class DiceRolls(commands.Cog):
             for x in range(int(_DC)):
                 T_Current = randrange(1, 6)
                 T_Total += T_Current
-                T_Return += str(T_Total)
+                T_Return += str(T_Current)
                 #
                 if x != _DC - 1:
                     T_Return += ", "
@@ -176,7 +176,7 @@ class DiceRolls(commands.Cog):
             for x in range(int(_DC)):
                 T_Current = randrange(1, 7)
                 T_Total += T_Current
-                T_Return += str(T_Total)
+                T_Return += str(T_Current)
                 #
                 if x != _DC - 1:
                     T_Return += ", "
@@ -204,7 +204,7 @@ class DiceRolls(commands.Cog):
             for x in range(int(_DC)):
                 T_Current = randrange(1, 8)
                 T_Total += T_Current
-                T_Return += str(T_Total)
+                T_Return += str(T_Current)
                 #
                 if x != _DC - 1:
                     T_Return += ", "
@@ -263,6 +263,60 @@ class DiceRolls(commands.Cog):
         await ctx.channel.send(T_ReturnS)
 
     #
+    @commands.command(name="d12")
+    async def d12(self, ctx, _DC=1):
+        try:
+            if _DC < 1:
+                raise TypeError
+            # total result of all die rolls
+            T_Return = ""
+            # each roll
+            T_ReturnCurrent = 0
+            T_ReturnTotal = 0
+            for x in range(_DC):
+                T_ReturnCurrent = randrange(1, 12)
+                T_ReturnTotal += T_ReturnCurrent
+                T_Return += str(T_ReturnCurrent)
+                # not putting a coma after the final die
+                if x != _DC - 1:
+                    T_Return += ", "
+            if _DC > 1:
+                # bold for visual clarity
+                # sending more info back for multiple dice
+                await ctx.channel.send("The total is: **" + str(T_ReturnTotal) + "** : " + T_Return)
+            else:
+                await ctx.channel.send(T_Return)
+        except (TypeError, ValueError):
+            await ctx.channel.send("Please send a real number for number of dice")
+
+    #
+    @commands.command(name="d14")
+    async def d14(self, ctx, _DC=1):
+        try:
+            if _DC < 1:
+                raise TypeError
+            # total result of all die rolls
+            T_Return = ""
+            # each roll
+            T_ReturnCurrent = 0
+            T_ReturnTotal = 0
+            for x in range(_DC):
+                T_ReturnCurrent = randrange(1, 14)
+                T_ReturnTotal += T_ReturnCurrent
+                T_Return += str(T_ReturnCurrent)
+                # not putting a coma after the final die
+                if x != _DC - 1:
+                    T_Return += ", "
+            if _DC > 1:
+                # bold for visual clarity
+                # sending more info back for multiple dice
+                await ctx.channel.send("The total is: **" + str(T_ReturnTotal) + "** : " + T_Return)
+            else:
+                await ctx.channel.send(T_Return)
+        except (TypeError, ValueError):
+            await ctx.channel.send("Please send a real number for number of dice")
+
+    #
     @commands.command(name="d16")
     async def d16(self, ctx, _DC=1):
         try:
@@ -276,7 +330,7 @@ class DiceRolls(commands.Cog):
             for x in range(int(_DC)):
                 T_Current = randrange(1, 16)
                 T_Total += T_Current
-                T_Return += str(T_Total)
+                T_Return += str(T_Current)
                 #
                 if x != _DC - 1:
                     T_Return += ", "
@@ -304,7 +358,7 @@ class DiceRolls(commands.Cog):
             for x in range(int(_DC)):
                 T_Current = randrange(1, 20)
                 T_Total += T_Current
-                T_Return += str(T_Total)
+                T_Return += str(T_Current)
                 #
                 if x != _DC - 1:
                     T_Return += ", "
@@ -332,7 +386,7 @@ class DiceRolls(commands.Cog):
             for x in range(int(_DC)):
                 T_Current = randrange(1, 24)
                 T_Total += T_Current
-                T_Return += str(T_Total)
+                T_Return += str(T_Current)
                 #
                 if x != _DC - 1:
                     T_Return += ", "
@@ -360,7 +414,7 @@ class DiceRolls(commands.Cog):
             for x in range(int(_DC)):
                 T_Current = randrange(1, 30)
                 T_Total += T_Current
-                T_Return += str(T_Total)
+                T_Return += str(T_Current)
                 #
                 if x != _DC - 1:
                     T_Return += ", "
@@ -388,7 +442,7 @@ class DiceRolls(commands.Cog):
             for x in range(int(_DC)):
                 T_Current = randrange(1, 100)
                 T_Total += T_Current
-                T_Return += str(T_Total)
+                T_Return += str(T_Current)
                 #
                 if x != _DC - 1:
                     T_Return += ", "
