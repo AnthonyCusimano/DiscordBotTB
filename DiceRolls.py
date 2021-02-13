@@ -259,17 +259,22 @@ class DiceRolls(commands.Cog):
     # TODO
     @commands.command(name="d10s")
     async def d10f(self, ctx, _DC=1):
-        T_Return = 0
-        T_ReturnTotal = 0
-        T_Die = 0
-        # _DC = DiceCallCheck(_DC)
-        for x in range(int(_DC)):
-            T_Die = randrange(1, 10)
-            if T_Die > 6:
-                T_Return += 1
+        try:
+            if _DC < 1:
+                raise TypeError
+            T_Return = ''
 
-        T_ReturnS = str("{} successes").format(T_Return)
-        await ctx.channel.send(T_ReturnS)
+            T_Current = 0
+            T_Suc = 0
+            for x in range(int(_DC)):
+                T_Current = randrange(1, 10)
+                if T_Current > 6:
+                    T_Suc += 1
+                T_Return += str(T_Current)
+                T_Return += ' '
+            await ctx.channel.send("**" + str(T_Suc) + "** success : " + T_Return)
+        except (TypeError, ValueError):
+            await ctx.channel.send("Please send a real number for number of dice")
 
     #
     @commands.command(name="d12")
