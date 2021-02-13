@@ -152,15 +152,24 @@ class DiceRolls(commands.Cog):
     # TODO LOLE
     @commands.command(name="df")
     async def df(self, ctx, _DC=4):
-        T_Return = int(0)
-        T_Die = 0
-        for x in range(int(_DC)):
-            T_Die = randrange(1, 6)
-            if T_Die > 4:
-                T_Return += 1
-            elif T_Die < 3:
-                T_Return -= 1
-        await ctx.channel.send(T_Return)
+        try:
+            if _DC < 1:
+                raise TypeError
+            T_Return = ''
+
+            T_Current = 0
+            T_Suc = 0
+            for x in range(int(_DC)):
+                T_Current = randrange(1, 6)
+                if T_Current > 4:
+                    T_Suc += 1
+                elif T_Current < 3:
+                    T_Suc -= 1
+                T_Return += str(T_Current)
+                T_Return += ' '
+            await ctx.channel.send("**" + str(T_Suc) + "** success : " + T_Return)
+        except (TypeError, ValueError):
+            await ctx.channel.send("Please send a real number for number of dice")
 
     #
     @commands.command(name="d7")
