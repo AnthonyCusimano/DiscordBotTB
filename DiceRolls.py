@@ -11,7 +11,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d2", aliases=["coinFlip", "flipACoin"])
     async def d2(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             T_Return = ''
 
@@ -39,7 +39,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d3")
     async def d3(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             T_Return = ''
 
@@ -67,7 +67,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d4")
     async def d4(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             T_Return = ''
 
@@ -95,7 +95,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d5")
     async def d5(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             T_Return = ''
 
@@ -123,7 +123,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d6")
     async def d6(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             T_Return = ''
 
@@ -149,11 +149,10 @@ class DiceRolls(commands.Cog):
             await ctx.channel.send("Please send a real number for number of dice")
 
     # fudge dice
-    # TODO LOLE
     @commands.command(name="df")
     async def df(self, ctx, _DC=4):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             T_Return = ''
 
@@ -175,7 +174,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d7")
     async def d7(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             T_Return = ''
 
@@ -203,7 +202,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d8")
     async def d8(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             T_Return = ''
 
@@ -231,7 +230,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d10")
     async def d10(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             # total result of all die rolls
             T_Return = ""
@@ -256,11 +255,10 @@ class DiceRolls(commands.Cog):
 
     # exalted style successes
     # TODO I forget if 0's are crit successes in exalted LOLE
-    # TODO
     @commands.command(name="d10s")
     async def d10f(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             T_Return = ''
 
@@ -280,7 +278,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d12")
     async def d12(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             # total result of all die rolls
             T_Return = ""
@@ -307,7 +305,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d14")
     async def d14(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             # total result of all die rolls
             T_Return = ""
@@ -334,7 +332,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d16")
     async def d16(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             T_Return = ''
 
@@ -362,7 +360,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d20")
     async def d20(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             T_Return = ''
 
@@ -390,7 +388,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d24", _DC=1)
     async def d24(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             T_Return = ''
 
@@ -418,7 +416,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d30")
     async def d30(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             T_Return = ''
 
@@ -446,7 +444,7 @@ class DiceRolls(commands.Cog):
     @commands.command(name="d100")
     async def d100(self, ctx, _DC=1):
         try:
-            if _DC < 1:
+            if _DC == 0:
                 raise TypeError
             T_Return = ''
 
