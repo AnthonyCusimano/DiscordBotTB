@@ -22,6 +22,20 @@ cityOne[-1] = cityOne[-1][:-1]
 # unneeded for bottom line
 # cityTwo[-1] = cityTwo[-1][:-1]
 
+with open("Ship.txt") as s:
+    shipLines = s.readLines()
+shipOne = shipLines[0].split(',')
+shipTwo = shipLines[1].split(',')
+shipThree = shipLines[2].split(',')
+shipOne[-1] = shipOne[-1][:-1]
+cityTwo[-1] = shipTwo[-1][:-1]
+
+with open("WeaponNames.txt") as w:
+    weaponLines = w.readLines()
+weaponOne = weaponLines[0].split(',')
+weaponTwo = weaponLines[1].split(',')
+weaponOne[-1] = weaponOne[-1][:-1]
+
 
 #
 def FormTavernName():
