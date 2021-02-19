@@ -23,7 +23,7 @@ cityOne[-1] = cityOne[-1][:-1]
 # cityTwo[-1] = cityTwo[-1][:-1]
 
 with open("Ship.txt") as s:
-    shipLines = s.readLines()
+    shipLines = s.readlines()
 shipOne = shipLines[0].split(',')
 shipTwo = shipLines[1].split(',')
 shipThree = shipLines[2].split(',')
@@ -31,7 +31,7 @@ shipOne[-1] = shipOne[-1][:-1]
 cityTwo[-1] = shipTwo[-1][:-1]
 
 with open("WeaponNames.txt") as w:
-    weaponLines = w.readLines()
+    weaponLines = w.readlines()
 weaponOne = weaponLines[0].split(',')
 weaponTwo = weaponLines[1].split(',')
 weaponOne[-1] = weaponOne[-1][:-1]
@@ -79,6 +79,24 @@ def FormCityName():
 
 
 #
+def FormWeaponName():
+    return "weaponName"
+
+
+#
+def FormShipName():
+    T_TypeRando = randrange(0, 2)
+    T_TypeRando = 0
+    T_Return = ""
+    if T_TypeRando == 0:
+        T_Return = "The "
+        T_Return += choice(shipOne)
+        T_Return += " "
+        T_Return += choice(shipTwo)
+    return T_Return
+
+
+#
 class NameGenerators(commands.Cog):
 
     #
@@ -90,3 +108,9 @@ class NameGenerators(commands.Cog):
     @commands.command(name="cityAlias", aliases=["city"])
     async def cityAlias(self, ctx):
         await ctx.channel.send(FormCityName())
+
+    #
+    @commands.command(name="ship", aliases=["shipName"])
+    async def ship(self, ctx):
+        await ctx.channel.send(FormShipName())
+
