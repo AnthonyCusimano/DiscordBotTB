@@ -28,7 +28,7 @@ shipOne = shipLines[0].split(',')
 shipTwo = shipLines[1].split(',')
 shipThree = shipLines[2].split(',')
 shipOne[-1] = shipOne[-1][:-1]
-cityTwo[-1] = shipTwo[-1][:-1]
+shipTwo[-1] = shipTwo[-1][:-1]
 
 with open("WeaponNames.txt") as w:
     weaponLines = w.readlines()
@@ -85,14 +85,21 @@ def FormWeaponName():
 
 #
 def FormShipName():
-    T_TypeRando = randrange(0, 2)
-    T_TypeRando = 0
+    T_TypeRando = randrange(0, 3)
     T_Return = ""
     if T_TypeRando == 0:
         T_Return = "The "
         T_Return += choice(shipOne)
         T_Return += " "
         T_Return += choice(shipTwo)
+
+    elif T_TypeRando == 1:
+        T_Return = "The "
+        T_Return += choice(shipTwo)
+        T_Return += " of the sea"
+
+    elif T_TypeRando == 2:
+        T_Return = choice(shipThree)
     return T_Return
 
 
