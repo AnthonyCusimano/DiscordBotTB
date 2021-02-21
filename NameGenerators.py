@@ -80,7 +80,9 @@ def FormCityName():
 
 #
 def FormWeaponName():
-    return "weaponName"
+    T_Return = choice(weaponOne)
+    T_Return += " " + choice(weaponTwo)
+    return T_Return
 
 
 #
