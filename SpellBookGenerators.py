@@ -24,7 +24,7 @@ class SpellBookGenerators(commands.Cog):
 
     # Potentially want option to customize how many spells the player gets, w/ the RAW 3 + Read Magic being default
     @commands.command(name="LOTFPMUSpellBook", aliases=["LamentationsMUSB"])
-    async def LOTFPMUSpellBook(self, ctx,):
+    async def LOTFPMUSpellBook(self, ctx):
         # Everyone starts with this
         T_Return = "Read Magic, "
         T_DupProt = []
@@ -41,3 +41,8 @@ class SpellBookGenerators(commands.Cog):
             T_Return += T_DupProt[i]
             T_Return += ", "
         await ctx.channel.send(T_Return)
+
+    #
+    @commands.command(name="DnD5WZSpellBook", aliases=["5eWzSpellBook", "5eWizardSpellBook", "5thWizardSpellBook"])
+    async def DnD5WZSpellBook(self, ctx):
+        await ctx.channel.send("5E Wizard spellbook method called")
