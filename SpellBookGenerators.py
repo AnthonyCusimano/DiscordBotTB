@@ -11,14 +11,22 @@ LOTFPCoreMUSpells = ["Bookspeak", "Charm Person", "Comprehend Languages / Obscur
                      "Mending", "Message", "Shield", "Sleep", "Spider Climb", "Summon", "Unseen Servant"]
 
 
+DND5CoreWZSpells = ["Alarm", "Burning Hands", "Charm Person", "Chromatic Orb", "Color Spray", "Comprehend Languages",
+                    "Detect Magic", "Disguise Self", "Expeditious Retreat", "False Life", "Feather Fall",
+                    "Find Familiar", "Fog Cloud", "Grease", "Identify", "Illusory Script", "Jump", "Longstrider",
+                    "Mage Armor", "Magic Missile", "Protection from Evil and Good", "Ray of Sickness", "Shield",
+                    "Silent Image", "Sleep", "Tasha's Hideous Laughter", "Tenser's Floating Disk", "Thuderwave",
+                    "Unseen Servant", "Witch Bolt"]
+
+
 #
 class SpellBookGenerators(commands.Cog):
 
-    #
+    # Potentially want option to customize how many spells the player gets, w/ the RAW 3 + Read Magic being default
     @commands.command(name="LOTFPMUSpellBook", aliases=["LamentationsMUSB"])
-    async def LOTFPMUSpellBook(self, ctx):
+    async def LOTFPMUSpellBook(self, ctx,):
         # Everyone starts with this
-        T_Return = "Read magic, "
+        T_Return = "Read Magic, "
         T_DupProt = []
         for i in range(3):
             T_DupProt.append(choice(LOTFPCoreMUSpells))
