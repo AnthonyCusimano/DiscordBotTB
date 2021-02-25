@@ -123,3 +123,8 @@ class NameGenerators(commands.Cog):
     async def ship(self, ctx):
         await ctx.channel.send(FormShipName())
 
+    #
+    @commands.command(name="weapon", aliases=["weaponName", "formWeaponName", "magicWeaponName"])
+    async def weapon(self, ctx):
+        await ctx.channel.send(FormWeaponName())
+
