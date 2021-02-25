@@ -26,7 +26,7 @@ DND5CoreSC1Spells = ""
 class SpellBookGenerators(commands.Cog):
 
     # Potentially want option to customize how many spells the player gets, w/ the RAW 3 + Read Magic being default
-    @commands.command(name="LOTFPMUSpellBook", aliases=["LamentationsMUSB"])
+    @commands.command(name="LOTFPMUSpellBook", aliases=["LamentationsMUSB", "LOTFPMUSB"])
     async def LOTFPMUSpellBook(self, ctx):
         # Everyone starts with this
         T_Return = "Read Magic, "
