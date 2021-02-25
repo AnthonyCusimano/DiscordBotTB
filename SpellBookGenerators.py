@@ -42,7 +42,8 @@ class SpellBookGenerators(commands.Cog):
 
         for i in range(3):
             T_Return += T_DupProt[i]
-            T_Return += ", "
+            if i < 3:
+                T_Return += ", "
         await ctx.channel.send(T_Return)
 
     #
@@ -52,4 +53,8 @@ class SpellBookGenerators(commands.Cog):
         T_DupProt = []
         for i in range(6):
             T_DupProt.append(choice(DND5CoreWZ1Spells))
+        for i in range(6):
+            T_Return += T_DupProt[i]
+            if i < 6:
+                T_Return += ", "
         await ctx.channel.send(T_Return)
