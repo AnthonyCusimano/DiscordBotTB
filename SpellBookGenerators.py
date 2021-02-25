@@ -42,7 +42,7 @@ class SpellBookGenerators(commands.Cog):
 
         for i in range(3):
             T_Return += T_DupProt[i]
-            if i < 3:
+            if i < 2:
                 T_Return += ", "
         await ctx.channel.send(T_Return)
 
@@ -50,11 +50,19 @@ class SpellBookGenerators(commands.Cog):
     @commands.command(name="DnD5WZSpellBook", aliases=["5eWzSpellBook", "5eWizardSpellBook", "5thWizardSpellBook"])
     async def DnD5WZSpellBook(self, ctx):
         T_Return = ""
-        T_DupProt = []
+        T_DupProt = DND5CoreWZ1Spells
         for i in range(6):
-            T_DupProt.append(choice(DND5CoreWZ1Spells))
-        for i in range(6):
-            T_Return += T_DupProt[i]
-            if i < 6:
+            # defaults to 0 right?
+            T_Gamer = randrange(len(T_DupProt))
+            print(T_Gamer)
+            T_NextSpell = T_DupProt[T_Gamer]
+            # I dunno bro
+            T_DupProt.remove(T_DupProt[T_Gamer])
+            T_Return += T_NextSpell
+            if i < 5:
                 T_Return += ", "
+        # for i in range(6):
+            # T_Return += T_DupProt[i]
+            # if i < 6:
+            #     T_Return += ", "
         await ctx.channel.send(T_Return)
