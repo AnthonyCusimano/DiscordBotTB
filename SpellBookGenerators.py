@@ -12,6 +12,10 @@ LOTFPCoreMU1Spells = ["Bookspeak", "Charm Person", "Comprehend Languages / Obscu
 
 DND3P5CoreWZ1Spells = []
 
+DBD5CoreWZ0Spells = ["Acid Splash", "Blade Ward", "Chill Touch", "Dancing Lights", "Fire Bolt", "Friends", "Light",
+                     "Mage Hand", "Mending", "Message", "Minor Illusion", "Poison Spray", "Prestidigitation",
+                     "Ray of Frost", "Shocking Grasp", "True Strike"]
+
 DND5CoreWZ1Spells = ["Alarm", "Burning Hands", "Charm Person", "Chromatic Orb", "Color Spray", "Comprehend Languages",
                     "Detect Magic", "Disguise Self", "Expeditious Retreat", "False Life", "Feather Fall",
                     "Find Familiar", "Fog Cloud", "Grease", "Identify", "Illusory Script", "Jump", "Longstrider",
@@ -49,12 +53,21 @@ class SpellBookGenerators(commands.Cog):
     #
     @commands.command(name="DnD5WZSpellBook", aliases=["5eWzSpellBook", "5eWizardSpellBook", "5thWizardSpellBook"])
     async def DnD5WZSpellBook(self, ctx):
-        T_Return = ""
+        T_Return = "Cantrips known: "
         T_DupProt = DND5CoreWZ1Spells
+        T_DupProtCant = DBD5CoreWZ0Spells
+        for i in range(3):
+            T_Gamer = randrange(len(T_DupProtCant))
+            T_NextSpell = T_DupProtCant[T_Gamer]
+            T_DupProtCant.remove(T_DupProtCant[T_Gamer])
+            T_Return += T_NextSpell
+            if i < 2:
+                T_Return += ", "
+        T_Return += "\nLevel one spells: "
         for i in range(6):
             # defaults to 0 right?
             T_Gamer = randrange(len(T_DupProt))
-            print(T_Gamer)
+            # print(T_Gamer)
             T_NextSpell = T_DupProt[T_Gamer]
             # I dunno bro
             T_DupProt.remove(T_DupProt[T_Gamer])
