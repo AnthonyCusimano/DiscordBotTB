@@ -23,7 +23,10 @@ DND5CoreWZ1Spells = ["Alarm", "Burning Hands", "Charm Person", "Chromatic Orb", 
                     "Silent Image", "Sleep", "Tasha's Hideous Laughter", "Tenser's Floating Disk", "Thunderwave",
                     "Unseen Servant", "Witch Bolt"]
 
-DND5CoreSC1Spells = ""
+DND5CoreSC1Spells = ["Burning Hands", "Charm Person", "Chromatic Orb", "Color Spray", "Comprehend Languages",
+                     "Detect Magic", "Disguise Self", "Expeditious Retreat", "False Life", "Feather Fall", "Fod Cloud",
+                     "Jump", "Mage Armor", "Magic Missile", "Ray of Sickness", "Shield", "Silent Image", "Sleep",
+                     "Thunderwave", "Witch Bolt"]
 
 
 #
