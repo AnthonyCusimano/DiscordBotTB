@@ -4,7 +4,6 @@ from discord.ext import commands
 
 
 class CharacterGenerators(commands.Cog):
-    print("LOLE")
 
     #
     @commands.command(name="fd6droplow", aliases=["4d6DropLowest", "4d6Char"])
