@@ -1,7 +1,7 @@
 import requests
 
 
-#
+# will create a DnD 5E shop using a score / points system
 class ShopGenerator:
 
     def __init__(self):
@@ -11,7 +11,10 @@ class ShopGenerator:
         #     print(todo_item)
         # print(item.json()['results'])
         for todo_lole in item.json()['results']:
-            print(todo_lole['name'])
+            # print(todo_lole['url']) WORKS
+            T_thisItem = requests.get("https://www.dnd5eapi.co/api/equipment" + todo_lole['url'])
+            print(T_thisItem['index'])
+            # print(T_thisItem['cost']['quantity'])
         # print(item.json()["name"])WORKS with acid arrow
         shopELO = 0
 
