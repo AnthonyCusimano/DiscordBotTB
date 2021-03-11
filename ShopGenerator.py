@@ -12,8 +12,10 @@ class ShopGenerator:
         # print(item.json()['results'])
         for todo_lole in item.json()['results']:
             # print(todo_lole['url']) WORKS
-            T_thisItem = requests.get("https://www.dnd5eapi.co/api/equipment" + todo_lole['url'])
-            print(T_thisItem['index'])
+            print(todo_lole['name'])
+            # T_thisItem = requests.get("https://www.dnd5eapi.co/api/equipment" + todo_lole['url'])
+            # print(requests.get("https://www.dnd5eapi.co/api/equipment" + todo_lole['url']))
+            # print(T_thisItem.json()['name'])
             # print(T_thisItem['cost']['quantity'])
         # print(item.json()["name"])WORKS with acid arrow
         shopELO = 0
