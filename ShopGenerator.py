@@ -12,7 +12,18 @@ class ShopGenerator:
         # print(item.json()['results'])
         for todo_lole in item.json()['results']:
             # print(todo_lole['url']) WORKS
-            print(todo_lole['name'])
+            # print(todo_lole['name'])
+            requester = 'https://www.dnd5eapi.co' + todo_lole['url']
+            # print(requester)
+            lole = requests.get(requester)
+            print(lole.json()['cost']['quantity'])
+            # gamerItem = requests.get('https://www.dnd5eapi.co/api/equipment' + todo_lole['url'])
+            # print(todo_lole['url'])
+            # print(gamerItem['index'])
+            # print(gamerItem.json()['weight'])
+            # for ape in todo_lole.json()['cost']:
+            #     print("lole")
+            # todo_lole.json()
             # T_thisItem = requests.get("https://www.dnd5eapi.co/api/equipment" + todo_lole['url'])
             # print(requests.get("https://www.dnd5eapi.co/api/equipment" + todo_lole['url']))
             # print(T_thisItem.json()['name'])
