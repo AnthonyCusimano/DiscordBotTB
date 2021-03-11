@@ -16,7 +16,10 @@ class ShopGenerator:
             requester = 'https://www.dnd5eapi.co' + todo_lole['url']
             # print(requester)
             lole = requests.get(requester)
-            print(lole.json()['cost']['quantity'])
+            coster = str(lole.json()['cost']['quantity'])
+            currancy = lole.json()['cost']['unit']
+            name = lole.json()['name']
+            print(name + " costs " + coster + currancy)
             # gamerItem = requests.get('https://www.dnd5eapi.co/api/equipment' + todo_lole['url'])
             # print(todo_lole['url'])
             # print(gamerItem['index'])
