@@ -2,6 +2,7 @@ from DiceRolls import DiceRolls
 from NameGenerators import NameGenerators
 from CharacterGenerators import CharacterGenerators
 from SpellBookGenerators import SpellBookGenerators
+from ShopGenerator import ShopGenerator
 
 # need these still
 import os
@@ -26,11 +27,15 @@ LOLE.add_cog(DiceRolls())
 LOLE.add_cog(NameGenerators())
 LOLE.add_cog(CharacterGenerators())
 LOLE.add_cog(SpellBookGenerators())
+LOLE.add_cog(ShopGenerator())
 
 
 # on launch
 @LOLE.event
 async def on_ready():
+
+    shoperLOLE = ShopGenerator()
+
     print(f'{LOLE.user} has connected to Discord!')
     guild = discord.utils.get(LOLE.guilds, name=ServerName)
 
