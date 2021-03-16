@@ -10,6 +10,9 @@ class ShopGenerator(commands.Cog):
 
     def __init__(self, _debug=False):
 
+        myMarkup = 0.75
+        print(myMarkup)
+
         if _debug:
             # trying
             myMarkupTier = randrange(0, 100)
@@ -26,7 +29,6 @@ class ShopGenerator(commands.Cog):
                 myMarkupTier = 0.75
 
             print(myMarkUp)
-
             item = requests.get("https://www.dnd5eapi.co/api/equipment/")
             for todo_lole in item.json()['results']:
                 requester = 'https://www.dnd5eapi.co' + todo_lole['url']
@@ -42,7 +44,12 @@ class ShopGenerator(commands.Cog):
     #
     @commands.command(name="Blacksmith", aliases=["BS"])
     async def Blacksmith(self, ctx):
-        item = requests.get("https://www.dnd5eapi.co/api/equipment/amulet")  # medium?
+        nextItemOdds = randrange(0, 50)
+        nextItemOdds = 25
+        if nextItemOdds > 24:
+            item = requests.get("https://www.dnd5eapi.co/api/equipment/amulet")  # medium?
+            await ctx.channel.send("The Blacksmith has an Amulet in stock, which costs {quan} {Sigurd}".format
+                                   (quan=item.json()['cost']['quantity'], Sigurd=item.json()['cost']['unit']))
         item = requests.get("https://www.dnd5eapi.co/api/equipment/ball-bearings-bag-of-1000")  # medium?
         item = requests.get("https://www.dnd5eapi.co/api/equipment/battleaxe")  # likely
         item = requests.get("https://www.dnd5eapi.co/api/equipment/breastplate")  # unlikely
