@@ -6,7 +6,7 @@ from discord.ext import commands
 
 # will create a DnD 5E shop using a score / points system
 # TODO blacksmith, general store, provisioner, alchemist, leatherworker
-class ShopGenerator:
+class ShopGenerator(commands.Cog):
 
     def __init__(self, _debug=False):
 
