@@ -12,7 +12,7 @@ tavernFour = tavernLines[3].split(',')
 tavernOne[-1] = tavernOne[-1][:-1]
 tavernTwo[-1] = tavernTwo[-1][:-1]
 tavernThree[-1] = tavernThree[-1][:-1]
-# ignoring bottom line
+tavernFour[-1] = tavernFour[-1][:-1]
 
 with open("City.txt") as c:
     cityLines = c.readlines()
@@ -85,7 +85,7 @@ def FormWeaponName():
     return T_Return
 
 
-#
+# TODO type 4 name should read "Joho's Valor"
 def FormShipName():
     T_TypeRando = randrange(0, 3)
     T_Return = ""
