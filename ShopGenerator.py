@@ -17,6 +17,8 @@ def DetermineMarkup():
         myMarkUp = 2.0
     elif markupTier < 95:
         myMarkUp = 0.75
+    else:
+        myMarkUp = 0.7
 
     return myMarkUp
 
@@ -63,12 +65,14 @@ class ShopGenerator(commands.Cog):
         print(myMarkupTier)
 
         nextItemOdds = randrange(0, 50)
-        nextItemOdds = 25
+        # nextItemOdds = 25
+        slang = "The Blacksmith has an {item} in stock, which costs {quan} {Sigurd}"
+        slangPlural = "The Blacksmith has {count} {item}s in stock, which costs {quan} {Sigurd}"
         if nextItemOdds > 24:
             myMarkupTier
             item = requests.get("https://www.dnd5eapi.co/api/equipment/amulet")  # medium?
-            await ctx.channel.send("The Blacksmith has an Amulet in stock, which costs {quan} {Sigurd}".format
-                                   (quan=float(item.json()['cost']['quantity']) * myMarkupTier,
+            await ctx.channel.send(slang.format
+                                   (item="Amulet", quan=float(item.json()['cost']['quantity']) * myMarkupTier,
                                     Sigurd=item.json()['cost']['unit']))
         item = requests.get("https://www.dnd5eapi.co/api/equipment/ball-bearings-bag-of-1000")  # medium?
         item = requests.get("https://www.dnd5eapi.co/api/equipment/battleaxe")  # likely
@@ -76,3 +80,14 @@ class ShopGenerator(commands.Cog):
         item = requests.get("https://www.dnd5eapi.co/api/equipment/chain-10-feet")  # very likely
         item = requests.get("https://www.dnd5eapi.co/api/equipment/chest")  # unlikely
         item = requests.get("https://www.dnd5eapi.co/api/equipment/cooks-utensils")  # likely
+        # using nextItemOdds to determine number of crowbars
+        nextItemOdds = randrange(0, 8)
+        if nextItemOdds == 1:
+            await ctx.channel.send(slang.format
+                                   (item="crowbar", quan=float(item.json()['cost']['quantity']) * myMarkupTier,
+                                    Sigurd=item.json()['cost']['unit']))
+        elif nextItemOdds > 1:
+            await ctx.channel.send(slangPlural.format(item="crowbar", count=str(nextItemOdds),
+                                                      quan=float(item.json()['cost']['quantity']) * myMarkupTier,
+                                                      Sigurd=item.json()['cost']['unit']))
+
