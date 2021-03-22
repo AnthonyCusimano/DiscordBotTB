@@ -23,22 +23,22 @@ def DetermineMarkup():
     return myMarkUp
 
 
-# _shopName "Blacksmith"
-# DEBUG does not idiotproof _minimumStock or _maximumStock in any way
-# _odds only good for items rarely held by the store
-def GrabItem(_ctx, _shopName, _url, _minimumStock, _maximumStock, _markup, _odds=0):
-    itemOdds = randrange(_minimumStock, _maximumStock)
-    # TODO probably make these global / static
-    T_Slang = "The {shopName} has an {item} in stock, which costs {quan} {Sigurd}"
-    T_SlangPlural = "The {shopName} has {count} {item}s in stock, which cost {quan} {Sigurd} each"
-    T_Item = requests.get(_url)
-    await _ctx.channel.send(T_Slang.format
-                           (item="Amulet", quan=float(T_Item.json()['cost']['quantity']) * _markup,
-                            Sigurd=T_Item.json()['cost']['unit']))
-
 # will create a DnD 5E shop using a score / points system
 # TODO blacksmith, general store, provisioner, alchemist, leatherworker
 class ShopGenerator(commands.Cog):
+
+    # _shopName "Blacksmith"
+    # DEBUG does not idiotproof _minimumStock or _maximumStock in any way
+    # _odds only good for items rarely held by the store
+    async def GrabItem(self, _ctx, _shopName, _url, _minimumStock, _maximumStock, _markup, _odds=0):
+        itemOdds = randrange(_minimumStock, _maximumStock)
+        # TODO probably make these global / static
+        T_Slang = "The {shopName} has an {item} in stock, which costs {quan} {Sigurd}"
+        T_SlangPlural = "The {shopName} has {count} {item}s in stock, which cost {quan} {Sigurd} each"
+        T_Item = requests.get(_url)
+        await _ctx.channel.send(T_Slang.format
+                                (item=T_Item.json()['name'], quan=float(T_Item.json()['cost']['quantity']) * _markup,
+                                 Sigurd=T_Item.json()['cost']['unit']))
 
     #
     def __init__(self, _debug=False):
@@ -76,62 +76,62 @@ class ShopGenerator(commands.Cog):
     async def Blacksmith(self, ctx):
 
         myMarkupTier = DetermineMarkup()
-        print(myMarkupTier)
+        GrabItem(ctx, "Blacksmith", "https://www.dnd5eapi.co/api/equipment/crowbar", 1, 8, myMarkupTier)
 
-        nextItemOdds = randrange(0, 50)
+        # nextItemOdds = randrange(0, 50)
         # nextItemOdds = 25
-        slang = "The Blacksmith has an {item} in stock, which costs {quan} {Sigurd}"
-        slangPlural = "The Blacksmith has {count} {item}s in stock, which cost {quan} {Sigurd} each"
-        if nextItemOdds > 24:
-            myMarkupTier
-            item = requests.get("https://www.dnd5eapi.co/api/equipment/amulet")  # medium?
-            await ctx.channel.send(slang.format
-                                   (item="Amulet", quan=float(item.json()['cost']['quantity']) * myMarkupTier,
-                                    Sigurd=item.json()['cost']['unit']))
-        item = requests.get("https://www.dnd5eapi.co/api/equipment/ball-bearings-bag-of-1000")  # medium?
-        item = requests.get("https://www.dnd5eapi.co/api/equipment/battleaxe")  # likely
-        item = requests.get("https://www.dnd5eapi.co/api/equipment/breastplate")  # unlikely
+        # slang = "The Blacksmith has an {item} in stock, which costs {quan} {Sigurd}"
+        # slangPlural = "The Blacksmith has {count} {item}s in stock, which cost {quan} {Sigurd} each"
+        # if nextItemOdds > 24:
+        #     myMarkupTier
+        #     item = requests.get("https://www.dnd5eapi.co/api/equipment/amulet")  # medium?
+        #     await ctx.channel.send(slang.format
+        #                            (item="Amulet", quan=float(item.json()['cost']['quantity']) * myMarkupTier,
+        #                            Sigurd=item.json()['cost']['unit']))
+        # item = requests.get("https://www.dnd5eapi.co/api/equipment/ball-bearings-bag-of-1000")  # medium?
+        # item = requests.get("https://www.dnd5eapi.co/api/equipment/battleaxe")  # likely
+        # item = requests.get("https://www.dnd5eapi.co/api/equipment/breastplate")  # unlikely
 
         # using nextItemOdds to determine number of 10 foot chains
-        nextItemOdds = randrange(0, 4)
-        if nextItemOdds != 0:
-            item = requests.get("https://www.dnd5eapi.co/api/equipment/chain-10-feet")  # very likely
-        if nextItemOdds == 1:
-            await ctx.channel.send(slang.format(item="10 foot chain",
-                                                quan=float(item.json()['cost']['quantity']) *myMarkupTier,
-                                                Sigurd=item.json()['cost']['unit']))
-        elif nextItemOdds > 1:
-            await ctx.channel.send(slangPlural.format(item="10 foot chain", count=str(nextItemOdds),
-                                                      quan=float(item.json()['cost']['quantity']) * myMarkupTier,
-                                                      Sigurd=item.json()['cost']['unit']))
+        # nextItemOdds = randrange(0, 4)
+        # if nextItemOdds != 0:
+        #     item = requests.get("https://www.dnd5eapi.co/api/equipment/chain-10-feet")  # very likely
+        # if nextItemOdds == 1:
+        #     await ctx.channel.send(slang.format(item="10 foot chain",
+        #                                         quan=float(item.json()['cost']['quantity']) *myMarkupTier,
+        #                                         Sigurd=item.json()['cost']['unit']))
+        # elif nextItemOdds > 1:
+        #     await ctx.channel.send(slangPlural.format(item="10 foot chain", count=str(nextItemOdds),
+        #                                               quan=float(item.json()['cost']['quantity']) * myMarkupTier,
+        #                                               Sigurd=item.json()['cost']['unit']))
 
 
-        item = requests.get("https://www.dnd5eapi.co/api/equipment/chest")  # unlikely
-        item = requests.get("https://www.dnd5eapi.co/api/equipment/cooks-utensils")  # likely
+        # item = requests.get("https://www.dnd5eapi.co/api/equipment/chest")  # unlikely
+        # item = requests.get("https://www.dnd5eapi.co/api/equipment/cooks-utensils")  # likely
         # using nextItemOdds to determine number of crowbars
-        nextItemOdds = randrange(0, 8)
-        if nextItemOdds != 0:
-            item = requests.get("https://www.dnd5eapi.co/api/equipment/crowbar")  # very likely
-        if nextItemOdds == 1:
-            await ctx.channel.send(slang.format (item="crowbar",
-                                                 quan=float(item.json()['cost']['quantity']) * myMarkupTier,
-                                                 Sigurd=item.json()['cost']['unit']))
-        elif nextItemOdds > 1:
-            await ctx.channel.send(slangPlural.format(item="crowbar", count=str(nextItemOdds),
-                                                      quan=float(item.json()['cost']['quantity']) * myMarkupTier,
-                                                      Sigurd=item.json()['cost']['unit']))
+        # nextItemOdds = randrange(0, 8)
+        # if nextItemOdds != 0:
+        #     item = requests.get("https://www.dnd5eapi.co/api/equipment/crowbar")  # very likely
+        # if nextItemOdds == 1:
+        #     await ctx.channel.send(slang.format (item="crowbar",
+        #                                         quan=float(item.json()['cost']['quantity']) * myMarkupTier,
+        #                                          Sigurd=item.json()['cost']['unit']))
+        # elif nextItemOdds > 1:
+        #     await ctx.channel.send(slangPlural.format(item="crowbar", count=str(nextItemOdds),
+        #                                               quan=float(item.json()['cost']['quantity']) * myMarkupTier,
+        #                                               Sigurd=item.json()['cost']['unit']))
 
         # always has a dagger on hand
-        item = requests.get("https://www.dnd5eapi.co/api/equipment/dagger")
-        nextItemOdds = randrange(1, 12)
-        if nextItemOdds == 1:
-            await ctx.channel.send(slang.format(item="dagger",
-                                                quan=float(item.json()['cost']['quantity']) * myMarkupTier,
-                                                Sigurd=item.json()['cost']['unit']))
+        # item = requests.get("https://www.dnd5eapi.co/api/equipment/dagger")
+        # nextItemOdds = randrange(1, 12)
+        # if nextItemOdds == 1:
+        #     await ctx.channel.send(slang.format(item="dagger",
+        #                                         quan=float(item.json()['cost']['quantity']) * myMarkupTier,
+        #                                         Sigurd=item.json()['cost']['unit']))
 
-        else:
-            await ctx.channel.send(slangPlural.format(item="dagger", count=str(nextItemOdds),
-                                                      quan=float(item.json()['cost']['quantity']) * myMarkupTier,
-                                                      Sigurd=item.json()['cost']['unit']))
+        # else:
+        #     await ctx.channel.send(slangPlural.format(item="dagger", count=str(nextItemOdds),
+        #                                               quan=float(item.json()['cost']['quantity']) * myMarkupTier,
+        #                                               Sigurd=item.json()['cost']['unit']))
 
 
