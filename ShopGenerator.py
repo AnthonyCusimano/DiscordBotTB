@@ -24,26 +24,30 @@ def DetermineMarkup():
 
 
 # will create a DnD 5E shop using a score / points system
+# if you roll under _odds on a D100 the item is not in stock
 # TODO blacksmith, general store, provisioner, alchemist, leatherworker
 def GrabItem(_ctx, _shopName, _url, _minimumStock, _maximumStock, _markup, _odds=0):
-
-    itemOdds = randrange(_minimumStock, _maximumStock)
+    isInStock = randrange(1, 100)
+    itemStock = randrange(_minimumStock, _maximumStock)
     # TODO probably make these global / static
     T_Slang = "The {shopName} has an {item} in stock, which costs {quan} {Sigurd}"
     T_SlangPlural = "The {shopName} has {count} {item}s in stock, which cost {quan} {Sigurd} each"
     T_SlangNone = "The {shopName} has no {item}s in stock"
     T_Item = requests.get(_url)
 
-    if itemOdds > 1:
-        return T_SlangPlural.format(shopName=_shopName, count=itemOdds, item=T_Item.json()['name'],
-                             quan=float(T_Item.json()['cost']['quantity']) * _markup,
-                             Sigurd=T_Item.json()['cost']['unit'])
-    elif itemOdds < 1:
-        return T_Slang.format(shopName=_shopName,item=T_Item.json()['name'],
-                          quan=float(T_Item.json()['cost']['quantity']) * _markup, Sigurd=T_Item.json()['cost']['unit'])
+    if isInStock > _odds:
+        if itemStock > 1:
+            return T_SlangPlural.format(shopName=_shopName, count=itemStock, item=T_Item.json()['name'],
+                                        quan=float(T_Item.json()['cost']['quantity']) * _markup,
+                                        Sigurd=T_Item.json()['cost']['unit'])
+        elif itemStock < 1:
+            return T_Slang.format(shopName=_shopName,item=T_Item.json()['name'],
+                                  quan=float(T_Item.json()['cost']['quantity']) * _markup,
+                                  Sigurd=T_Item.json()['cost']['unit'])
 
-    else:
-        return T_SlangNone.format(shopName=_shopName,item=T_Item.json()['name'])
+    return T_SlangNone.format(shopName=_shopName, item=T_Item.json()['name'])
+
+
 
 
 class ShopGenerator(commands.Cog):
