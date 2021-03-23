@@ -25,20 +25,32 @@ def DetermineMarkup():
 
 # will create a DnD 5E shop using a score / points system
 # TODO blacksmith, general store, provisioner, alchemist, leatherworker
+def GrabItem(_ctx, _shopName, _url, _minimumStock, _maximumStock, _markup, _odds=0):
+
+    itemOdds = randrange(_minimumStock, _maximumStock)
+    # TODO probably make these global / static
+    T_Slang = "The {shopName} has an {item} in stock, which costs {quan} {Sigurd}"
+    T_SlangPlural = "The {shopName} has {count} {item}s in stock, which cost {quan} {Sigurd} each"
+    T_SlangNone = "The {shopName} has no {item}s in stock"
+    T_Item = requests.get(_url)
+
+    if itemOdds > 1:
+        return T_SlangPlural.format(shopName=_shopName, count=itemOdds, item=T_Item.json()['name'],
+                             quan=float(T_Item.json()['cost']['quantity']) * _markup,
+                             Sigurd=T_Item.json()['cost']['unit'])
+    elif itemOdds < 1:
+        return T_Slang.format(shopName=_shopName,item=T_Item.json()['name'],
+                          quan=float(T_Item.json()['cost']['quantity']) * _markup, Sigurd=T_Item.json()['cost']['unit'])
+
+    else:
+        return T_SlangNone.format(shopName=_shopName,item=T_Item.json()['name'])
+
+
 class ShopGenerator(commands.Cog):
 
     # _shopName "Blacksmith"
     # DEBUG does not idiotproof _minimumStock or _maximumStock in any way
     # _odds only good for items rarely held by the store
-    async def GrabItem(self, _ctx, _shopName, _url, _minimumStock, _maximumStock, _markup, _odds=0):
-        itemOdds = randrange(_minimumStock, _maximumStock)
-        # TODO probably make these global / static
-        T_Slang = "The {shopName} has an {item} in stock, which costs {quan} {Sigurd}"
-        T_SlangPlural = "The {shopName} has {count} {item}s in stock, which cost {quan} {Sigurd} each"
-        T_Item = requests.get(_url)
-        await _ctx.channel.send(T_Slang.format
-                                (item=T_Item.json()['name'], quan=float(T_Item.json()['cost']['quantity']) * _markup,
-                                 Sigurd=T_Item.json()['cost']['unit']))
 
     #
     def __init__(self, _debug=False):
@@ -76,7 +88,8 @@ class ShopGenerator(commands.Cog):
     async def Blacksmith(self, ctx):
 
         myMarkupTier = DetermineMarkup()
-        GrabItem(ctx, "Blacksmith", "https://www.dnd5eapi.co/api/equipment/crowbar", 1, 8, myMarkupTier)
+        await ctx.channel.send(GrabItem(
+                               ctx, "Blacksmith", "https://www.dnd5eapi.co/api/equipment/crowbar", 1, 8, myMarkupTier))
 
         # nextItemOdds = randrange(0, 50)
         # nextItemOdds = 25
