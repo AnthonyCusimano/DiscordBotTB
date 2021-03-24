@@ -28,7 +28,11 @@ def DetermineMarkup():
 # TODO blacksmith, general store, provisioner, alchemist, leatherworker
 def GrabItem(_ctx, _shopName, _url, _minimumStock, _maximumStock, _markup, _odds=0):
     isInStock = randrange(1, 100)
-    itemStock = randrange(_minimumStock, _maximumStock)
+
+    if _minimumStock != _maximumStock:
+        itemStock = randrange(_minimumStock, _maximumStock)
+    else:
+        itemStock = _minimumStock
     # TODO probably make these global / static
     T_Slang = "The {shopName} has an {item} in stock, which costs {quan} {Sigurd}"
     T_SlangPlural = "The {shopName} has {count} {item}s in stock, which cost {quan} {Sigurd} each"
@@ -46,8 +50,6 @@ def GrabItem(_ctx, _shopName, _url, _minimumStock, _maximumStock, _markup, _odds
                                   Sigurd=T_Item.json()['cost']['unit'])
 
     return T_SlangNone.format(shopName=_shopName, item=T_Item.json()['name'])
-
-
 
 
 class ShopGenerator(commands.Cog):
@@ -91,20 +93,18 @@ class ShopGenerator(commands.Cog):
     @commands.command(name="Blacksmith", aliases=["BS"])
     async def Blacksmith(self, ctx):
 
-        myMarkupTier = DetermineMarkup()
-        await ctx.channel.send(GrabItem(
-                               ctx, "Blacksmith", "https://www.dnd5eapi.co/api/equipment/crowbar", 1, 8, myMarkupTier))
+        ShopName = "Blacksmith"
 
-        # nextItemOdds = randrange(0, 50)
-        # nextItemOdds = 25
-        # slang = "The Blacksmith has an {item} in stock, which costs {quan} {Sigurd}"
-        # slangPlural = "The Blacksmith has {count} {item}s in stock, which cost {quan} {Sigurd} each"
-        # if nextItemOdds > 24:
-        #     myMarkupTier
-        #     item = requests.get("https://www.dnd5eapi.co/api/equipment/amulet")  # medium?
-        #     await ctx.channel.send(slang.format
-        #                            (item="Amulet", quan=float(item.json()['cost']['quantity']) * myMarkupTier,
-        #                            Sigurd=item.json()['cost']['unit']))
+        myMarkupTier = DetermineMarkup()
+
+        await ctx.channel.send(GrabItem(
+            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/crowbar", 1, 8, myMarkupTier))
+
+        await ctx.channel.send(GrabItem(
+            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/amulet", 1, 1, myMarkupTier, 50))
+
+        await ctx.channel.send(GrabItem(
+            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/ball-bearings-bag-of-1000", 1, 6, myMarkupTier, 50))
         # item = requests.get("https://www.dnd5eapi.co/api/equipment/ball-bearings-bag-of-1000")  # medium?
         # item = requests.get("https://www.dnd5eapi.co/api/equipment/battleaxe")  # likely
         # item = requests.get("https://www.dnd5eapi.co/api/equipment/breastplate")  # unlikely
