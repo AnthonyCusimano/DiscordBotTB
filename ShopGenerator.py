@@ -127,3 +127,6 @@ class ShopGenerator(commands.Cog):
         await ctx.channel.send(GrabItem(
             ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/dagger", 1, 12, myMarkupTier, 95))
 
+        await ctx.channel.send(GrabItem(
+            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/pot-iron", 2, 8, myMarkupTier, 95))
+
