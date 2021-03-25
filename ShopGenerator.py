@@ -93,40 +93,67 @@ class ShopGenerator(commands.Cog):
     @commands.command(name="Blacksmith", aliases=["BS"])
     async def Blacksmith(self, ctx):
 
-        ShopName = "Blacksmith"
-
-        myMarkupTier = DetermineMarkup()
-
-        await ctx.channel.send(GrabItem(
-            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/crowbar", 1, 8, myMarkupTier, 95))
+        T_ShopName = "Blacksmith"
+        T_MyMarkupTier = DetermineMarkup()
 
         await ctx.channel.send(GrabItem(
-            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/amulet", 1, 1, myMarkupTier, 50))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/crowbar", 1, 8, T_MyMarkupTier, 95))
 
         await ctx.channel.send(GrabItem(
-            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/ball-bearings-bag-of-1000", 1, 6, myMarkupTier, 50))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/amulet", 1, 1, T_MyMarkupTier, 50))
 
         await ctx.channel.send(GrabItem(
-            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/battleaxe", 2, 8, myMarkupTier, 75))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/ball-bearings-bag-of-1000",
+            1, 6, T_MyMarkupTier, 50))
 
         await ctx.channel.send(GrabItem(
-            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/breastplate", 2, 8, myMarkupTier, 30))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/battleaxe", 2, 8, T_MyMarkupTier, 75))
 
         await ctx.channel.send(GrabItem(
-            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/chain-10-feet", 1, 4, myMarkupTier, 80))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/block-and-tackle", 2, 8, T_MyMarkupTier, 40))
 
         await ctx.channel.send(GrabItem(
-            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/chest", 1, 2, myMarkupTier, 20))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/breastplate", 2, 8, T_MyMarkupTier, 30))
 
         await ctx.channel.send(GrabItem(
-            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/cooks-utensils", 2, 6, myMarkupTier, 45))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/chain-10-feet", 1, 4, T_MyMarkupTier, 80))
 
         await ctx.channel.send(GrabItem(
-            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/crowbar", 1, 9, myMarkupTier, 90))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/chest", 1, 2, T_MyMarkupTier, 20))
 
         await ctx.channel.send(GrabItem(
-            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/dagger", 1, 12, myMarkupTier, 95))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/cooks-utensils", 2, 6, T_MyMarkupTier, 45))
 
         await ctx.channel.send(GrabItem(
-            ctx, ShopName, "https://www.dnd5eapi.co/api/equipment/pot-iron", 2, 8, myMarkupTier, 95))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/crowbar", 1, 9, T_MyMarkupTier, 90))
 
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/dagger", 1, 12, T_MyMarkupTier, 95))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/pot-iron", 2, 8, T_MyMarkupTier, 95))
+
+    #
+    @commands.command(name="Carpenter")
+    async def Carpenter(self, ctx):
+
+        T_ShopName = "Carpenter"
+        T_MyMarkupTier = DetermineMarkup()
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/chest", 1, 2, T_MyMarkupTier, 30))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/ladder-10-foot", 1, 8, T_MyMarkupTier, 75))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/barrel", 1, 8, T_MyMarkupTier, 80))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/basket", 1, 8, T_MyMarkupTier, 13))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/bucket", 1, 8, T_MyMarkupTier, 89))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/carpenters-tools", 1, 8, T_MyMarkupTier, 97))
