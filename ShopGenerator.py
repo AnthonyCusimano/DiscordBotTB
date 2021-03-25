@@ -131,7 +131,13 @@ class ShopGenerator(commands.Cog):
             ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/dagger", 1, 12, T_MyMarkupTier, 95))
 
         await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/pick-miners", 2, 4, T_MyMarkupTier, 60))
+
+        await ctx.channel.send(GrabItem(
             ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/pot-iron", 2, 8, T_MyMarkupTier, 95))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/whetstone", 1, 3, T_MyMarkupTier, 96))
 
     #
     @commands.command(name="Carpenter")
@@ -144,16 +150,37 @@ class ShopGenerator(commands.Cog):
             ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/chest", 1, 2, T_MyMarkupTier, 30))
 
         await ctx.channel.send(GrabItem(
-            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/ladder-10-foot", 1, 8, T_MyMarkupTier, 75))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/ladder-10-foot", 1, 1, T_MyMarkupTier, 75))
 
         await ctx.channel.send(GrabItem(
-            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/barrel", 1, 8, T_MyMarkupTier, 80))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/barrel", 1, 3, T_MyMarkupTier, 80))
 
         await ctx.channel.send(GrabItem(
-            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/basket", 1, 8, T_MyMarkupTier, 13))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/basket", 2, 4, T_MyMarkupTier, 13))
 
         await ctx.channel.send(GrabItem(
-            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/bucket", 1, 8, T_MyMarkupTier, 89))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/bucket", 3, 6, T_MyMarkupTier, 89))
 
         await ctx.channel.send(GrabItem(
-            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/carpenters-tools", 1, 8, T_MyMarkupTier, 97))
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/carpenters-tools", 1, 10, T_MyMarkupTier, 97))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/greatclub", 1, 1, T_MyMarkupTier, 87))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/pole-10-foot", 2, 9, T_MyMarkupTier, 80))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/quarterstaff", 1, 1, T_MyMarkupTier, 80))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/quiver", 1, 2, T_MyMarkupTier, 55))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/shovel", 1, 6, T_MyMarkupTier, 79))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/staff", 1, 1, T_MyMarkupTier, 96))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/torch", 1, 16, T_MyMarkupTier, 99))
