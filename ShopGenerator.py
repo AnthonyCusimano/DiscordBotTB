@@ -34,9 +34,9 @@ def GrabItem(_ctx, _shopName, _url, _minimumStock, _maximumStock, _markup, _odds
     else:
         itemStock = _minimumStock
     # TODO probably make these global / static
-    T_Slang = "The {shopName} has an {item} in stock, which costs {quan} {Sigurd}"
-    T_SlangPlural = "The {shopName} has {count} {item}s in stock, which cost {quan} {Sigurd} each"
-    T_SlangNone = "The {shopName} has no {item}s in stock"
+    T_Slang = "{shopName} has an {item} in stock, which costs {quan} {Sigurd}"
+    T_SlangPlural = "{shopName} has {count} {item}s in stock, which cost {quan} {Sigurd} each"
+    T_SlangNone = "{shopName} has no {item}s in stock"
     T_Item = requests.get(_url)
 
     if isInStock <= _odds:
@@ -91,9 +91,9 @@ class ShopGenerator(commands.Cog):
 
     #
     @commands.command(name="Blacksmith", aliases=["BS"])
-    async def Blacksmith(self, ctx):
+    async def Blacksmith(self, ctx, _shopName="The Blacksmith"):
 
-        T_ShopName = "Blacksmith"
+        T_ShopName = _shopName
         T_MyMarkupTier = DetermineMarkup()
 
         await ctx.channel.send(GrabItem(
@@ -141,9 +141,9 @@ class ShopGenerator(commands.Cog):
 
     #
     @commands.command(name="Carpenter")
-    async def Carpenter(self, ctx):
+    async def Carpenter(self, ctx, _shopName="The Carpenter"):
 
-        T_ShopName = "Carpenter"
+        T_ShopName = _shopName
         T_MyMarkupTier = DetermineMarkup()
 
         await ctx.channel.send(GrabItem(
@@ -184,3 +184,6 @@ class ShopGenerator(commands.Cog):
 
         await ctx.channel.send(GrabItem(
             ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/torch", 1, 16, T_MyMarkupTier, 99))
+
+
+    
