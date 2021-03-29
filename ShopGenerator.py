@@ -26,6 +26,7 @@ def DetermineMarkup():
 # will create a DnD 5E shop using a score / points system
 # if you roll under _odds on a D100 the item is not in stock
 # TODO blacksmith, general store, provisioner, alchemist, leatherworker
+# TODO have argument to ignore out of stock items
 def GrabItem(_ctx, _shopName, _url, _minimumStock, _maximumStock, _markup, _odds=0):
     isInStock = randrange(1, 100)
 
@@ -188,68 +189,81 @@ class ShopGenerator(commands.Cog):
         await ctx.channel.send(GrabItem(
             ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/woodcarvers-tools", 1, 2, T_MyMarkupTier, 60))
 
-        #
-        @commands.command(name="Leatherworker",aliases=["LW"])
-        async def Leatherworker(self, ctx, _shopName = "The Leatherworker"):
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/barding-leather", 1, 1, T_MyMarkupTier, 47))
+    #
+    @commands.command(name="Leatherworker",aliases=["LW"])
+    async def Leatherworker(self, ctx, _shopName = "The Leatherworker"):
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/barding-padded", 1, 1, T_MyMarkupTier, 40))
+        T_ShopName = _shopName
+        T_MyMarkupTier = DetermineMarkup()
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/barding-studded-leather", 1, 1, T_MyMarkupTier,
-                30))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/barding-leather", 1, 1, T_MyMarkupTier, 47))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/clothes-travelers", 3, 10, T_MyMarkupTier, 79))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/barding-padded", 1, 1, T_MyMarkupTier, 40))
 
-            # TODO maybe have armor tag used
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/hide", 4, 10, T_MyMarkupTier, 90))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/barding-studded-leather", 1, 1, T_MyMarkupTier,
+            30))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/leather", 4, 10, T_MyMarkupTier, 90))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/clothes-travelers", 3, 10, T_MyMarkupTier, 79))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/barding-leather", 1, 3, T_MyMarkupTier, 70))
+        # TODO maybe have armor tag used
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/hide", 4, 10, T_MyMarkupTier, 90))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/leatherworkers-tools", 3, 6, T_MyMarkupTier,
-                95))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/leather", 4, 10, T_MyMarkupTier, 90))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/net", 1, 3, T_MyMarkupTier, 60))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/barding-leather", 1, 3, T_MyMarkupTier, 70))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/padded", 1, 2, T_MyMarkupTier, 80))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/leatherworkers-tools", 3, 6, T_MyMarkupTier,
+            95))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/pouch", 6, 13, T_MyMarkupTier, 99))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/net", 1, 3, T_MyMarkupTier, 60))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/quiver", 1, 4, T_MyMarkupTier, 63))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/padded", 1, 2, T_MyMarkupTier, 80))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/robes", 1, 3, T_MyMarkupTier, 61))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/pouch", 6, 13, T_MyMarkupTier, 99))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/sack", 4, 9, T_MyMarkupTier, 87))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/quiver", 1, 4, T_MyMarkupTier, 63))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/saddlebags", 4, 9, T_MyMarkupTier, 87))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/robes", 1, 3, T_MyMarkupTier, 61))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/sling", 3, 30, T_MyMarkupTier, 99))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/sack", 4, 9, T_MyMarkupTier, 87))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/studded-leather", 1, 2, T_MyMarkupTier, 61))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/saddlebags", 4, 9, T_MyMarkupTier, 87))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/tent-two-person", 1, 3, T_MyMarkupTier, 40))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/sling", 3, 30, T_MyMarkupTier, 99))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/waterskin", 3, 10, T_MyMarkupTier, 99))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/studded-leather", 1, 2, T_MyMarkupTier, 61))
 
-            await ctx.channel.send(GrabItem(
-                ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/whip", 1, 3, T_MyMarkupTier, 70))
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/tent-two-person", 1, 3, T_MyMarkupTier, 40))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/waterskin", 3, 10, T_MyMarkupTier, 99))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/whip", 1, 3, T_MyMarkupTier, 70))
+
+    #
+    @commands.command(name="ChapelShop", aliases=["CShop"])
+    async def ChapelShop(self, ctx, _shopName="The Chapel"):
+        T_ShopName = _shopName
+        T_MyMarkupTier = DetermineMarkup()
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/holy-water-flask", 1, 64, T_MyMarkupTier, 100))
