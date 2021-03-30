@@ -294,3 +294,75 @@ class ShopGenerator(commands.Cog):
 
         await ctx.channel.send(GrabItem(
             ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/clothes-common", 1, 6, T_MyMarkupTier, 87))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/donkey", 1, 2, T_MyMarkupTier, 35))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/drum", 1, 1, T_MyMarkupTier, 33))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/dulcimer", 1, 1, T_MyMarkupTier, 33))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/emblem", 8, 17, T_MyMarkupTier, 99))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/healers-kit", 1, 5, T_MyMarkupTier, 80))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/herbalism-kit", 1, 5, T_MyMarkupTier, 80))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/horn", 1, 3, T_MyMarkupTier, 60))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/ink-1-ounce-bottle", 1, 3, T_MyMarkupTier, 87))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/ink-pen", 2, 6, T_MyMarkupTier, 93))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/jug-or-pitcher", 1, 8, T_MyMarkupTier, 76))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/lamp", 1, 3, T_MyMarkupTier, 90))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/lantern-bullseye", 1, 2, T_MyMarkupTier, 64))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/lantern-hooded", 1, 2, T_MyMarkupTier, 64))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/mess-kit", 3, 8, T_MyMarkupTier, 90))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/oil-flask", 2, 7, T_MyMarkupTier, 71))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/paper-one-sheet", 1, 70, T_MyMarkupTier, 90))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/parchment-one-sheet", 1, 70, T_MyMarkupTier, 90))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/pony", 1, 3, T_MyMarkupTier, 68))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/pot-iron", 1, 3, T_MyMarkupTier, 68))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/potion-of-healing", 1, 3, T_MyMarkupTier, 81))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/priests-pack", 1, 6, T_MyMarkupTier, 91))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/rations-1-day", 3, 29, T_MyMarkupTier, 99))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/reliquary", 1, 3, T_MyMarkupTier, 99))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/scholars-pack", 1, 1, T_MyMarkupTier, 87))
