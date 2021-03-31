@@ -1,5 +1,5 @@
 Blue,Red,Standing,Foaming,Falling,Boiling,Teetering,Agile,Hooked,Missing,Prancing,Leaping,Tattered,Yellow,Green,Blind,Drunken,Red,Black,Purple,Alabaster,Greased,Pouncing,Sleeping,Feasting,Slumbering,Smoking,Lonely,Broken,Dancing,Snapping,Empty,Wicker,Kneeling
-Dragon,Turtle,River,Horse,Steed,Cart,Wagon,Gully,Wizard,Goat,Log,Table,Mug,Pony,Ox,Squirrel,Anvil,Net,Moon,Hoof,Horn
+Dragon,Turtle,River,Horse,Steed,Cart,Wagon,Gully,Wizard,Goat,Log,Table,Mug,Pony,Ox,Squirrel,Anvil,Net,Moon,Hoof,Horn,Quill,Tankard
 Michael,Keith,Archibald,Mathilda,William,Erin,Augustus,Joshua
 Hall,Tavern,Inn,Room & Board,Roof & Walls,Bar,Alehouse,Pub,Saloon,Hostelry,Taproom,Pothouse,Public House,Hotel,Boarding House,Auberge,Lodge,Bed and Breakfast
 Blood Sausage,Bacon,Eggs,Hard Bread
