@@ -29,6 +29,7 @@ shipTwo = shipLines[1].split(',')
 shipThree = shipLines[2].split(',')
 shipOne[-1] = shipOne[-1][:-1]
 shipTwo[-1] = shipTwo[-1][:-1]
+shipThree[-1] = shipThree[-1][:-1]
 
 with open("WeaponNames.txt") as w:
     weaponLines = w.readlines()
