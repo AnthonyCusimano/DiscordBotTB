@@ -27,6 +27,7 @@ with open("Ship.txt") as s:
 shipOne = shipLines[0].split(',')
 shipTwo = shipLines[1].split(',')
 shipThree = shipLines[2].split(',')
+shipFour = shipLines[3].split(',')
 shipOne[-1] = shipOne[-1][:-1]
 shipTwo[-1] = shipTwo[-1][:-1]
 shipThree[-1] = shipThree[-1][:-1]
@@ -88,7 +89,7 @@ def FormWeaponName():
 
 # TODO type 4 name should read "Joho's Valor"
 def FormShipName():
-    T_TypeRando = randrange(0, 3)
+    T_TypeRando = randrange(0, 4)
     T_Return = ""
     if T_TypeRando == 0:
         T_Return = "The "
@@ -103,6 +104,10 @@ def FormShipName():
 
     elif T_TypeRando == 2:
         T_Return = choice(shipThree)
+    elif T_TypeRando == 3:
+        T_Return = choice(shipFour)
+        T_Return += "'s "
+        T_Return += choice(shipThree)
     return T_Return
 
 
