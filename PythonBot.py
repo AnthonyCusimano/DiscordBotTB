@@ -4,6 +4,8 @@ from CharacterGenerators import CharacterGenerators
 from SpellBookGenerators import SpellBookGenerators
 from ShopGenerator import ShopGenerator
 
+from TavernGenerator import TavernGenerator
+
 # need these still
 import os
 import discord
@@ -28,6 +30,7 @@ LOLE.add_cog(NameGenerators())
 LOLE.add_cog(CharacterGenerators())
 LOLE.add_cog(SpellBookGenerators())
 LOLE.add_cog(ShopGenerator())
+LOLE.add_cog(TavernGenerator())
 
 
 # on launch
