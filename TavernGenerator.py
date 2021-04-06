@@ -4,6 +4,7 @@ from random import randrange
 import NameGenerators
 
 
+#
 class TavernGenerator(commands.Cog):
 
     def getMyRoomsAvailable(self):
@@ -26,12 +27,11 @@ class TavernGenerator(commands.Cog):
         elif self.mySize == 6:
             return randrange(10, 30)
 
+    #
     @commands.command(name="TavernFull", aliases=["TavernComplete"])
     async def TavernFull(self, ctx):
         T_Name = NameGenerators.FormTavernName()
         # TODO think about mySize
         self.mySize = randrange(1, 6)
-        print(self.getMyRoomsAvailable())
-
-        await ctx.channel.send(T_Name)
-
+        # await ctx.channel.send(T_Name)
+        await ctx.channel.send((T_Name + "Has " + str(self.getMyRoomsAvailable()) + " rooms available"))
