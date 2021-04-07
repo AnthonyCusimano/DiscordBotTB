@@ -10,7 +10,15 @@ class CharacterGenerators(commands.Cog):
     async def fd6droplow(self, ctx):
         T_Attributes = []
         T_AttributeMods = [0, 0, 0, 0, 0, 0]
-        T_Rolls = []
+        # compare rolls
+        T_Rolls = [0, 0, 0, 0]
+
+        # for i in range(6):
+        T_Attributes.append(0)
+        for j in range(4):
+            T_Rolls[j] = randrange(1, 6)
+        T_Rolls.sort(reverse=True)
+        print(T_Rolls)
         T_TotalModifier = 0
 
     #
