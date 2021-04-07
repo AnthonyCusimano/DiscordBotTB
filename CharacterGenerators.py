@@ -3,26 +3,27 @@ from random import randrange
 from discord.ext import commands
 
 
+# 
 class CharacterGenerators(commands.Cog):
 
     #
-    @commands.command(name="fd6droplow", aliases=["4d6DropLowest", "4d6Char"])
+    @commands.command(name="fd6droplow", aliases=["4d6DropLowest", "4d6Char", "4d6DropLow"])
     async def fd6droplow(self, ctx):
+        # using append instead of 0, 0, 0, 0, 0, 0]
         T_Attributes = []
-        T_AttributeMods = [0, 0, 0, 0, 0, 0]
+        T_AttributeMods = []
         # compare rolls
         T_Rolls = [0, 0, 0, 0]
 
-
-        for j in range(4):
-            T_Rolls[j] = randrange(1, 6)
-        # places lowest roll at the back
-        T_Rolls.sort(reverse=True)
-        # removes last element
-        T_Rolls.pop(-1)
-        # TODO ugly
-        T_Attributes.append(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
-        print(T_Attributes)
+        for i in range(6):
+            for j in range(4):
+                print(j)
+                T_Rolls[j] = randrange(1, 6)
+            # places lowest roll at the back
+            T_Rolls.sort(reverse=True)
+            T_Attributes.append(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
+            print(T_Attributes)
+            # TODO T_AttributeMods
         T_TotalModifier = 0
 
     #
