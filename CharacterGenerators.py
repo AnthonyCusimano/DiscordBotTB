@@ -19,6 +19,8 @@ class CharacterGenerators(commands.Cog):
             T_Rolls[j] = randrange(1, 6)
         T_Rolls.sort(reverse=True)
         print(T_Rolls)
+        T_Rolls.pop(-1)
+        print(T_Rolls)
         T_TotalModifier = 0
 
     #
