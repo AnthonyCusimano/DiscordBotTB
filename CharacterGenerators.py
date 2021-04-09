@@ -3,15 +3,16 @@ from random import randrange
 from discord.ext import commands
 
 
-# 
+#
 class CharacterGenerators(commands.Cog):
 
-    #
-    @commands.command(name="fd6droplow", aliases=["4d6DropLowest", "4d6Char", "4d6DropLow"])
-    async def fd6droplow(self, ctx):
+    # TODO add class gold
+    @commands.command(name="fourd6droplow5e", aliases=["4d6DropLowest", "4d6Char", "4d6DropLow", "fd6DropLow"])
+    async def fourd6droplow5e(self, ctx):
         # using append instead of 0, 0, 0, 0, 0, 0]
         T_Attributes = []
         T_AttributeMods = []
+        T_TotalModifier = 0
         # compare rolls
         T_Rolls = [0, 0, 0, 0]
 
@@ -23,8 +24,30 @@ class CharacterGenerators(commands.Cog):
             T_Rolls.sort(reverse=True)
             T_Attributes.append(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
             print(T_Attributes)
-            # TODO T_AttributeMods
-        T_TotalModifier = 0
+            # could use [-1] I think
+            if T_Attributes[i] == 1:
+                T_AttributeMods.append(-5)
+            elif T_Attributes[i] < 4:
+                T_AttributeMods.append(-4)
+            elif T_Attributes[i] < 6:
+                T_AttributeMods.append(-3)
+            elif T_Attributes[i] < 8:
+                T_AttributeMods.append(-2)
+            elif T_Attributes[i] < 10:
+                T_AttributeMods.append(-1)
+            elif T_Attributes[i] < 12:
+                T_AttributeMods.append(0)
+            elif T_Attributes[i] < 14:
+                T_AttributeMods.append(1)
+            elif T_Attributes[i] < 16:
+                T_AttributeMods.append(2)
+            elif T_Attributes[i] < 18:
+                T_AttributeMods.append(3)
+            else:
+                T_AttributeMods.append(4)
+            T_TotalModifier += T_AttributeMods[i]
+            print(T_AttributeMods)
+            print(T_TotalModifier)
 
     #
     @commands.command(name="LamentationsCharacter", aliases=["Lamentations", "LOTFP"])
