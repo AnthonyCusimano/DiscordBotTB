@@ -38,16 +38,29 @@ class CharacterGenerators(commands.Cog):
             elif T_Attributes[i] < 12:
                 T_AttributeMods.append(0)
             elif T_Attributes[i] < 14:
-                T_AttributeMods.append(1)
+                T_AttributeMods.append(+1)
             elif T_Attributes[i] < 16:
-                T_AttributeMods.append(2)
+                T_AttributeMods.append(+2)
             elif T_Attributes[i] < 18:
-                T_AttributeMods.append(3)
+                T_AttributeMods.append(+3)
             else:
-                T_AttributeMods.append(4)
+                T_AttributeMods.append(+4)
             T_TotalModifier += T_AttributeMods[i]
-            print(T_AttributeMods)
-            print(T_TotalModifier)
+
+        T_Return = "Strength:         **{str}**({strMod}):" \
+                   "\nDexterity:        **{dex}**({dexMod}):" \
+                   "\nConstitution:     **{con}**({conMod}):" \
+                   "\nIntelligence:     **{int}**({intMod}):" \
+                   "\nWisdom:           **{wis}**({wisMod}):" \
+                   "\nCharisma:           **{cha}**({chaMod}):" \
+                   .format(cha=T_Attributes[0], chaMod=T_AttributeMods[0], con=T_Attributes[1],
+                                                        conMod=T_AttributeMods[1], dex=T_Attributes[2],
+                                                        dexMod=T_AttributeMods[2], int=T_Attributes[3],
+                                                        intMod=T_AttributeMods[3], str=T_Attributes[4],
+                                                        strMod=T_AttributeMods[4], wis=T_Attributes[5],
+                                                        wisMod=T_AttributeMods[5])
+
+        await ctx.channel.send(T_Return)
 
     #
     @commands.command(name="LamentationsCharacter", aliases=["Lamentations", "LOTFP"])
