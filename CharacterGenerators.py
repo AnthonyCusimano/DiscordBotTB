@@ -8,7 +8,7 @@ class CharacterGenerators(commands.Cog):
 
     # TODO add class gold
     @commands.command(name="fourd6droplow5e", aliases=["4d6DropLowest", "4d6Char", "4d6DropLow", "fd6DropLow"])
-    async def fourd6droplow5e(self, ctx):
+    async def fourd6droplow5e(self, ctx, _playerClass=""):
         # using append instead of 0, 0, 0, 0, 0, 0]
         T_Attributes = []
         T_AttributeMods = []
@@ -18,12 +18,12 @@ class CharacterGenerators(commands.Cog):
 
         for i in range(6):
             for j in range(4):
-                print(j)
-                T_Rolls[j] = randrange(1, 6)
+                T_Rolls[j] = randrange(1, 7)
             # places lowest roll at the back
-            T_Rolls.sort(reverse=True)
+            T_Rolls = sorted(T_Rolls, reverse=True)
+            print(T_Rolls)
+            print(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
             T_Attributes.append(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
-            print(T_Attributes)
             # could use [-1] I think
             if T_Attributes[i] == 1:
                 T_AttributeMods.append(-5)
@@ -59,6 +59,42 @@ class CharacterGenerators(commands.Cog):
                                                         intMod=T_AttributeMods[3], str=T_Attributes[4],
                                                         strMod=T_AttributeMods[4], wis=T_Attributes[5],
                                                         wisMod=T_AttributeMods[5])
+
+        #
+        T_Gold = 0
+
+        if _playerClass == "monk":
+            T_Return += "\n" + str(randrange(1, 4))
+            T_Return += " starting gold"
+
+        elif _playerClass == "druid" or _playerClass == "barbarian":
+
+            for k in range(2):
+                T_Gold += randrange(1, 4)
+
+            T_Return += '\n' + str(T_Gold) + " starting gold"
+
+        elif _playerClass == "sorcerer":
+
+            for k in range(3):
+                T_Gold += randrange(1, 4)
+
+            T_Return += '\n' + str(T_Gold) + " starting gold"
+
+        elif _playerClass == "rogue" or _playerClass == "wizard" or _playerClass == "warlock":
+
+            for k in range(4):
+                T_Gold += randrange(1, 4)
+
+            T_Return += '\n' + str(T_Gold) + " starting gold"
+
+        elif _playerClass == "bard" or _playerClass == "cleric" or _playerClass == "fighter" or \
+                _playerClass == "paladin" or _playerClass == "ranger":
+
+            for k in range(5):
+                T_Gold += randrange(1, 4)
+
+            T_Return += '\n' + str(T_Gold) + " starting gold"
 
         await ctx.channel.send(T_Return)
 
