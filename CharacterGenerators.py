@@ -47,44 +47,45 @@ class CharacterGenerators(commands.Cog):
                 T_AttributeMods.append(+4)
             T_TotalModifier += T_AttributeMods[i]
 
+        # TODO this is formatted like the lamentations one lole
         T_Return = "Strength:         **{str}**({strMod}):" \
                    "\nDexterity:        **{dex}**({dexMod}):" \
                    "\nConstitution:     **{con}**({conMod}):" \
                    "\nIntelligence:     **{int}**({intMod}):" \
                    "\nWisdom:           **{wis}**({wisMod}):" \
                    "\nCharisma:           **{cha}**({chaMod}):" \
-                   .format(cha=T_Attributes[0], chaMod=T_AttributeMods[0], con=T_Attributes[1],
-                                                        conMod=T_AttributeMods[1], dex=T_Attributes[2],
-                                                        dexMod=T_AttributeMods[2], int=T_Attributes[3],
-                                                        intMod=T_AttributeMods[3], str=T_Attributes[4],
-                                                        strMod=T_AttributeMods[4], wis=T_Attributes[5],
-                                                        wisMod=T_AttributeMods[5])
+                   .format(cha=T_Attributes[5], chaMod=T_AttributeMods[5], con=T_Attributes[2],
+                                                        conMod=T_AttributeMods[2], dex=T_Attributes[1],
+                                                        dexMod=T_AttributeMods[1], int=T_Attributes[3],
+                                                        intMod=T_AttributeMods[3], str=T_Attributes[0],
+                                                        strMod=T_AttributeMods[0], wis=T_Attributes[4],
+                                                        wisMod=T_AttributeMods[4])
 
         #
         T_Gold = 0
 
         if _playerClass == "monk":
-            T_Return += "\n" + str(randrange(1, 4))
+            T_Return += "\n" + str(randrange(1, 5))
             T_Return += " starting gold"
 
         elif _playerClass == "druid" or _playerClass == "barbarian":
 
             for k in range(2):
-                T_Gold += randrange(1, 4)
+                T_Gold += randrange(1, 5)
 
             T_Return += '\n' + str(T_Gold) + " starting gold"
 
         elif _playerClass == "sorcerer":
 
             for k in range(3):
-                T_Gold += randrange(1, 4)
+                T_Gold += randrange(1, 5)
 
             T_Return += '\n' + str(T_Gold) + " starting gold"
 
         elif _playerClass == "rogue" or _playerClass == "wizard" or _playerClass == "warlock":
 
             for k in range(4):
-                T_Gold += randrange(1, 4)
+                T_Gold += randrange(1, 5)
 
             T_Return += '\n' + str(T_Gold) + " starting gold"
 
@@ -92,7 +93,7 @@ class CharacterGenerators(commands.Cog):
                 _playerClass == "paladin" or _playerClass == "ranger":
 
             for k in range(5):
-                T_Gold += randrange(1, 4)
+                T_Gold += randrange(1, 5)
 
             T_Return += '\n' + str(T_Gold) + " starting gold"
 
