@@ -19,7 +19,7 @@ class DiceRolls(commands.Cog):
             T_Total = 0
             # treating number of dice as an int
             for x in range(int(_DC)):
-                T_Current = randrange(1, 2)
+                T_Current = randrange(1, 3)
                 T_Total += T_Current
                 T_Return += str(T_Current)
                 #
@@ -47,7 +47,7 @@ class DiceRolls(commands.Cog):
             T_Total = 0
             # treating number of dice as an int
             for x in range(int(_DC)):
-                T_Current = randrange(1, 3)
+                T_Current = randrange(1, 4)
                 T_Total += T_Current
                 T_Return += str(T_Current)
                 #
@@ -75,7 +75,7 @@ class DiceRolls(commands.Cog):
             T_Total = 0
             # treating number of dice as an int
             for x in range(int(_DC)):
-                T_Current = randrange(1, 4)
+                T_Current = randrange(1, 5)
                 T_Total += T_Current
                 T_Return += str(T_Current)
                 #
@@ -103,7 +103,7 @@ class DiceRolls(commands.Cog):
             T_Total = 0
             # treating number of dice as an int
             for x in range(int(_DC)):
-                T_Current = randrange(1, 5)
+                T_Current = randrange(1, 6)
                 T_Total += T_Current
                 T_Return += str(T_Current)
                 #
@@ -132,7 +132,7 @@ class DiceRolls(commands.Cog):
             T_Total = 0
             # treating number of dice as an int
             for x in range(int(_DC)):
-                T_Current = randrange(1, 6)
+                T_Current = randrange(1, 7)
                 T_Total += T_Current
                 T_Return += str(T_Current)
                 #
@@ -159,7 +159,7 @@ class DiceRolls(commands.Cog):
             T_Current = 0
             T_Suc = 0
             for x in range(int(_DC)):
-                T_Current = randrange(1, 6)
+                T_Current = randrange(1, 7)
                 if T_Current > 4:
                     T_Suc += 1
                 elif T_Current < 3:
@@ -182,7 +182,7 @@ class DiceRolls(commands.Cog):
             T_Total = 0
             # treating number of dice as an int
             for x in range(int(_DC)):
-                T_Current = randrange(1, 7)
+                T_Current = randrange(1, 8)
                 T_Total += T_Current
                 T_Return += str(T_Current)
                 #
@@ -210,7 +210,7 @@ class DiceRolls(commands.Cog):
             T_Total = 0
             # treating number of dice as an int
             for x in range(int(_DC)):
-                T_Current = randrange(1, 8)
+                T_Current = randrange(1, 9)
                 T_Total += T_Current
                 T_Return += str(T_Current)
                 #
@@ -238,7 +238,7 @@ class DiceRolls(commands.Cog):
             T_ReturnCurrent = 0
             T_ReturnTotal = 0
             for x in range(_DC):
-                T_ReturnCurrent = randrange(1, 10)
+                T_ReturnCurrent = randrange(1, 11)
                 T_ReturnTotal += T_ReturnCurrent
                 T_Return += str(T_ReturnCurrent)
                 # not putting a coma after the final die
@@ -265,7 +265,7 @@ class DiceRolls(commands.Cog):
             T_Current = 0
             T_Suc = 0
             for x in range(int(_DC)):
-                T_Current = randrange(1, 10)
+                T_Current = randrange(1, 11)
                 if T_Current > 6:
                     T_Suc += 1
                 T_Return += str(T_Current)
@@ -286,7 +286,7 @@ class DiceRolls(commands.Cog):
             T_ReturnCurrent = 0
             T_ReturnTotal = 0
             for x in range(_DC):
-                T_ReturnCurrent = randrange(1, 12)
+                T_ReturnCurrent = randrange(1, 13)
                 T_ReturnTotal += T_ReturnCurrent
                 T_Return += str(T_ReturnCurrent)
                 # not putting a coma after the final die
@@ -313,7 +313,7 @@ class DiceRolls(commands.Cog):
             T_ReturnCurrent = 0
             T_ReturnTotal = 0
             for x in range(_DC):
-                T_ReturnCurrent = randrange(1, 14)
+                T_ReturnCurrent = randrange(1, 15)
                 T_ReturnTotal += T_ReturnCurrent
                 T_Return += str(T_ReturnCurrent)
                 # not putting a coma after the final die
@@ -340,7 +340,7 @@ class DiceRolls(commands.Cog):
             T_Total = 0
             # treating number of dice as an int
             for x in range(int(_DC)):
-                T_Current = randrange(1, 16)
+                T_Current = randrange(1, 17)
                 T_Total += T_Current
                 T_Return += str(T_Current)
                 #
@@ -368,7 +368,7 @@ class DiceRolls(commands.Cog):
             T_Total = 0
             # treating number of dice as an int
             for x in range(int(_DC)):
-                T_Current = randrange(1, 20)
+                T_Current = randrange(1, 21)
                 T_Total += T_Current
                 T_Return += str(T_Current)
                 #
@@ -396,7 +396,7 @@ class DiceRolls(commands.Cog):
             T_Total = 0
             # treating number of dice as an int
             for x in range(int(_DC)):
-                T_Current = randrange(1, 24)
+                T_Current = randrange(1, 25)
                 T_Total += T_Current
                 T_Return += str(T_Current)
                 #
@@ -424,7 +424,7 @@ class DiceRolls(commands.Cog):
             T_Total = 0
             # treating number of dice as an int
             for x in range(int(_DC)):
-                T_Current = randrange(1, 30)
+                T_Current = randrange(1, 31)
                 T_Total += T_Current
                 T_Return += str(T_Current)
                 #
@@ -452,7 +452,7 @@ class DiceRolls(commands.Cog):
             T_Total = 0
             # treating number of dice as an int
             for x in range(int(_DC)):
-                T_Current = randrange(1, 100)
+                T_Current = randrange(1, 101)
                 T_Total += T_Current
                 T_Return += str(T_Current)
                 #
@@ -473,8 +473,8 @@ class DiceRolls(commands.Cog):
     @commands.command(name="di")
     async def di(self, ctx):
         # result of all our die rolls
-        T_Return = randrange(1, 6)
-        T_Return += randrange(1, 8)
+        T_Return = randrange(1, 7)
+        T_Return += randrange(1, 9)
         await ctx.channel.send(T_Return)
 
     # core error handler for this cog
