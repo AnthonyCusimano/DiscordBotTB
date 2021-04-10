@@ -110,7 +110,7 @@ class CharacterGenerators(commands.Cog):
         T_TotalModifier = 0
         for i in range(7):
             for j in range(3):
-                T_Rolls.append(randrange(1, 6))
+                T_Rolls.append(randrange(1, 7))
                 T_Attributes[i] += T_Rolls[-1]
 
         # checking modifiers
