@@ -55,11 +55,11 @@ class CharacterGenerators(commands.Cog):
                    "\nWisdom:           **{wis}**({wisMod}):" \
                    "\nCharisma:           **{cha}**({chaMod}):" \
                    .format(cha=T_Attributes[5], chaMod=T_AttributeMods[5], con=T_Attributes[2],
-                                                        conMod=T_AttributeMods[2], dex=T_Attributes[1],
-                                                        dexMod=T_AttributeMods[1], int=T_Attributes[3],
-                                                        intMod=T_AttributeMods[3], str=T_Attributes[0],
-                                                        strMod=T_AttributeMods[0], wis=T_Attributes[4],
-                                                        wisMod=T_AttributeMods[4])
+                           conMod=T_AttributeMods[2], dex=T_Attributes[1],
+                           dexMod=T_AttributeMods[1], int=T_Attributes[3],
+                           intMod=T_AttributeMods[3], str=T_Attributes[0],
+                           strMod=T_AttributeMods[0], wis=T_Attributes[4],
+                           wisMod=T_AttributeMods[4])
 
         #
         T_Gold = 0
@@ -155,7 +155,7 @@ class CharacterGenerators(commands.Cog):
                    "\nIntelligence:     **{int}**({intMod}):     {int1}, {int2}, {int3}" \
                    "\nStrength:         **{str}**({strMod}):         {str1}, {str2}, {str3}" \
                    "\nWisdom:           **{wis}**({wisMod}):         {wis1}, {wis2}, {wis3}" \
-                   "\nStarting money:   {mon}".format(cha=T_Attributes[0], chaMod = T_AttributeMods[0], cha1=T_Rolls[0],
+                   "\nStarting money:   {mon}".format(cha=T_Attributes[0], chaMod=T_AttributeMods[0], cha1=T_Rolls[0],
                                                       cha2=T_Rolls[1], cha3=T_Rolls[2], con=T_Attributes[1],
                                                       conMod=T_AttributeMods[1], con1=T_Rolls[3], con2=T_Rolls[4],
                                                       con3=T_Rolls[5], dex=T_Attributes[2], dexMod=T_AttributeMods[2],
