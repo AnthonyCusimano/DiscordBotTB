@@ -1,6 +1,8 @@
 from discord.ext import commands
-from random import randrange
+# from random import randrange
+from random import *
 
+# FormTavernName
 import NameGenerators
 
 
@@ -27,6 +29,9 @@ class TavernGenerator(commands.Cog):
         elif self.mySize == 6:
             return randrange(10, 30)
 
+    def getMyBreakfast(self):
+        return choice(NameGenerators.tavernFive)
+
     #
     @commands.command(name="TavernFull", aliases=["TavernComplete"])
     async def TavernFull(self, ctx):
@@ -35,3 +40,4 @@ class TavernGenerator(commands.Cog):
         self.mySize = randrange(1, 6)
         # await ctx.channel.send(T_Name)
         await ctx.channel.send((T_Name + "Has " + str(self.getMyRoomsAvailable()) + " rooms available"))
+        await ctx.channel.send(self.getMyBreakfast())
