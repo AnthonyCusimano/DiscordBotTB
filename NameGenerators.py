@@ -9,6 +9,7 @@ tavernOne = tavernLines[0].split(',')
 tavernTwo = tavernLines[1].split(',')
 tavernThree = tavernLines[2].split(',')
 tavernFour = tavernLines[3].split(',')
+tavernFive = tavernLines[4].split(',')
 tavernOne[-1] = tavernOne[-1][:-1]
 tavernTwo[-1] = tavernTwo[-1][:-1]
 tavernThree[-1] = tavernThree[-1][:-1]
