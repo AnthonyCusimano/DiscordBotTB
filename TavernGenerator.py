@@ -40,4 +40,4 @@ class TavernGenerator(commands.Cog):
         self.mySize = randrange(1, 6)
         # await ctx.channel.send(T_Name)
         await ctx.channel.send((T_Name + "Has " + str(self.getMyRoomsAvailable()) + " rooms available"))
-        await ctx.channel.send(self.getMyBreakfast())
+        await ctx.channel.send("For breakfast they are serving " + self.getMyBreakfast())
