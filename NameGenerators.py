@@ -14,6 +14,7 @@ tavernOne[-1] = tavernOne[-1][:-1]
 tavernTwo[-1] = tavernTwo[-1][:-1]
 tavernThree[-1] = tavernThree[-1][:-1]
 tavernFour[-1] = tavernFour[-1][:-1]
+tavernFive[-1] = tavernFive[-1][:-1]
 
 with open("City.txt") as c:
     cityLines = c.readlines()
