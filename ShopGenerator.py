@@ -367,8 +367,8 @@ class ShopGenerator(commands.Cog):
         await ctx.channel.send(GrabItem(
             ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/scholars-pack", 1, 1, T_MyMarkupTier, 87))
 
-        #
 
+    #
     @commands.command(name="Provisioner", aliases=["Provisions"])
     async def Provisioner(self, ctx, _shopName="The Provisioner"):
 
