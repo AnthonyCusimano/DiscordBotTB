@@ -9,14 +9,9 @@ tavernOne = tavernLines[0].split(',')
 tavernTwo = tavernLines[1].split(',')
 tavernThree = tavernLines[2].split(',')
 tavernFour = tavernLines[3].split(',')
-tavernFive = tavernLines[4].split(',')
-# dinner lines actually use comas so & is used as splitter
-tavernSix = tavernLines[5].split('&')
 tavernOne[-1] = tavernOne[-1][:-1]
 tavernTwo[-1] = tavernTwo[-1][:-1]
 tavernThree[-1] = tavernThree[-1][:-1]
-tavernFour[-1] = tavernFour[-1][:-1]
-tavernFive[-1] = tavernFive[-1][:-1]
 
 with open("City.txt") as c:
     cityLines = c.readlines()
