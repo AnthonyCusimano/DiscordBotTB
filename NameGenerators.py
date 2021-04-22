@@ -3,6 +3,7 @@ from random import choice
 
 from discord.ext import commands
 
+# 
 with open("Tavern.txt") as f:
     tavernLines = f.readlines()
 tavernOne = tavernLines[0].split(',')
@@ -13,6 +14,7 @@ tavernOne[-1] = tavernOne[-1][:-1]
 tavernTwo[-1] = tavernTwo[-1][:-1]
 tavernThree[-1] = tavernThree[-1][:-1]
 
+# 
 with open("City.txt") as c:
     cityLines = c.readlines()
 cityOne = cityLines[0].split(',')
@@ -21,6 +23,7 @@ cityOne[-1] = cityOne[-1][:-1]
 # unneeded for bottom line
 # cityTwo[-1] = cityTwo[-1][:-1]
 
+# 
 with open("Ship.txt") as s:
     shipLines = s.readlines()
 shipOne = shipLines[0].split(',')
@@ -31,11 +34,24 @@ shipOne[-1] = shipOne[-1][:-1]
 shipTwo[-1] = shipTwo[-1][:-1]
 shipThree[-1] = shipThree[-1][:-1]
 
+# 
 with open("WeaponNames.txt") as w:
     weaponLines = w.readlines()
 weaponOne = weaponLines[0].split(',')
 weaponTwo = weaponLines[1].split(',')
 weaponOne[-1] = weaponOne[-1][:-1]
+
+# meals have comas everywhere it's a pain
+# mealOne breakfast
+# mealTwo crappy lunch / dinner
+# mealThree high quality lunch / dinner
+with open("Meals.txt") as m:
+    mealLines = m.readlines()
+mealOne = mealLines[0].split('&')
+mealTwo = mealLines[1].split('&')
+mealThree = mealLines[2].split('&')
+mealOne[-1] = mealOne[-1][:-1]
+mealTwo[-1] = mealTwo[-1][:-1]
 
 
 #
