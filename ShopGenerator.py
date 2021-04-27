@@ -367,8 +367,7 @@ class ShopGenerator(commands.Cog):
         await ctx.channel.send(GrabItem(
             ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/scholars-pack", 1, 1, T_MyMarkupTier, 87))
 
-
-    #
+    # 
     @commands.command(name="Provisioner", aliases=["Provisions"])
     async def Provisioner(self, ctx, _shopName="The Provisioner"):
 
@@ -380,3 +379,21 @@ class ShopGenerator(commands.Cog):
 
         await ctx.channel.send(GrabItem(
             ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/backpack", 1, 3, T_MyMarkupTier, 85))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/animal-feed-1-day", 7, 54, T_MyMarkupTier, 93))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/barrel", 2, 6, T_MyMarkupTier, 80))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/bedroll", 2, 6, T_MyMarkupTier, 95))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/blanket", 2, 10, T_MyMarkupTier, 99))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/bottle-glass", 1, 3, T_MyMarkupTier, 76))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/bucket", 3, 5, T_MyMarkupTier, 80))
