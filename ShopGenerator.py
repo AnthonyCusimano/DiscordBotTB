@@ -400,3 +400,31 @@ class ShopGenerator(commands.Cog):
 
         await ctx.channel.send(GrabItem(
             ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/chain-10-feet", 2, 6, T_MyMarkupTier, 37))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/carpenters-tools", 1, 1, T_MyMarkupTier, 26))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/cartographers-tools", 1, 1, T_MyMarkupTier, 23))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/case-map-or-scroll", 3, 14, T_MyMarkupTier, 63))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/case-crossbow-bolt", 1, 4, T_MyMarkupTier, 50))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/clothes-common", 6, 12, T_MyMarkupTier, 75))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/clothes-travelers", 6, 26, T_MyMarkupTier, 98))
+
+        # not sure if a provisioner would even bother stocking this
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/club", 1, 2, T_MyMarkupTier, 50))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/crowbar", 1, 3, T_MyMarkupTier, 89))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/dagger", 2, 4, T_MyMarkupTier, 76))
