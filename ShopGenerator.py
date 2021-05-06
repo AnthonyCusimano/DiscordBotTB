@@ -428,3 +428,59 @@ class ShopGenerator(commands.Cog):
 
         await ctx.channel.send(GrabItem(
             ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/dagger", 2, 4, T_MyMarkupTier, 76))
+
+    #
+    @commands.command(name="alchemist", aliases=["potion shop"])
+    async def Alchemist(self, ctx, _shopName="The Alchemist"):
+
+        T_ShopName = _shopName
+        T_MyMarkupTier = DetermineMarkup()
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/acid-vial", 1, 17, T_MyMarkupTier, 67))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/alchemists-fire-flask", 1, 17, T_MyMarkupTier, 67))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/alchemists-supplies", 1, 3, T_MyMarkupTier, 75))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/antitoxin-vial", 1, 17, T_MyMarkupTier, 67))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/bottle-glass", 1, 6, T_MyMarkupTier, 30))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/component-pouch", 1, 2, T_MyMarkupTier, 61))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/flask-or-tankard", 1, 6, T_MyMarkupTier, 30))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/healers-kit", 1, 1, T_MyMarkupTier, 20))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/herbalism-kit", 1, 4, T_MyMarkupTier, 30))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/oil-flask", 3, 4, T_MyMarkupTier, 55))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/perfume-vial", 3, 4, T_MyMarkupTier, 55))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/poison-basic-vial", 3, 4, T_MyMarkupTier, 55))
+
+        # some of this stuff shouldn't just be on the shelf
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/poisoners-kit", 3, 4, T_MyMarkupTier, 55))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/pot-iron", 1, 2, T_MyMarkupTier, 55))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/soap", 1, 1, T_MyMarkupTier, 21))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/vial", 3, 19, T_MyMarkupTier, 67))
