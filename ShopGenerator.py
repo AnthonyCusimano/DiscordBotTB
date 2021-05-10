@@ -25,7 +25,6 @@ def DetermineMarkup():
 
 # will create a DnD 5E shop using a score / points system
 # if you roll under _odds on a D100 the item is not in stock
-# TODO blacksmith, general store, provisioner, alchemist, leatherworker
 # TODO have argument to ignore out of stock items
 def GrabItem(_ctx, _shopName, _url, _minimumStock, _maximumStock, _markup, _odds=0):
     isInStock = randrange(1, 100)
@@ -53,6 +52,7 @@ def GrabItem(_ctx, _shopName, _url, _minimumStock, _maximumStock, _markup, _odds
     return T_SlangNone.format(shopName=_shopName, item=T_Item.json()['name'])
 
 
+#
 class ShopGenerator(commands.Cog):
 
     # _shopName "Blacksmith"
@@ -190,8 +190,8 @@ class ShopGenerator(commands.Cog):
             ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/woodcarvers-tools", 1, 2, T_MyMarkupTier, 60))
 
     #
-    @commands.command(name="Leatherworker",aliases=["LW"])
-    async def Leatherworker(self, ctx, _shopName = "The Leatherworker"):
+    @commands.command(name="Leatherworker", aliases=["LW"])
+    async def Leatherworker(self, ctx, _shopName="The Leatherworker"):
 
         T_ShopName = _shopName
         T_MyMarkupTier = DetermineMarkup()
@@ -484,3 +484,23 @@ class ShopGenerator(commands.Cog):
 
         await ctx.channel.send(GrabItem(
             ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/vial", 3, 19, T_MyMarkupTier, 67))
+
+    #
+    @commands.command(name="Leatherworker", aliases=["Leather"])
+    async def Leatherworker(self, ctx, _shopName="The Leatherworker"):
+        " "
+
+    # needs to somehow be different from a provisioner
+    @commands.command(name="General Store")
+    async def GeneralStore(self, ctx, _shopName="The General Store"):
+        " "
+
+    #
+    @commands.command(name="Weaponsmith")
+    async def Weaponsmith(self, ctx, _shopName="The Weaponsmith"):
+        " "
+
+    #
+    @commands.command(name="Armorsmith", aliases=["Armorer"])
+    async def Armorsmith(self, ctx, _shopName="The Armorsmith"):
+        " "
