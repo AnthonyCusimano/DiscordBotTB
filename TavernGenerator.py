@@ -29,6 +29,7 @@ class TavernGenerator(commands.Cog):
         elif self.mySize == 6:
             return randrange(10, 30)
 
+    # TODO there is no tavernFive anymore HAHAHAHAHAHA
     def getMyBreakfast(self):
         return choice(NameGenerators.tavernFive)
 
