@@ -29,9 +29,9 @@ class TavernGenerator(commands.Cog):
         elif self.mySize == 6:
             return randrange(10, 30)
 
-    # TODO there is no tavernFive anymore HAHAHAHAHAHA
+    # 
     def getMyBreakfast(self):
-        return choice(NameGenerators.tavernFive)
+        return choice(NameGenerators.mealOne)
 
     #
     @commands.command(name="TavernFull", aliases=["TavernComplete"])
@@ -40,5 +40,5 @@ class TavernGenerator(commands.Cog):
         # TODO think about mySize
         self.mySize = randrange(1, 6)
         # await ctx.channel.send(T_Name)
-        await ctx.channel.send((T_Name + "Has " + str(self.getMyRoomsAvailable()) + " rooms available"))
+        await ctx.channel.send((T_Name + " Has " + str(self.getMyRoomsAvailable()) + " rooms available"))
         await ctx.channel.send("For breakfast they are serving " + self.getMyBreakfast())
