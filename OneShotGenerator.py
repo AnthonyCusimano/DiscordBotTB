@@ -16,7 +16,7 @@ shotTwo[-1] = shotTwo[-1][:-1]
 
 
 #
-def FormOneShot():
+def FormOneShot(_gamer):
 
     T_AdventureTypeRando = randrange(0, 2)
 
@@ -36,7 +36,8 @@ def FormOneShot():
         T_Return = "A "
         T_Return += T_EnemySize
         T_Return += "group of "
-        T_Return += choice(shotOne)
+        _gamer.myHookType = choice(shotOne)
+        T_Return += _gamer.myHookType
         T_Return += " has been attacking the village"
 
     else:
@@ -65,9 +66,11 @@ def FormOneShot():
 #
 class OneShotGenerator(commands.Cog):
 
+    myHookType = ""
+
     #
     @commands.command(name="OneShot", aliases=["QuickAdventure"])
     async def OneShot(self, ctx):
-        await ctx.channel.send(FormOneShot())
+        await ctx.channel.send(FormOneShot(self))
         # TODO roll up secrets about the adventure and send them to the person who called this method
-        # await ctx.author.send("Additional adventure elements here")
+        await ctx.author.send("Additional adventure elements here")
