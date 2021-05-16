@@ -11,13 +11,14 @@ with open("OneShot.txt") as o:
 shotOne = shotLines[0].split(',')
 shotTwo = shotLines[1].split(',')
 shotThree = shotLines[2].split(',')
-oneShotPuppetmasters = shotLines[3].split(',')
-oneShot3rdParties = shotLines[3].split(',')
+oneShotAccomplices = shotLines[3].split(',')
+oneShotPuppetmasters = shotLines[4].split(',')
+oneShot3rdParties = shotLines[5].split(',')
 shotOne[-1] = shotOne[-1][:-1]
 shotTwo[-1] = shotTwo[-1][:-1]
 shotThree[-1] = shotThree[-1][:-1]
 oneShotPuppetmasters[-1] = oneShotPuppetmasters[-1][:-1]
-oneShot3rdParties[-1] = oneShot3rdParties[-1][:-1]
+# oneShot3rdParties[-1] = oneShot3rdParties[-1][:-1]
 
 
 #
@@ -59,7 +60,8 @@ def FormOneShot(_gamer):
         T_Return = "A "
         T_Return += T_EnemySize
         T_Return += "group of "
-        T_Return += choice(shotOne)
+        _gamer.myHookType = choice(shotOne)
+        T_Return += _gamer.myHookType
         T_Return += " is encamped at a "
         T_Return += choice(shotThree)
         # TODO how far outside town?
@@ -75,9 +77,16 @@ class OneShotGenerator(commands.Cog):
 
     #
     def DetermineOneShotTwist(self):
-        T_Twister = randrange(2)
+        T_Twister = randrange(0, 2)
+
+        T_Return = ""
+
         if T_Twister == 0:
-            T_Return = "The group of ", self.myHookType, " are being manipulated by a ", choice(oneShotPuppetmasters)
+            T_Return = "The group of "
+            T_Return += self.myHookType
+            T_Return += " are being manipulated by a "
+            T_Return += choice(oneShotPuppetmasters)
+
         else:
             T_Return = "The group of ", self.myHookType, " are running away from a larger force of ", \
                        choice(oneShot3rdParties)
