@@ -11,8 +11,13 @@ with open("OneShot.txt") as o:
 shotOne = shotLines[0].split(',')
 shotTwo = shotLines[1].split(',')
 shotThree = shotLines[2].split(',')
+oneShotPuppetmasters = shotLines[3].split(',')
+oneShot3rdParties = shotLines[3].split(',')
 shotOne[-1] = shotOne[-1][:-1]
 shotTwo[-1] = shotTwo[-1][:-1]
+shotThree[-1] = shotThree[-1][:-1]
+oneShotPuppetmasters[-1] = oneShotPuppetmasters[-1][:-1]
+oneShot3rdParties[-1] = oneShot3rdParties[-1][:-1]
 
 
 #
@@ -69,8 +74,19 @@ class OneShotGenerator(commands.Cog):
     myHookType = ""
 
     #
+    def DetermineOneShotTwist(self):
+        T_Twister = randrange(2)
+        if T_Twister == 0:
+            T_Return = "The group of ", self.myHookType, " are being manipulated by a ", choice(oneShotPuppetmasters)
+        else:
+            T_Return = "The group of ", self.myHookType, " are running away from a larger force of ", \
+                       choice(oneShot3rdParties)
+
+        return T_Return
+
+    #
     @commands.command(name="OneShot", aliases=["QuickAdventure"])
     async def OneShot(self, ctx):
         await ctx.channel.send(FormOneShot(self))
         # TODO roll up secrets about the adventure and send them to the person who called this method
-        await ctx.author.send("Additional adventure elements here")
+        await ctx.author.send(self.DetermineOneShotTwist())
