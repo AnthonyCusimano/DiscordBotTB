@@ -5,7 +5,7 @@ from discord.ext import commands
 
 # TODO hex location generator with biome (and surrounding biomes maybe?)
 
-#
+# 
 with open("OneShot.txt") as o:
     shotLines = o.readlines()
 shotOne = shotLines[0].split(',')
@@ -22,7 +22,7 @@ oneShotPuppetmasters[-1] = oneShotPuppetmasters[-1][:-1]
 
 
 #
-def FormOneShot(_gamer):
+def FormOneShot(_gamer, _biome="none"):
 
     T_AdventureTypeRando = randrange(0, 2)
 
@@ -60,7 +60,7 @@ def FormOneShot(_gamer):
         T_Return = "A "
         T_Return += T_EnemySize
         T_Return += "group of "
-        _gamer.myHookType = choice(shotOne)
+        _gamer.myHookType = choice(shotTwo)
         T_Return += _gamer.myHookType
         T_Return += " is encamped at a "
         T_Return += choice(shotThree)
