@@ -1,2 +1,6 @@
-Orcs , Gnolls
-Goblins ,Gnolls ,Lizardfolk ,
+Orcs,Gnolls,Goblins
+Goblins,Gnolls,Lizardfolk,Kobolds
+tower,cave,fort
+pack of mephits,ankheg,group of troglodytes,ogre,hippogriff,flock of cockatrice,Peryton
+hag,ettercap,earth elemental,fire elemental,air elemental,water elemental
+orcs,lizardfolk,zombies,skeletons,Hill Giant,Wearwolf,Centaur
