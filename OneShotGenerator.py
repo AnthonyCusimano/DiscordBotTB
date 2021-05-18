@@ -5,7 +5,7 @@ from discord.ext import commands
 
 # TODO hex location generator with biome (and surrounding biomes maybe?)
 
-# 
+#
 with open("OneShot.txt") as o:
     shotLines = o.readlines()
 shotOne = shotLines[0].split(',')
@@ -28,6 +28,7 @@ def FormOneShot(_gamer, _biome="none"):
 
     T_Return = ""
 
+    # village attacks
     if T_AdventureTypeRando == 0:
         T_EnemyCountRando = randrange(99)
         T_EnemySize = ""
@@ -46,7 +47,8 @@ def FormOneShot(_gamer, _biome="none"):
         T_Return += _gamer.myHookType
         T_Return += " has been attacking the village"
 
-    else:
+    # encamped monsters
+    elif T_AdventureTypeRando == 1:
         T_EnemyCountRando = randrange(99)
         T_EnemySize = ""
         if T_EnemyCountRando < 35:
@@ -77,6 +79,7 @@ class OneShotGenerator(commands.Cog):
 
     #
     def DetermineOneShotTwist(self):
+
         T_Twister = randrange(0, 2)
 
         T_Return = ""
@@ -88,8 +91,10 @@ class OneShotGenerator(commands.Cog):
             T_Return += choice(oneShotPuppetmasters)
 
         else:
-            T_Return = "The group of ", self.myHookType, " are running away from a larger force of ", \
-                       choice(oneShot3rdParties)
+            T_Return = "The group of "
+            T_Return += self.myHookType
+            T_Return += " are running away from a larger force of "
+            T_Return += choice(oneShot3rdParties)
 
         return T_Return
 
