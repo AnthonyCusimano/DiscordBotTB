@@ -148,6 +148,36 @@ class DiceRolls(commands.Cog):
         except (TypeError, ValueError):
             await ctx.channel.send("Please send a real number for number of dice")
 
+    #
+    @commands.command(name="d6E", aliases=["D6Exlosion"])
+    async def d6E(self, ctx, _DC=1):
+        try:
+            if _DC == 0:
+                raise TypeError
+            T_Return = ''
+
+            # result of all our die rolls
+            T_Current = 0
+            T_Total = 0
+            # treating number of dice as an int
+            for x in range(int(_DC)):
+                T_Roller = randrange(1, 7)
+                T_Current = randrange(1, 7)
+                T_Total += T_Current
+                T_Return += str(T_Current)
+                #
+                if x != _DC - 1:
+                    T_Return += ", "
+
+            if _DC > 1:
+                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
+
+            else:
+                await ctx.channel.send(T_Return)
+
+        except (TypeError, ValueError):
+            await ctx.channel.send("Please send a real number for number of dice")
+
     # fudge dice
     @commands.command(name="df")
     async def df(self, ctx, _DC=4):
