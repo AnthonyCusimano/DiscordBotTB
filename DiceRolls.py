@@ -161,8 +161,12 @@ class DiceRolls(commands.Cog):
             T_Total = 0
             # treating number of dice as an int
             for x in range(int(_DC)):
-                T_Roller = randrange(1, 7)
                 T_Current = randrange(1, 7)
+                # DEBUG
+                T_Current = 6
+                while T_Current % 6 == 0:
+                    print(T_Current)
+                    T_Current += randrange(1, 7)
                 T_Total += T_Current
                 T_Return += str(T_Current)
                 #
