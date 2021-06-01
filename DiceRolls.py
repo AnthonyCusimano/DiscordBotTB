@@ -284,6 +284,35 @@ class DiceRolls(commands.Cog):
         except (TypeError, ValueError):
             await ctx.channel.send("Please send a real number for number of dice")
 
+    #
+    @commands.command(name="d10E")
+    async def d10E(self, ctx, _DC=1):
+        try:
+            if _DC == 0:
+                raise TypeError
+            # total result of all die rolls
+            T_Return = ""
+            # each roll
+            T_ReturnCurrent = 0
+            T_ReturnTotal = 0
+            for x in range(_DC):
+                T_ReturnCurrent = randrange(1, 11)
+                while T_ReturnCurrent % 10 == 0:
+                    T_ReturnCurrent += randrange(1, 11)
+                T_ReturnTotal += T_ReturnCurrent
+                T_Return += str(T_ReturnCurrent)
+                # not putting a coma after the final die
+                if x != _DC - 1:
+                    T_Return += ", "
+            if _DC > 1:
+                # bold for visual clarity
+                # sending more info back for multiple dice
+                await ctx.channel.send("The total is: **" + str(T_ReturnTotal) + "** : " + T_Return)
+            else:
+                await ctx.channel.send(T_Return)
+        except (TypeError, ValueError):
+            await ctx.channel.send("Please send a real number for number of dice")
+
     # exalted style successes
     # TODO I forget if 0's are crit successes in exalted LOLE
     @commands.command(name="d10s")
