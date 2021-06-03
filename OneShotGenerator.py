@@ -24,7 +24,7 @@ oneShotPuppetmasters[-1] = oneShotPuppetmasters[-1][:-1]
 #
 def FormOneShot(_gamer, _biome="none"):
 
-    T_AdventureTypeRando = randrange(0, 2)
+    T_AdventureTypeRando = randrange(0, 3)
 
     T_Return = ""
 
@@ -68,6 +68,16 @@ def FormOneShot(_gamer, _biome="none"):
         T_Return += choice(shotThree)
         # TODO how far outside town?
         T_Return += " outside town"
+
+    elif T_AdventureTypeRando == 2:
+
+        print("Lord ")
+        # TODO rando lord / lady some other title maybe?
+        print("Kantagar")
+        print(" has been murdered in his home.")
+        print(" The body was found in their ")
+        # TODO rando location within home
+        print("bedroom")
 
     return T_Return
 
