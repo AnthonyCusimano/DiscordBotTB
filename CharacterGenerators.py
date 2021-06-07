@@ -6,6 +6,25 @@ from discord.ext import commands
 #
 class CharacterGenerators(commands.Cog):
 
+    #
+    @commands.command(name="3d6InARow", aliases=["3d6DownTheLine"])
+    async def threed6InARow(self, ctx):
+
+        T_Attributes = []
+        T_AttributeMods = []
+        T_Rolls = [0, 0, 0]
+
+        T_Return = ""
+
+        for i in range(6):
+            for j in range(3):
+                T_Rolls[j] = randrange(1, 7)
+            T_Attributes.append(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
+            T_Return += (str(T_Attributes[i]))
+            T_Return += "\n"
+
+        await ctx.channel.send(T_Return)
+
     # TODO add class gold
     @commands.command(name="fourd6droplow5e", aliases=["4d6DropLowest", "4d6Char", "4d6DropLow", "fd6DropLow"])
     async def fourd6droplow5e(self, ctx, _playerClass=""):
@@ -21,8 +40,6 @@ class CharacterGenerators(commands.Cog):
                 T_Rolls[j] = randrange(1, 7)
             # places lowest roll at the back
             T_Rolls = sorted(T_Rolls, reverse=True)
-            print(T_Rolls)
-            print(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
             T_Attributes.append(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
             # could use [-1] I think
             if T_Attributes[i] == 1:
@@ -47,7 +64,6 @@ class CharacterGenerators(commands.Cog):
                 T_AttributeMods.append(+4)
             T_TotalModifier += T_AttributeMods[i]
 
-        # TODO this is formatted like the lamentations one lole
         T_Return = "Strength:         **{str}**({strMod}):" \
                    "\nDexterity:        **{dex}**({dexMod}):" \
                    "\nConstitution:     **{con}**({conMod}):" \
