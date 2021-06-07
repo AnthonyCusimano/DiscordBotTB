@@ -6,7 +6,7 @@ from discord.ext import commands
 #
 class CharacterGenerators(commands.Cog):
 
-    #
+    # system / modifier agnostic
     @commands.command(name="3d6InARow", aliases=["3d6DownTheLine"])
     async def threed6InARow(self, ctx):
 
@@ -185,5 +185,45 @@ class CharacterGenerators(commands.Cog):
 
         if T_TotalModifier < 0:
             T_Return += "\n this character may be rerolled"
+        await ctx.channel.send(T_Return)
+
+    # 3     -3
+    # 4-5   -2
+    # 6-8   -1
+    # 9-12   0
+    # 13-15 +1
+    # 16-17 +2
+    # 18    +3
+    @commands.command(name="DDC3d6", aliases=["dungeoncrawlclassicscharacter"])
+    async def DDC3d6(self, ctx):
+        T_Attributes = []
+        T_AttributeMods = []
+        T_Rolls = [0, 0, 0]
+
+        T_Return = ""
+
+        for i in range(6):
+            for j in range(3):
+                T_Rolls[j] = randrange(1, 7)
+            T_Attributes.append(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
+
+            if T_Attributes[i] == 3:
+                T_AttributeMods.append("-3")
+            elif T_Attributes[i] < 6:
+                T_AttributeMods.append("-2")
+            elif T_Attributes[i] < 9:
+                T_AttributeMods.append("-1")
+            elif T_Attributes[i] < 13:
+                T_AttributeMods.append("0")
+            elif T_Attributes[i] < 16:
+                T_AttributeMods.append("+1")
+            elif T_Attributes[i] < 18:
+                T_AttributeMods.append("+2")
+            elif T_Attributes[i] == 18:
+                T_AttributeMods.append("+3")
+
+            T_Return += (str(T_Attributes[i]))
+            T_Return += "\n"
+
         await ctx.channel.send(T_Return)
 
