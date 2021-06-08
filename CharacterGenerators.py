@@ -187,20 +187,17 @@ class CharacterGenerators(commands.Cog):
             T_Return += "\n this character may be rerolled"
         await ctx.channel.send(T_Return)
 
-    # 3     -3
-    # 4-5   -2
-    # 6-8   -1
-    # 9-12   0
-    # 13-15 +1
-    # 16-17 +2
-    # 18    +3
+    #
     @commands.command(name="DDC3d6", aliases=["dungeoncrawlclassicscharacter"])
     async def DDC3d6(self, ctx):
         T_Attributes = []
         T_AttributeMods = []
         T_Rolls = [0, 0, 0]
 
-        T_Return = ""
+        T_HP = randrange(1, 5)
+
+        # TODO have characters start dead if they have 0 HP, use stam modifier
+        T_Return = "HP: " + str(T_HP) + "\n"
 
         for i in range(6):
             for j in range(3):
