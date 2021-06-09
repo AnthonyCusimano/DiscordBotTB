@@ -219,8 +219,22 @@ class CharacterGenerators(commands.Cog):
             elif T_Attributes[i] == 18:
                 T_AttributeMods.append("+3")
 
-            T_Return += (str(T_Attributes[i]))
-            T_Return += "\n"
+            # T_Return += (str(T_Attributes[i]))
+            # T_Return += "\n"
+        T_Return = "Strength:         **{str}**({strMod}):" \
+                   "\nAgility:        **{agi}**({agiMod}):" \
+                   "\nStamina:     **{con}**({conMod}):" \
+                   "\nPersonality:     **{per}**({perMod}):" \
+                   "\nIntelligence:           **{int}**({intMod}):" \
+                   "\nLuck:           **{luc}**({lucMod}):" \
+            .format(str=T_Attributes[0], strMod=T_AttributeMods[0],
+                    agi=T_Attributes[1], agiMod=T_AttributeMods[1],
+                    con=T_Attributes[2], conMod=T_AttributeMods[2],
+                    per=T_Attributes[3], perMod=T_AttributeMods[3],
+                    int=T_Attributes[4], intMod=T_AttributeMods[4],
+                    luc=T_Attributes[5], lucMod=T_AttributeMods[5])
+
+        # TODO luck table 1-2 integration
 
         await ctx.channel.send(T_Return)
 
