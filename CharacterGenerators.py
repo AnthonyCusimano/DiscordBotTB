@@ -2,6 +2,8 @@ from random import randrange
 
 from discord.ext import commands
 
+import DDCTables
+
 
 #
 class CharacterGenerators(commands.Cog):
