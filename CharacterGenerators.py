@@ -2,7 +2,7 @@ from random import randrange
 
 from discord.ext import commands
 
-import DDCTables
+from DDCTables import DDCTables
 
 
 #
@@ -196,6 +196,8 @@ class CharacterGenerators(commands.Cog):
         T_AttributeMods = []
         T_Rolls = [0, 0, 0]
 
+        T_DDCTables = DDCTables()
+
         T_HP = randrange(1, 5)
 
         # TODO have characters start dead if they have 0 HP, use stam modifier
@@ -236,7 +238,13 @@ class CharacterGenerators(commands.Cog):
                     int=T_Attributes[4], intMod=T_AttributeMods[4],
                     luc=T_Attributes[5], lucMod=T_AttributeMods[5])
 
-        # TODO luck table 1-2 integration
+        T_Gold = 0
+        for x in range(6):
+            T_Gold += randrange(1, 13)
+
+        T_Return += "\nGold: " + str(T_Gold) + " copper pieces"
+
+        T_Return += "\n" + T_DDCTables.luckTable()
 
         await ctx.channel.send(T_Return)
 
