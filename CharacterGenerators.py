@@ -246,5 +246,7 @@ class CharacterGenerators(commands.Cog):
 
         T_Return += "\n" + T_DDCTables.luckTable()
 
+        T_Return += T_DDCTables.occupationTable()
+
         await ctx.channel.send(T_Return)
 
