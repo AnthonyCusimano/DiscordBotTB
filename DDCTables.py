@@ -82,8 +82,68 @@ class DDCTables:
         return T_Return
 
     #
+    def equipmentTable(self):
+        T_Roll = random.randrange(1,25)
+        T_Return = "\n Your character has a(n): "
+
+        if T_Roll == 1:
+            T_Return += "backpack"
+        elif T_Roll == 2:
+            T_Return += "candle"
+        elif T_Roll == 3:
+            T_Return += "chain, 10 feet"
+        elif T_Roll == 4:
+            T_Return += "chalk, 1 piece"
+        elif T_Roll == 5:
+            T_Return += "chest, empty"
+        elif T_Roll == 6:
+            T_Return += "crowbar"
+        elif T_Roll == 7:
+            T_Return += "flask, empty"
+        elif T_Roll == 8:
+            T_Return += "flint & steel"
+        elif T_Roll == 9:
+            T_Return += "grappling hook"
+        elif T_Roll == 10:
+            T_Return += "hammer, small"
+        elif T_Roll == 11:
+            T_Return += "holy symbol"
+        elif T_Roll == 12:
+            T_Return += "holy water, 1 vial (A half-pint vial of holy water inflicts 1d4 damage to any un-dead " \
+                        "creature, as well as to some demons and devils.)"
+        elif T_Roll == 13:
+            T_Return += "Iron spike"
+        elif T_Roll == 14:
+            T_Return += "Lantern"
+        elif T_Roll == 15:
+            T_Return += "Mirror, hand-sized"
+        elif T_Roll == 16:
+            T_Return += "oil, 1 flask " \
+                        "When ignited and thrown, oil causes 1d6 damage plus fire " \
+                        "(DC 10 save vs. Reflex to put out or suffer additional 1d6 damage each round). " \
+                        "One flask of oil burns for 6 hours in a lantern."
+        elif T_Roll == 17:
+            T_Return += "Pole, 10-foot"
+        elif T_Roll == 18:
+            T_Return += "Rations, per day"
+        elif T_Roll == 19:
+            T_Return += "Rope, 50’"
+        elif T_Roll == 20:
+            T_Return += "Sack, large"
+        elif T_Roll == 21:
+            T_Return += "Sack, small"
+        elif T_Roll == 22:
+            T_Return += "Thieves’ tools"
+        elif T_Roll == 23:
+            T_Return += "Torch"
+        elif T_Roll == 24:
+            T_Return += "Waterskin"
+
+        return T_Return
+
+    #
     def occupationTable(self):
-        T_Roll = random.randrange(1, 13)
+        T_Roll = random.randrange(1, 101)
         T_Return = "\nYour character is a {occupation} in possession of an {weapon} as a weapon as well as {tradeGood}"
 
         if T_Roll == 1:
@@ -110,5 +170,9 @@ class DDCTables:
             T_Return = T_Return.format(occupation="cheesemaker", weapon="cudgel (as staff)", tradeGood="stinky cheese")
         elif T_Roll == 12:
             T_Return = T_Return.format(occupation="cobbler", weapon="awl (as dagger)", tradeGood="shoehorn")
+        elif T_Roll == 13:
+            T_Return = T_Return.format(occupation="confidence artist", weapon="dagger", tradeGood="quality cloak")
+        elif T_Roll == 14:
+            T_Return = T_Return.format(occupation="confidence artist", weapon="dagger", tradeGood="quality cloak")
 
         return T_Return
