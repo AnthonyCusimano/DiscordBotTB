@@ -1,12 +1,17 @@
 import random
 
+
 #
 class DDCTables:
 
     #
+    def __init__(self):
+        print("DDC tables module initiated")
+
+    #
     def luckTable(self):
         T_Roll = random.randrange(1, 31)
-        T_Return = ""
+        T_Return = "Luck table result: "
         if T_Roll == 1:
             T_Return = "Harsh winter: all attack rolls"
         elif T_Roll == 2:
