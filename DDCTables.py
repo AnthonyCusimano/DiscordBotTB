@@ -87,28 +87,28 @@ class DDCTables:
         T_Return = "\nYour character is a {occupation} in possession of an {weapon} as a weapon as well as {tradeGood}"
 
         if T_Roll == 1:
-            T_Return.format(occupation="alchemist", weapon="staff", tradeGood="oil, 1 flask")
+            T_Return = T_Return.format(occupation="alchemist", weapon="staff", tradeGood="oil, 1 flask")
         elif T_Roll == 2:
-            T_Return.format(occupation="animal trainer", weapon="club", tradeGood="pony")
+            T_Return = T_Return.format(occupation="animal trainer", weapon="club", tradeGood="pony")
         elif T_Roll == 3:
-            T_Return.format(occupation="armorer", weapon="hammer (as club)", tradeGood="iron helmet")
+            T_Return = T_Return.format(occupation="armorer", weapon="hammer (as club)", tradeGood="iron helmet")
         elif T_Roll == 4:
-            T_Return.format(occupation="astrologer", weapon="dagger", tradeGood="spyglass")
+            T_Return = T_Return.format(occupation="astrologer", weapon="dagger", tradeGood="spyglass")
         elif T_Roll == 5:
-            T_Return.format(occupation="barber", weapon="razor (as dagger)", tradeGood="scissors")
+            T_Return = T_Return.format(occupation="barber", weapon="razor (as dagger)", tradeGood="scissors")
         elif T_Roll == 6:
-            T_Return.format(occupation="beadle", weapon="staff", tradeGood="holy symbol")
+            T_Return = T_Return.format(occupation="beadle", weapon="staff", tradeGood="holy symbol")
         elif T_Roll == 7:
-            T_Return.format(occupation="beekeeper", weapon="staff", tradeGood="jar of honey")
+            T_Return = T_Return.format(occupation="beekeeper", weapon="staff", tradeGood="jar of honey")
         elif T_Roll == 8:
-            T_Return.format(occupation="blacksmith", weapon="hammer (as club)", tradeGood="steel tongs")
+            T_Return = T_Return.format(occupation="blacksmith", weapon="hammer (as club)", tradeGood="steel tongs")
         elif T_Roll == 9:
-            T_Return.format(occupation="butcher", weapon="cleaver (as axe)", tradeGood="side of beef")
+            T_Return = T_Return.format(occupation="butcher", weapon="cleaver (as axe)", tradeGood="side of beef")
         elif T_Roll == 10:
-            T_Return.format(occupation="caravan guard", weapon="short sword", tradeGood="Linen, one yard")
+            T_Return = T_Return.format(occupation="caravan guard", weapon="short sword", tradeGood="Linen, one yard")
         elif T_Roll == 11:
-            T_Return.format(occupation="cheesemaker", weapon="cudgel (as staff)", tradeGood="stinky cheese")
+            T_Return = T_Return.format(occupation="cheesemaker", weapon="cudgel (as staff)", tradeGood="stinky cheese")
         elif T_Roll == 12:
-            T_Return.format(occupation="cobbler", weapon="awl (as dagger)", tradeGood="shoehorn")
+            T_Return = T_Return.format(occupation="cobbler", weapon="awl (as dagger)", tradeGood="shoehorn")
 
         return T_Return
