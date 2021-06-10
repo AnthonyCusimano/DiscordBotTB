@@ -189,7 +189,7 @@ class CharacterGenerators(commands.Cog):
             T_Return += "\n this character may be rerolled"
         await ctx.channel.send(T_Return)
 
-    #
+    # TODO currently characters don't die for having 0hp
     @commands.command(name="DDC3d6", aliases=["dungeoncrawlclassicscharacter"])
     async def DDC3d6(self, ctx):
         T_Attributes = []
@@ -199,9 +199,6 @@ class CharacterGenerators(commands.Cog):
         T_DDCTables = DDCTables()
 
         T_HP = randrange(1, 5)
-
-        # TODO have characters start dead if they have 0 HP, use stam modifier
-        T_Return = "HP: " + str(T_HP) + "\n"
 
         for i in range(6):
             for j in range(3):
@@ -223,15 +220,15 @@ class CharacterGenerators(commands.Cog):
             elif T_Attributes[i] == 18:
                 T_AttributeMods.append("+3")
 
-            # T_Return += (str(T_Attributes[i]))
-            # T_Return += "\n"
-        T_Return = "Strength:         **{str}**({strMod}):" \
+        T_Return = "HP: **{HP}**" \
+                   "\nStrength:         **{str}**({strMod}):" \
                    "\nAgility:        **{agi}**({agiMod}):" \
                    "\nStamina:     **{con}**({conMod}):" \
                    "\nPersonality:     **{per}**({perMod}):" \
                    "\nIntelligence:           **{int}**({intMod}):" \
                    "\nLuck:           **{luc}**({lucMod}):" \
-            .format(str=T_Attributes[0], strMod=T_AttributeMods[0],
+            .format(HP=T_HP + int(T_AttributeMods[2]),
+                    str=T_Attributes[0], strMod=T_AttributeMods[0],
                     agi=T_Attributes[1], agiMod=T_AttributeMods[1],
                     con=T_Attributes[2], conMod=T_AttributeMods[2],
                     per=T_Attributes[3], perMod=T_AttributeMods[3],
@@ -247,6 +244,8 @@ class CharacterGenerators(commands.Cog):
         T_Return += "\n" + T_DDCTables.luckTable()
 
         T_Return += T_DDCTables.occupationTable()
+
+        T_Return += T_DDCTables.equipmentTable()
 
         await ctx.channel.send(T_Return)
 
