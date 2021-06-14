@@ -190,62 +190,72 @@ class CharacterGenerators(commands.Cog):
         await ctx.channel.send(T_Return)
 
     # TODO currently characters don't die for having 0hp
-    @commands.command(name="DDC3d6", aliases=["dungeoncrawlclassicscharacter"])
-    async def DDC3d6(self, ctx):
-        T_Attributes = []
-        T_AttributeMods = []
-        T_Rolls = [0, 0, 0]
+    # TODO have a bulk character creation option for character rosters undergoing a deathfunnel
+    @commands.command(name="DDC3d6", aliases=["dungeoncrawlclassicscharacter", "DDCChar"])
+    async def DDC3d6(self, ctx, _count='1'):
+        try:
+            T_Attributes = []
+            T_AttributeMods = []
+            T_Rolls = [0, 0, 0]
 
-        T_DDCTables = DDCTables()
+            T_HP = randrange(1, 5)
 
-        T_HP = randrange(1, 5)
+            if _count == 0:
+                raise TypeError
 
-        for i in range(6):
-            for j in range(3):
-                T_Rolls[j] = randrange(1, 7)
-            T_Attributes.append(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
+            T_DDCTables = DDCTables()            
 
-            if T_Attributes[i] == 3:
-                T_AttributeMods.append("-3")
-            elif T_Attributes[i] < 6:
-                T_AttributeMods.append("-2")
-            elif T_Attributes[i] < 9:
-                T_AttributeMods.append("-1")
-            elif T_Attributes[i] < 13:
-                T_AttributeMods.append("0")
-            elif T_Attributes[i] < 16:
-                T_AttributeMods.append("+1")
-            elif T_Attributes[i] < 18:
-                T_AttributeMods.append("+2")
-            elif T_Attributes[i] == 18:
-                T_AttributeMods.append("+3")
+            for C in range(int(_count)):
+                for i in range(6):
+                    for j in range(3):
+                        T_Rolls[j] = randrange(1, 7)
+                    T_Attributes.append(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
 
-        T_Return = "HP: **{HP}**" \
-                   "\nStrength:         **{str}**({strMod}):" \
-                   "\nAgility:        **{agi}**({agiMod}):" \
-                   "\nStamina:     **{con}**({conMod}):" \
-                   "\nPersonality:     **{per}**({perMod}):" \
-                   "\nIntelligence:           **{int}**({intMod}):" \
-                   "\nLuck:           **{luc}**({lucMod}):" \
-            .format(HP=T_HP + int(T_AttributeMods[2]),
-                    str=T_Attributes[0], strMod=T_AttributeMods[0],
-                    agi=T_Attributes[1], agiMod=T_AttributeMods[1],
-                    con=T_Attributes[2], conMod=T_AttributeMods[2],
-                    per=T_Attributes[3], perMod=T_AttributeMods[3],
-                    int=T_Attributes[4], intMod=T_AttributeMods[4],
-                    luc=T_Attributes[5], lucMod=T_AttributeMods[5])
+                    if T_Attributes[i] == 3:
+                        T_AttributeMods.append("-3")
+                    elif T_Attributes[i] < 6:
+                        T_AttributeMods.append("-2")
+                    elif T_Attributes[i] < 9:
+                        T_AttributeMods.append("-1")
+                    elif T_Attributes[i] < 13:
+                        T_AttributeMods.append("0")
+                    elif T_Attributes[i] < 16:
+                        T_AttributeMods.append("+1")
+                    elif T_Attributes[i] < 18:
+                        T_AttributeMods.append("+2")
+                    elif T_Attributes[i] == 18:
+                        T_AttributeMods.append("+3")
 
-        T_Gold = 0
-        for x in range(6):
-            T_Gold += randrange(1, 13)
+                T_Return = "HP: **{HP}**" \
+                           "\nStrength:         **{str}**({strMod}):" \
+                           "\nAgility:        **{agi}**({agiMod}):" \
+                           "\nStamina:     **{con}**({conMod}):" \
+                           "\nPersonality:     **{per}**({perMod}):" \
+                           "\nIntelligence:           **{int}**({intMod}):" \
+                           "\nLuck:           **{luc}**({lucMod}):" \
+                    .format(HP=T_HP + int(T_AttributeMods[2]),
+                            str=T_Attributes[0], strMod=T_AttributeMods[0],
+                            agi=T_Attributes[1], agiMod=T_AttributeMods[1],
+                            con=T_Attributes[2], conMod=T_AttributeMods[2],
+                            per=T_Attributes[3], perMod=T_AttributeMods[3],
+                            int=T_Attributes[4], intMod=T_AttributeMods[4],
+                            luc=T_Attributes[5], lucMod=T_AttributeMods[5])
 
-        T_Return += "\nGold: " + str(T_Gold) + " copper pieces"
+                T_Gold = 0
+                for x in range(6):
+                    T_Gold += randrange(1, 13)
 
-        T_Return += "\n" + T_DDCTables.luckTable()
+                T_Return += "\nGold: " + str(T_Gold) + " copper pieces"
 
-        T_Return += T_DDCTables.occupationTable()
+                T_Return += "\n" + T_DDCTables.luckTable()
 
-        T_Return += T_DDCTables.equipmentTable()
+                T_Return += T_DDCTables.occupationTable()
 
-        await ctx.channel.send(T_Return)
+                T_Return += T_DDCTables.equipmentTable()
+
+                await ctx.channel.send(T_Return)
+
+        except (TypeError, ValueError):
+            await ctx.channel.send("Please send a real number of characters to be generated")
+
 
