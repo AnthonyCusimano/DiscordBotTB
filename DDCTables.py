@@ -6,7 +6,7 @@ class DDCTables:
 
     #
     def __init__(self):
-        print("DDC tables module initiated")
+        """"""
 
     #
     def luckTable(self):
