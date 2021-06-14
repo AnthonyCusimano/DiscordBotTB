@@ -190,24 +190,25 @@ class CharacterGenerators(commands.Cog):
         await ctx.channel.send(T_Return)
 
     # TODO currently characters don't die for having 0hp
-    # TODO have a bulk character creation option for character rosters undergoing a deathfunnel
     @commands.command(name="DDC3d6", aliases=["dungeoncrawlclassicscharacter", "DDCChar"])
     async def DDC3d6(self, ctx, _count='1'):
         try:
-            T_Attributes = []
-            T_AttributeMods = []
-            T_Rolls = [0, 0, 0]
-
-            T_HP = randrange(1, 5)
-
             if _count == 0:
                 raise TypeError
-
-            T_DDCTables = DDCTables()            
+            T_DDCTables = DDCTables()
 
             for C in range(int(_count)):
+
+                T_Attributes = []
+                T_AttributeMods = []
+                T_Rolls = [0, 0, 0]
+
                 for i in range(6):
+
                     for j in range(3):
+
+                        T_HP = randrange(1, 5)
+
                         T_Rolls[j] = randrange(1, 7)
                     T_Attributes.append(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
 
