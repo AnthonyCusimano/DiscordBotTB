@@ -226,6 +226,8 @@ class CharacterGenerators(commands.Cog):
                         T_AttributeMods.append("+2")
                     elif T_Attributes[i] == 18:
                         T_AttributeMods.append("+3")
+                        
+                # TODO check T_HP + int(T_AttributeMods[2]) here for death during character creation
 
                 T_Return = "HP: **{HP}**" \
                            "\nStrength:         **{str}**({strMod}):" \
@@ -256,6 +258,7 @@ class CharacterGenerators(commands.Cog):
 
                 await ctx.channel.send(T_Return)
 
+    # trying to only allow positive numbers
         except (TypeError, ValueError):
             await ctx.channel.send("Please send a real number of characters to be generated")
 
