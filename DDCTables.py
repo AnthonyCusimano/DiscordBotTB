@@ -84,60 +84,60 @@ class DDCTables:
     #
     def equipmentTable(self):
         T_Roll = random.randrange(1,25)
-        T_Return = "\n Your character has a(n): "
+        T_Return = "\nYour character has a"
 
         if T_Roll == 1:
-            T_Return += "backpack"
+            T_Return += " backpack"
         elif T_Roll == 2:
-            T_Return += "candle"
+            T_Return += " candle"
         elif T_Roll == 3:
-            T_Return += "chain, 10 feet"
+            T_Return += " chain, 10 feet"
         elif T_Roll == 4:
-            T_Return += "chalk, 1 piece"
+            T_Return += " chalk, 1 piece"
         elif T_Roll == 5:
-            T_Return += "chest, empty"
+            T_Return += " chest, empty"
         elif T_Roll == 6:
-            T_Return += "crowbar"
+            T_Return += " crowbar"
         elif T_Roll == 7:
-            T_Return += "flask, empty"
+            T_Return += " flask, empty"
         elif T_Roll == 8:
-            T_Return += "flint & steel"
+            T_Return += " flint & steel"
         elif T_Roll == 9:
-            T_Return += "grappling hook"
+            T_Return += " grappling hook"
         elif T_Roll == 10:
-            T_Return += "hammer, small"
+            T_Return += " hammer, small"
         elif T_Roll == 11:
-            T_Return += "holy symbol"
+            T_Return += " holy symbol"
         elif T_Roll == 12:
-            T_Return += "holy water, 1 vial (A half-pint vial of holy water inflicts 1d4 damage to any un-dead " \
+            T_Return += " holy water, 1 vial (A half-pint vial of holy water inflicts 1d4 damage to any un-dead " \
                         "creature, as well as to some demons and devils.)"
         elif T_Roll == 13:
-            T_Return += "Iron spike"
+            T_Return += "n Iron spike"
         elif T_Roll == 14:
-            T_Return += "Lantern"
+            T_Return += " Lantern"
         elif T_Roll == 15:
-            T_Return += "Mirror, hand-sized"
+            T_Return += " Mirror, hand-sized"
         elif T_Roll == 16:
-            T_Return += "oil, 1 flask " \
+            T_Return += "n oil, 1 flask " \
                         "When ignited and thrown, oil causes 1d6 damage plus fire " \
                         "(DC 10 save vs. Reflex to put out or suffer additional 1d6 damage each round). " \
                         "One flask of oil burns for 6 hours in a lantern."
         elif T_Roll == 17:
-            T_Return += "Pole, 10-foot"
+            T_Return += " Pole, 10-foot"
         elif T_Roll == 18:
-            T_Return += "Rations, per day"
+            T_Return += " Rations, per day"
         elif T_Roll == 19:
-            T_Return += "Rope, 50’"
+            T_Return += " Rope, 50’"
         elif T_Roll == 20:
-            T_Return += "Sack, large"
+            T_Return += " Sack, large"
         elif T_Roll == 21:
-            T_Return += "Sack, small"
+            T_Return += " Sack, small"
         elif T_Roll == 22:
-            T_Return += "Thieves’ tools"
+            T_Return += " set of Thieves’ tools"
         elif T_Roll == 23:
-            T_Return += "Torch"
+            T_Return += " Torch"
         elif T_Roll == 24:
-            T_Return += "Waterskin"
+            T_Return += " Waterskin"
 
         return T_Return
 
