@@ -226,7 +226,7 @@ class CharacterGenerators(commands.Cog):
                         T_AttributeMods.append("+2")
                     elif T_Attributes[i] == 18:
                         T_AttributeMods.append("+3")
-                        
+
                 # TODO check T_HP + int(T_AttributeMods[2]) here for death during character creation
 
                 T_Return = "HP: **{HP}**" \
@@ -248,7 +248,7 @@ class CharacterGenerators(commands.Cog):
                 for x in range(6):
                     T_Gold += randrange(1, 13)
 
-                T_Return += "\nGold: " + str(T_Gold) + " copper pieces"
+                T_Return += "\nfunds: " + str(T_Gold) + " copper pieces"
 
                 T_Return += "\n" + T_DDCTables.luckTable()
 
