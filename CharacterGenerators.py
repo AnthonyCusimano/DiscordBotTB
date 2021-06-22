@@ -190,7 +190,7 @@ class CharacterGenerators(commands.Cog):
         await ctx.channel.send(T_Return)
 
     # TODO currently characters don't die for having 0hp
-    @commands.command(name="DDC3d6", aliases=["dungeoncrawlclassicscharacter", "DDCChar"])
+    @commands.command(name="DDC3d6", aliases=["dungeoncrawlclassicscharacter", "DDCChar", "ddccharacter"])
     async def DDC3d6(self, ctx, _count='1'):
         try:
             if _count == 0:
