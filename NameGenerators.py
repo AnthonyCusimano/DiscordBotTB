@@ -53,6 +53,7 @@ mealThree = mealLines[2].split('&')
 mealOne[-1] = mealOne[-1][:-1]
 mealTwo[-1] = mealTwo[-1][:-1]
 
+# TODO needs update
 #
 with open("LocationName.txt") as l:
     locationLines = l.readlines()
