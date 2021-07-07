@@ -149,6 +149,23 @@ class DiceRolls(commands.Cog):
             await ctx.channel.send("Please send a real number for number of dice")
 
     #
+    @commands.command(name="ReactionRoll", aliases=["disposition"])
+    async def ReactionRoll(self, ctx):
+        T_Result = randrange(1, 7) + randrange(1, 7)
+        await ctx.channel.send(T_Result)
+        T_Return = "The result of the reaction roll is "
+        if T_Result < 3:
+            T_Return += "the subject is hostile"
+        elif T_Result < 6:
+            T_Return += "the subject does not like the party, prone to attack"
+        elif T_Result < 9:
+            T_Return += "the subject is interested in parlaying with the party peacefully"
+        else:
+            T_Return += "the subject is interested in cooperation with the party"
+
+        await ctx.channel.send(T_Return)
+
+    #
     @commands.command(name="d6E", aliases=["D6Exlosion"])
     async def d6E(self, ctx, _DC=1):
         try:
