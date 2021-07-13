@@ -461,6 +461,16 @@ class DiceRolls(commands.Cog):
             await ctx.channel.send("Please send a real number for number of dice")
 
     #
+    @commands.command(name="d20A")
+    async def d20A(self, ctx):
+        T_ReturnA = str(randrange(1, 21))
+        T_ReturnB = str(randrange(1, 21))
+        if T_ReturnA > T_ReturnB:
+            T_ReturnB = "~" + T_ReturnB + "~"
+        else:
+            T_ReturnA = "~" + T_ReturnA + "~"
+
+    #
     @commands.command(name="d24", _DC=1)
     async def d24(self, ctx, _DC=1):
         try:
