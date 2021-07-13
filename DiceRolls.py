@@ -463,12 +463,14 @@ class DiceRolls(commands.Cog):
     #
     @commands.command(name="d20A")
     async def d20A(self, ctx):
-        T_ReturnA = str(randrange(1, 21))
-        T_ReturnB = str(randrange(1, 21))
+        T_ReturnA = randrange(1, 21)
+        T_ReturnB = randrange(1, 21)
         if T_ReturnA > T_ReturnB:
-            T_ReturnB = "~" + T_ReturnB + "~"
+            T_ReturnB = "~~" + str(T_ReturnB) + "~~"
         else:
-            T_ReturnA = "~" + T_ReturnA + "~"
+            T_ReturnA = "~~" + str(T_ReturnA) + "~~"
+
+        await ctx.channel.send(str(T_ReturnA) + " " + str(T_ReturnB))
 
     #
     @commands.command(name="d24", _DC=1)
