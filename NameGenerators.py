@@ -72,10 +72,12 @@ with open("CreatureNames.txt") as cr:
     creatureLines = cr.readlines()
 creatureFirstNameMale = creatureLines[0].split(',')
 creatureFirstNameFemale = creatureLines[1].split(',')
-creatureLastNamePrefix = creatureLines[2].split(',')
-creatureLastNameSuffix = creatureLines[3].split(',')
+creatureFirstNameUnisex = creatureLines[2].split(',')
+creatureLastNamePrefix = creatureLines[3].split(',')
+creatureLastNameSuffix = creatureLines[4].split(',')
 creatureFirstNameMale[-1] = creatureFirstNameMale[-1][:-1]
 creatureFirstNameFemale[-1] = creatureFirstNameFemale[-1][:-1]
+creatureFirstNameUnisex[-1] = creatureFirstNameUnisex[-1][:-1]
 creatureLastNamePrefix[-1] = creatureLastNamePrefix[-1][:-1]
 
 
