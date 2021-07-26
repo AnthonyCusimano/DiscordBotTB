@@ -67,7 +67,16 @@ locationPrefixGrassland[-1] = locationPrefixGrassland[-1][:-1]
 locationPrefixOther[-1] = locationPrefixOther[-1][:-1]
 locationLocationMountain[-1] = locationLocationMountain[-1][:-1]
 
-
+# people
+with open("CreatureNames.txt") as cr:
+    creatureLines = cr.readlines()
+creatureFirstNameMale = creatureLines[0].split(',')
+creatureFirstNameFemale = creatureLines[1].split(',')
+creatureLastNamePrefix = creatureLines[2].split(',')
+creatureLastNameSuffix = creatureLines[3].split(',')
+creatureFirstNameMale[-1] = creatureFirstNameMale[-1][:-1]
+creatureFirstNameFemale[-1] = creatureFirstNameFemale[-1][:-1]
+creatureLastNamePrefix[-1] = creatureLastNamePrefix[-1][:-1]
 #
 def FormTavernName():
     T_TypeRando = randrange(0, 75)
