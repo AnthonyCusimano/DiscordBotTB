@@ -171,21 +171,32 @@ def FormNobleName(_gender):
 
     T_Return = ""
 
-    if _gender == 0 or _gender == "male" or _gender == 'm':
+    if _gender == '0' or _gender == "male" or _gender == 'm':
         T_Return += choice(creatureFirstNameMale)
         T_Return += " "
         T_Return += FormLastName()
 
-    elif _gender == 1 or _gender == "female" or _gender == 'f':
-        ""
+    elif _gender == '1' or _gender == "female" or _gender == 'f':
+        T_Return += choice(creatureFirstNameFemale)
+        T_Return += " "
+        T_Return += FormLastName()
 
     elif _gender == "none":
-        ""
+        T_MaleBiasedCoinFlip = randrange(1, 10)
+        if T_MaleBiasedCoinFlip > 4:
+            T_Return += choice(creatureFirstNameMale)
+            T_Return += " "
+            T_Return += FormLastName()
+        else:
+            T_Return += choice(creatureFirstNameFemale)
+            T_Return += " "
+            T_Return += FormLastName()
 
     else:
         T_Return = "Please provide a valid gender code."
 
     return T_Return
+
 
 #
 class NameGenerators(commands.Cog):
