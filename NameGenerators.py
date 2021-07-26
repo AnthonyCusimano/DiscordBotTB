@@ -77,6 +77,8 @@ creatureLastNameSuffix = creatureLines[3].split(',')
 creatureFirstNameMale[-1] = creatureFirstNameMale[-1][:-1]
 creatureFirstNameFemale[-1] = creatureFirstNameFemale[-1][:-1]
 creatureLastNamePrefix[-1] = creatureLastNamePrefix[-1][:-1]
+
+
 #
 def FormTavernName():
     T_TypeRando = randrange(0, 75)
@@ -160,6 +162,32 @@ def FormLocationName(_biome):
 
 
 #
+def FormLastName():
+    return choice(creatureLastNamePrefix) + choice(creatureLastNameSuffix)
+
+
+#
+def FormNobleName(_gender):
+
+    T_Return = ""
+
+    if _gender == 0 or _gender == "male" or _gender == 'm':
+        T_Return += choice(creatureFirstNameMale)
+        T_Return += " "
+        T_Return += FormLastName()
+
+    elif _gender == 1 or _gender == "female" or _gender == 'f':
+        ""
+
+    elif _gender == "none":
+        ""
+
+    else:
+        T_Return = "Please provide a valid gender code."
+
+    return T_Return
+
+#
 class NameGenerators(commands.Cog):
 
     #
@@ -187,4 +215,9 @@ class NameGenerators(commands.Cog):
                       aliases=["evocativeLocation", "wildernessLocation", "wildernessLocationName"])
     async def locationName(self, ctx, _biome="none"):
         await ctx.channel.send(FormLocationName(_biome))
+
+    #
+    @commands.command(name="nobleName", aliases=["noble","nobilityName"])
+    async def nobleName(self, ctx, _gender="none"):
+        await ctx.channel.send(FormNobleName(_gender))
 
