@@ -168,29 +168,53 @@ def FormLastName():
     return choice(creatureLastNamePrefix) + choice(creatureLastNameSuffix)
 
 
-#
+# TODO use unisex names some of the time (20%?)
 def FormNobleName(_gender):
 
     T_Return = ""
 
+    T_UnisexNameChance = 33
+    T_UnisexRoll = randrange(1, 100)
+    print(T_UnisexRoll)
+
     if _gender == '0' or _gender == "male" or _gender == 'm':
-        T_Return += choice(creatureFirstNameMale)
+
+        if T_UnisexRoll > T_UnisexNameChance:
+            T_Return += choice(creatureFirstNameMale)
+        else:
+            T_Return += choice(creatureFirstNameUnisex)
+
         T_Return += " "
         T_Return += FormLastName()
 
     elif _gender == '1' or _gender == "female" or _gender == 'f':
-        T_Return += choice(creatureFirstNameFemale)
+
+        if T_UnisexRoll > T_UnisexNameChance:
+            T_Return += choice(creatureFirstNameFemale)
+        else:
+            T_Return += choice(creatureFirstNameUnisex)
+
         T_Return += " "
         T_Return += FormLastName()
 
     elif _gender == "none":
         T_MaleBiasedCoinFlip = randrange(1, 10)
         if T_MaleBiasedCoinFlip > 4:
-            T_Return += choice(creatureFirstNameMale)
+
+            if T_UnisexRoll > T_UnisexNameChance:
+                T_Return += choice(creatureFirstNameMale)
+            else:
+                T_Return += choice(creatureFirstNameUnisex)
+
             T_Return += " "
             T_Return += FormLastName()
         else:
-            T_Return += choice(creatureFirstNameFemale)
+
+            if T_UnisexRoll > T_UnisexNameChance:
+                T_Return += choice(creatureFirstNameFemale)
+            else:
+                T_Return += choice(creatureFirstNameUnisex)
+
             T_Return += " "
             T_Return += FormLastName()
 
