@@ -153,7 +153,7 @@ def FormShipName():
     return T_Return
 
 
-#
+# TODO this sucks LOLE
 def FormLocationName(_biome):
     T_Return = ""
 
@@ -168,14 +168,13 @@ def FormLastName():
     return choice(creatureLastNamePrefix) + choice(creatureLastNameSuffix)
 
 
-# TODO use unisex names some of the time (20%?)
+#
 def FormNobleName(_gender):
 
     T_Return = ""
 
     T_UnisexNameChance = 33
     T_UnisexRoll = randrange(1, 100)
-    print(T_UnisexRoll)
 
     if _gender == '0' or _gender == "male" or _gender == 'm':
 
