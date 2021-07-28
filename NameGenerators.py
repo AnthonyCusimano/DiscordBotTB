@@ -75,10 +75,12 @@ creatureFirstNameFemale = creatureLines[1].split(',')
 creatureFirstNameUnisex = creatureLines[2].split(',')
 creatureLastNamePrefix = creatureLines[3].split(',')
 creatureLastNameSuffix = creatureLines[4].split(',')
+creatureLastNameFull = creatureLines[5].split(',')
 creatureFirstNameMale[-1] = creatureFirstNameMale[-1][:-1]
 creatureFirstNameFemale[-1] = creatureFirstNameFemale[-1][:-1]
 creatureFirstNameUnisex[-1] = creatureFirstNameUnisex[-1][:-1]
 creatureLastNamePrefix[-1] = creatureLastNamePrefix[-1][:-1]
+creatureLastNameSuffix[-1] = creatureLastNameSuffix[-1][:-1]
 
 
 #
@@ -165,7 +167,12 @@ def FormLocationName(_biome):
 
 #
 def FormLastName():
-    return choice(creatureLastNamePrefix) + choice(creatureLastNameSuffix)
+
+    T_TypeRoll = randrange(1, 10)
+    if T_TypeRoll < 6:
+        return choice(creatureLastNamePrefix) + choice(creatureLastNameSuffix)
+    else:
+        return choice(creatureLastNameFull)
 
 
 #
@@ -175,6 +182,7 @@ def FormNobleName(_gender):
 
     T_UnisexNameChance = 33
     T_UnisexRoll = randrange(1, 100)
+    T_LastNameTypeRoll = randrange(1, 10)
 
     if _gender == '0' or _gender == "male" or _gender == 'm':
 
