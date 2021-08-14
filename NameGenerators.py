@@ -50,8 +50,11 @@ with open("Meals.txt") as m:
 mealOne = mealLines[0].split('&')
 mealTwo = mealLines[1].split('&')
 mealThree = mealLines[2].split('&')
+desertsPoor = mealLines[3].split('&')
+desertsRich = mealLines[4].split('&')
 mealOne[-1] = mealOne[-1][:-1]
 mealTwo[-1] = mealTwo[-1][:-1]
+desertsPoor[-1] = desertsPoor[-1][:-1]
 
 # TODO needs update
 #
@@ -182,7 +185,6 @@ def FormNobleName(_gender):
 
     T_UnisexNameChance = 33
     T_UnisexRoll = randrange(1, 100)
-    T_LastNameTypeRoll = randrange(1, 10)
 
     if _gender == '0' or _gender == "male" or _gender == 'm':
 
