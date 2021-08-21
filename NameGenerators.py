@@ -79,11 +79,13 @@ creatureFirstNameUnisex = creatureLines[2].split(',')
 creatureLastNamePrefix = creatureLines[3].split(',')
 creatureLastNameSuffix = creatureLines[4].split(',')
 creatureLastNameFull = creatureLines[5].split(',')
+streetNames = creatureLines[6].split(',')
 creatureFirstNameMale[-1] = creatureFirstNameMale[-1][:-1]
 creatureFirstNameFemale[-1] = creatureFirstNameFemale[-1][:-1]
 creatureFirstNameUnisex[-1] = creatureFirstNameUnisex[-1][:-1]
 creatureLastNamePrefix[-1] = creatureLastNamePrefix[-1][:-1]
 creatureLastNameSuffix[-1] = creatureLastNameSuffix[-1][:-1]
+creatureLastNameFull[-1] = creatureLastNameFull[-1][:-1]
 
 
 #
@@ -263,7 +265,11 @@ class NameGenerators(commands.Cog):
         await ctx.channel.send(FormLocationName(_biome))
 
     #
-    @commands.command(name="nobleName", aliases=["noble","nobilityName"])
+    @commands.command(name="nobleName", aliases=["noble", "nobilityName"])
     async def nobleName(self, ctx, _gender="none"):
         await ctx.channel.send(FormNobleName(_gender))
 
+    #
+    @commands.command(name="streetName", aliases=["nickname", "thiefAlias"])
+    async def streetName(self, ctx):
+        await ctx.channel.send(choice(streetNames))
