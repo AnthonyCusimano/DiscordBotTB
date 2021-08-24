@@ -62,12 +62,12 @@ with open("LocationName.txt") as l:
     locationLines = l.readlines()
 locationPrefixMountain = locationLines[0].split(',')
 locationPrefixGrassland = locationLines[1].split(',')
-locationPrefixOther = locationLines[2].split(',')
+locationPrefixSwamp = locationLines[2].split(',')
 locationLocationMountain = locationLines[3].split(',')
 locationTitle = locationLines[4].split(',')
 locationPrefixMountain[-1] = locationPrefixMountain[-1][:-1]
 locationPrefixGrassland[-1] = locationPrefixGrassland[-1][:-1]
-locationPrefixOther[-1] = locationPrefixOther[-1][:-1]
+locationPrefixSwamp[-1] = locationPrefixSwamp[-1][:-1]
 locationLocationMountain[-1] = locationLocationMountain[-1][:-1]
 
 # people
@@ -165,7 +165,10 @@ def FormLocationName(_biome):
     T_Return = ""
 
     if _biome == "none":
-        T_Return += choice(locationPrefixMountain + locationPrefixGrassland + locationPrefixOther)
+        T_Return += choice(locationPrefixMountain + locationPrefixGrassland + locationPrefixSwamp)
+
+    if _biome == "swamp":
+        T_Return += choice(locationPrefixSwamp)
 
     return T_Return
 
