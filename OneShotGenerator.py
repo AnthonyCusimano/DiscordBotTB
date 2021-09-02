@@ -90,21 +90,33 @@ class OneShotGenerator(commands.Cog):
     #
     def DetermineOneShotTwist(self):
 
+        T_TwistType = randrange(0, 2)
+
         T_Twister = randrange(0, 2)
 
         T_Return = ""
 
-        if T_Twister == 0:
+        # have access too
+        if T_TwistType == 0:
             T_Return = "The group of "
             T_Return += self.myHookType
-            T_Return += " are being manipulated by a "
-            T_Return += choice(oneShotPuppetmasters)
+            T_Return += "have a "
+            T_Return += choice(oneShotAccomplices)
+            T_Return += " helping them."
 
-        else:
-            T_Return = "The group of "
-            T_Return += self.myHookType
-            T_Return += " are running away from a larger force of "
-            T_Return += choice(oneShot3rdParties)
+        # being influenced by
+        elif T_TwistType == 1:
+            if T_Twister == 0:
+                T_Return = "The group of "
+                T_Return += self.myHookType
+                T_Return += " are being manipulated by a "
+                T_Return += choice(oneShotPuppetmasters)
+
+            else:
+                T_Return = "The group of "
+                T_Return += self.myHookType
+                T_Return += " are running away from a larger force of "
+                T_Return += choice(oneShot3rdParties)
 
         return T_Return
 
