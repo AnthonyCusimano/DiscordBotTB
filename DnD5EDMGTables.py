@@ -44,6 +44,37 @@ class FEDMGTables:
             return "Passage, 10ft. wide; four-way intersection"
 
     #
+    def randomDungeonPassage(self):
+        T_PassRando = random.randrange(19)
+        T_Return = ""
+
+        if T_PassRando < 2:
+            T_Return = "Continue straight 30ft., no doors or side passages"
+        elif T_PassRando == 2:
+            T_Return = "Continue straight 20ft., door to the right, then an additional 10 ft. ahead"
+        elif T_PassRando == 3:
+            T_Return = "Continue straight 20ft., door to the left, then an additional 10 ft. ahead"
+        elif T_PassRando == 4:
+            T_Return = "Continue stra ight 20ft.; passage ends in a door"
+        elif T_PassRando < 6:
+            T_Return = "Continue straight 20ft., side passage to the right.then an additional 10ft. ahead"
+        elif T_PassRando < 9:
+            T_Return = "Continue straight 20ft., side passage to the left, then an additionallO ft. ahead"
+        elif T_PassRando == 9:
+            T_Return = "Continue straight 20ft., comes to a dead end; 10 percent chance of a secret door"
+        elif T_PassRando < 12:
+            T_Return = "Continue straight 20ft., then the passage turns left and continues 10 ft."
+        elif T_PassRando < 14:
+            T_PassRando = "Continue straight 20ft., then the passage turns right and continues 10ft."
+        elif T_PassRando < 19:
+            T_PassRando = "Chamber (roll on the Chamber table)"
+        # this should just be a call
+        else:
+            T_PassRando = "Stairs* (roll on the Stairs table)"
+
+        return T_Return
+
+    #
     def randomDungeonDoor(self):
         T_DoorRando = random.randrange(19)
 
