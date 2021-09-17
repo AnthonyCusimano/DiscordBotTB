@@ -62,12 +62,12 @@ with open("LocationName.txt") as l:
     locationLines = l.readlines()
 locationPrefixMountain = locationLines[0].split(',')
 locationPrefixGrassland = locationLines[1].split(',')
-locationPrefixSwamp = locationLines[2].split(',')
+locationBaseSwamp = locationLines[2].split(',')
 locationLocationMountain = locationLines[3].split(',')
-locationTitle = locationLines[4].split(',')
+locationTitle = locationLines[6].split(',')
 locationPrefixMountain[-1] = locationPrefixMountain[-1][:-1]
 locationPrefixGrassland[-1] = locationPrefixGrassland[-1][:-1]
-locationPrefixSwamp[-1] = locationPrefixSwamp[-1][:-1]
+locationBaseSwamp[-1] = locationBaseSwamp[-1][:-1]
 locationLocationMountain[-1] = locationLocationMountain[-1][:-1]
 
 # people
@@ -136,6 +136,18 @@ def FormWeaponName():
     return T_Return
 
 
+# Vyryxmythyx
+def FormSilverDragonName():
+    T_Vowels = {'a', 'e', 'i', 'o', 'u', 'y'}
+    T_Consonants = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'}
+    # both of these extremes sound hilarious to me
+    T_NameLength = randrange(5, 18)
+
+    T_Vowel = choice(T_Vowels)
+    T_FirstLetter = choice(T_Consonants)
+    T_FirstLetter.upper()
+
+
 # TODO type 4 name should read "Joho's Valor"
 def FormShipName():
     T_TypeRando = randrange(0, 4)
@@ -165,10 +177,11 @@ def FormLocationName(_biome):
     T_Return = ""
 
     if _biome == "none":
-        T_Return += choice(locationPrefixMountain + locationPrefixGrassland + locationPrefixSwamp)
+        T_Return += choice(locationPrefixMountain + locationPrefixGrassland + locationBaseSwamp)
 
     if _biome == "swamp":
-        T_Return += choice(locationPrefixSwamp)
+        T_Return += choice(locationTitle) + ' '
+        T_Return += choice(locationBaseSwamp)
 
     return T_Return
 
