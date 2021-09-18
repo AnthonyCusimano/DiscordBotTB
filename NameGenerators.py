@@ -80,12 +80,16 @@ creatureLastNamePrefix = creatureLines[3].split(',')
 creatureLastNameSuffix = creatureLines[4].split(',')
 creatureLastNameFull = creatureLines[5].split(',')
 streetNames = creatureLines[6].split(',')
+greenDragonFirstNames = creatureLines[7].split(',')
+greenDragonLastNames = creatureLines[8].split(',')
 creatureFirstNameMale[-1] = creatureFirstNameMale[-1][:-1]
 creatureFirstNameFemale[-1] = creatureFirstNameFemale[-1][:-1]
 creatureFirstNameUnisex[-1] = creatureFirstNameUnisex[-1][:-1]
 creatureLastNamePrefix[-1] = creatureLastNamePrefix[-1][:-1]
 creatureLastNameSuffix[-1] = creatureLastNameSuffix[-1][:-1]
 creatureLastNameFull[-1] = creatureLastNameFull[-1][:-1]
+streetNames[-1] = streetNames[-1][:-1]
+greenDragonFirstNames[-1] = greenDragonFirstNames[-1][:-1]
 
 
 #
