@@ -137,16 +137,27 @@ def FormWeaponName():
 
 
 # Vyryxmythyx
+# TODO have neat words for each vowel sound
 def FormSilverDragonName():
-    T_Vowels = {'a', 'e', 'i', 'o', 'u', 'y'}
-    T_Consonants = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'}
+    T_Vowels = ['a', 'e', 'i', 'o', 'u', 'y']
+    T_Consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z']
     # both of these extremes sound hilarious to me
     T_NameLength = randrange(5, 18)
 
     T_Vowel = choice(T_Vowels)
     T_FirstLetter = choice(T_Consonants)
-    T_FirstLetter.upper()
+    T_FirstLetter = T_FirstLetter.upper()
 
+    T_Return = T_FirstLetter
+    
+    for i in range(T_NameLength):
+
+        if i % 2 == 0:
+            T_Return += T_Vowel
+        else:
+            T_Return += choice(T_Consonants)
+
+    return T_Return
 
 # TODO type 4 name should read "Joho's Valor"
 def FormShipName():
@@ -289,3 +300,8 @@ class NameGenerators(commands.Cog):
     @commands.command(name="streetName", aliases=["nickname", "thiefAlias"])
     async def streetName(self, ctx):
         await ctx.channel.send(choice(streetNames))
+
+    #
+    @commands.command(name="silverDragonName")
+    async def silverDragonName(self, ctx):
+        await ctx.channel.send(FormSilverDragonName())
