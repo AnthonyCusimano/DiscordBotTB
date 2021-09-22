@@ -90,6 +90,12 @@ class ShopGenerator(commands.Cog):
 
             # shopELO = 0
 
+    # TODO consider moving this to like an FAQ section
+    @commands.command(name="ExchangeRate", aliases=["DnDExchange", "Exchange"])
+    async def ExchangeRate(self, ctx):
+        await ctx.channel.send("10 copper per silver, 5 silver per electrum, 2 electrum per gold, 10 gold per platinum")
+
+
     #
     @commands.command(name="Blacksmith", aliases=["BS"])
     async def Blacksmith(self, ctx, _shopName="The Blacksmith"):
@@ -488,19 +494,45 @@ class ShopGenerator(commands.Cog):
     #
     @commands.command(name="Leatherworker", aliases=["Leather"])
     async def Leatherworker(self, ctx, _shopName="The Leatherworker"):
-        " "
+
+        T_ShopName = _shopName
+        T_MyMarkupTier = DetermineMarkup()
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/component-pouch", 1, 2, T_MyMarkupTier, 65))
 
     # needs to somehow be different from a provisioner
     @commands.command(name="General Store")
     async def GeneralStore(self, ctx, _shopName="The General Store"):
-        " "
+
+        T_ShopName = _shopName
+        T_MyMarkupTier = DetermineMarkup()
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/clothes-common", 6, 12, T_MyMarkupTier, 75))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/clothes-travelers", 6, 26, T_MyMarkupTier, 98))
 
     #
     @commands.command(name="Weaponsmith")
     async def Weaponsmith(self, ctx, _shopName="The Weaponsmith"):
-        " "
+
+        T_ShopName = _shopName
+        T_MyMarkupTier = DetermineMarkup()
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/crowbar", 1, 3, T_MyMarkupTier, 89))
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/dagger", 2, 4, T_MyMarkupTier, 76))
 
     #
     @commands.command(name="Armorsmith", aliases=["Armorer"])
     async def Armorsmith(self, ctx, _shopName="The Armorsmith"):
-        " "
+
+        T_ShopName = _shopName
+        T_MyMarkupTier = DetermineMarkup()
+
+        await ctx.channel.send(GrabItem(
+            ctx, T_ShopName, "https://www.dnd5eapi.co/api/equipment/chain-mail", 2, 4, T_MyMarkupTier, 76))
