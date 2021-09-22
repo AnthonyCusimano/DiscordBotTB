@@ -8,6 +8,8 @@ from DungeonGenerator import DungeonGenerator
 
 from OneShotGenerator import OneShotGenerator
 
+from HexGrid import HexGrid
+
 # need these still
 import os
 import discord
@@ -40,6 +42,8 @@ LOLE.add_cog(DungeonGenerator())
 # on launch
 @LOLE.event
 async def on_ready():
+
+    gamer = HexGrid()
 
     shoperLOLE = ShopGenerator()
 
