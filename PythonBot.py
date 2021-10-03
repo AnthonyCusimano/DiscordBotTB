@@ -5,6 +5,7 @@ from SpellBookGenerators import SpellBookGenerators
 from ShopGenerator import ShopGenerator
 from TavernGenerator import TavernGenerator
 from DungeonGenerator import DungeonGenerator
+from EncounterBuilder import EncounterBuilder
 
 from OneShotGenerator import OneShotGenerator
 
@@ -37,6 +38,7 @@ LOLE.add_cog(ShopGenerator())
 LOLE.add_cog(TavernGenerator())
 LOLE.add_cog(OneShotGenerator())
 LOLE.add_cog(DungeonGenerator())
+LOLE.add_cog(EncounterBuilder())
 
 
 # on launch
