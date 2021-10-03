@@ -32,15 +32,15 @@ class EncounterBuilder(commands.Cog):
 
         T_myPointsRemaining -= T_numSlings * goblinHunterSlingPoints
 
-        T_Return = {}
+        T_Return = []
 
         for i in range(T_numSlings):
-            T_Return[-1] = "sling"
+            T_Return.append("sling")
 
         # all we have left is ankleshankers currently
         while T_myPointsRemaining > 0:
-            T_Return[-1] = "ankleshanker"
+            T_Return.append("ankleshanker")
             T_myPointsRemaining -= goblinAnkleShankerPoints
 
-        return T_Return
+        await ctx.channel.send(T_Return)
 
