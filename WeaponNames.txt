@@ -1,2 +1,2 @@
-Fire,Water
-Crusader,Bite
+Fire,Water,Frost,Flame,Foe,Storm,Cloud,Tyrant,Ice,Bone
+Crusader,Bite,Edict,Verdict,Malice,Menace,Hammer,Eater,Devourer,Damnation,Thorn
