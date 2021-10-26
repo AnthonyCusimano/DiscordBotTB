@@ -19,5 +19,4 @@ class HexInterface(commands.Cog):
     #
     @commands.command(name="movePCs", aliases=["moveOnHex"])
     async def movePCs(self, _direct):
-        print("lole")
-        # HexGrid.moveParty(_direct)
+        HexInterface.theGrid.moveParty(_direct)
