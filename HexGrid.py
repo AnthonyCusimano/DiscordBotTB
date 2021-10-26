@@ -59,4 +59,7 @@ class HexGrid:
     def moveParty(self, _dir):
         ""
         if self.playerPosition[1] > 0:
-            self.myPlayerPosition[1] -= 1
+            self.playerPosition[1] -= 1
+            print("moved")
+        else:
+            print("at the top")
