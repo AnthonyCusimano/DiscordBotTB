@@ -32,8 +32,6 @@ class HexGrid:
 
         T_Home = self.selectHomeTile()
 
-        print(T_Home.myPosition[0], ' ', T_Home.myPosition[1], T_Home.myPrimaryBiome)
-
     #
     def initGrid(self):
 
@@ -52,14 +50,49 @@ class HexGrid:
         self.playerPosition.append(T_Return.myPosition[0])
         self.playerPosition.append(T_Return.myPosition[1])
 
+        print ("your home hex is X: ", T_Return.myPosition[0], " Y: ", T_Return.myPosition[1])
+
         return T_Return
 
     # only works with ints 0-5
     # 0 north, 3 south, 5 north-west
     def moveParty(self, _dir):
+        # print(_dir)
         ""
-        if self.playerPosition[1] > 0:
-            self.playerPosition[1] -= 1
-            print("moved")
-        else:
-            print("at the top")
+        if _dir == 0:
+            if self.playerPosition[1] > 0:
+                self.playerPosition[1] -= 1
+                print("moved")
+            else:
+                print("at the top")
+
+        # DEBUG
+        elif _dir == 1:
+            if self.playerPosition[1] > 0 and self.playerPosition[0] < self.mySizeMaxX:
+                self.playerPosition[0] += 0.5
+                self.playerPosition[1] -= 0.5
+                print("moved")
+
+        #
+        elif _dir == 2:
+            if self.playerPosition[1] > 0 and self.playerPosition[0] < self.mySizeMaxX:
+                self.playerPosition[0] += 0.5
+                self.playerPosition[1] += 0.5
+                print("moved")
+
+        elif _dir == 3:
+            if self.playerPosition[1] < self.mySizeY:
+                self.playerPosition[1] += 1
+                print("moved")
+
+        elif _dir == 4:
+            if self.playerPosition[1] < self.mySizeY and self.playerPosition[0] > 0:
+                self.playerPosition[0] -= 0.5
+                self.playerPosition[1] += 0.5
+                print("moved")
+
+        elif _dir == 5:
+            if self.playerPosition[0] > 0 and self.playerPosition[1] > 0:
+                self.playerPosition[0] -= 0.5
+                self.playerPosition[1] -= 0.5
+                print("moved")
