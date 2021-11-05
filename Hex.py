@@ -6,11 +6,12 @@ class HexTile:
     #
     def __init__(self, _neighbours):
 
-        # TODO needs rando
         self.myColour = "green"
         self.myPrimaryBiome = self.determineBiome()
         self.myRiver = [-1]
         self.myPosition = [0, 0]
+
+        self.isExplored = False
     #     for i in range(6):
     #         self.myNeighbors[-1] = _neighbours[i]
 
@@ -44,5 +45,9 @@ class HexTile:
             return "lake"
 
     #
-    # def assignAllNeighbors(self, _neighbors):
-    #     ""
+    def determineHexColour(self):
+        T_Rando = randrange(1,8)
+        if T_Rando < 5:
+            return "Green"
+        else:
+            return "Red"
