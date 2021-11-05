@@ -5,7 +5,6 @@ from HexGrid import HexGrid
 
 #
 class HexInterface(commands.Cog):
-    ""
 
     theGrid = HexGrid()
 
@@ -19,10 +18,22 @@ class HexInterface(commands.Cog):
     #
     @commands.command(name="movePCs", aliases=["moveOnHex"])
     async def movePCs(self, ctx, _direct):
-        HexInterface.theGrid.moveParty(int(_direct))
+        # TODO everything throws lole
+        try:
+            if _direct < 0:
+                raise ValueError
+            HexInterface.theGrid.moveParty(int(_direct))
+        except(TypeError, ValueError):
+            await ctx.channel.send("Please send a real number for movement (0-5)")
 
     #
     @commands.command(name="getCurrentPosition", aliases=["getOurCurrentPosition", "getPCCurrentPosition"])
     async def getCurrentPosition(self, ctx):
         await ctx.channel.send("The PCs are at hex: " + str(HexInterface.theGrid.playerPosition[0]) + ", " +
                                str(HexInterface.theGrid.playerPosition[1]))
+
+    #
+    @commands.command(name="getCurrentHexInfo", aliases=["currentHexInfo"])
+    async def getCurrentHexInfo(self, ctx):
+        T_currentHexAddress = HexInterface.theGrid[HexInterface.theGrid]
+        await ctx.channel.send("The current hex is a: " + str(HexInterface.theGrid[0]))
