@@ -18,11 +18,16 @@ class HexInterface(commands.Cog):
     #
     @commands.command(name="movePCs", aliases=["moveOnHex"])
     async def movePCs(self, ctx, _direct):
-        
+
         try:
             if int(_direct) < 0 or int(_direct) > 5:
                 raise ValueError
+            T_FormerPCPosition = [HexInterface.theGrid.playerPosition[0], HexInterface.theGrid.playerPosition[1]]
             HexInterface.theGrid.moveParty(int(_direct))
+            await ctx.channel.send("the PCs moved from hex " + str(T_FormerPCPosition[0]) + " " +
+                                   str(T_FormerPCPosition[1]) + "to hex " +
+                                   str(HexInterface.theGrid.playerPosition[0]) + ", " +
+                                   str(HexInterface.theGrid.playerPosition[1]))
         except(TypeError, ValueError):
             await ctx.channel.send("Please send a real number for movement (0-5)")
 
