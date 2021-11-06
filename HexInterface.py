@@ -18,9 +18,9 @@ class HexInterface(commands.Cog):
     #
     @commands.command(name="movePCs", aliases=["moveOnHex"])
     async def movePCs(self, ctx, _direct):
-        # TODO everything throws lole
+        
         try:
-            if _direct < 0:
+            if int(_direct) < 0 or int(_direct) > 5:
                 raise ValueError
             HexInterface.theGrid.moveParty(int(_direct))
         except(TypeError, ValueError):
