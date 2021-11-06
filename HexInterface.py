@@ -24,8 +24,8 @@ class HexInterface(commands.Cog):
                 raise ValueError
             T_FormerPCPosition = [HexInterface.theGrid.playerPosition[0], HexInterface.theGrid.playerPosition[1]]
             HexInterface.theGrid.moveParty(int(_direct))
-            await ctx.channel.send("the PCs moved from hex " + str(T_FormerPCPosition[0]) + " " +
-                                   str(T_FormerPCPosition[1]) + "to hex " +
+            await ctx.channel.send("the PCs moved from hex " + str(T_FormerPCPosition[0]) + ", " +
+                                   str(T_FormerPCPosition[1]) + " to hex " +
                                    str(HexInterface.theGrid.playerPosition[0]) + ", " +
                                    str(HexInterface.theGrid.playerPosition[1]))
         except(TypeError, ValueError):
