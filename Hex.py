@@ -1,27 +1,18 @@
 from random import randrange
 
+
 # hex neighbours laid out in order of N NE SE S SW NW
 class HexTile:
 
     #
     def __init__(self, _neighbours):
 
-        self.myColour = "green"
+        self.myColour = self.determineHexColour()
         self.myPrimaryBiome = self.determineBiome()
         self.myRiver = [-1]
         self.myPosition = [0, 0]
 
         self.isExplored = False
-    #     for i in range(6):
-    #         self.myNeighbors[-1] = _neighbours[i]
-
-    #
-    def pushNeighbor(self, _neighbor):
-        self.myNeighbors[-1] = _neighbor
-
-    #
-    def getNeighborByID(self, _ID):
-        return self.myNeighbors[_ID]
 
     #
     def determineBiome(self):
@@ -46,8 +37,8 @@ class HexTile:
 
     #
     def determineHexColour(self):
-        T_Rando = randrange(1,8)
+        T_Rando = randrange(1, 8)
         if T_Rando < 5:
-            return "Green"
+            return "Emerald"
         else:
             return "Red"
