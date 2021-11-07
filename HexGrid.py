@@ -38,7 +38,7 @@ class HexGrid:
         for x in range(self.mySizeMaxX):
             for y in range(self.mySizeY):
                 #
-                self.myGrid.append(HexTile(0))
+                self.myGrid.append(HexTile())
                 self.myGrid[-1].myPosition[0] = x
                 self.myGrid[-1].myPosition[1] = y
 
@@ -49,6 +49,7 @@ class HexGrid:
 
         self.playerPosition.append(T_Return.myPosition[0])
         self.playerPosition.append(T_Return.myPosition[1])
+        T_Return.isExplored = True
 
         print ("your home hex is X: ", T_Return.myPosition[0], " Y: ", T_Return.myPosition[1])
 
@@ -57,8 +58,7 @@ class HexGrid:
     # only works with ints 0-5
     # 0 north, 3 south, 5 north-west
     def moveParty(self, _dir):
-        # print(_dir)
-        ""
+
         if _dir == 0:
             if self.playerPosition[1] > 0:
                 self.playerPosition[1] -= 1
@@ -72,6 +72,8 @@ class HexGrid:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] -= 0.5
                 print("moved")
+            else:
+                print("at the top / side")
 
         #
         elif _dir == 2:
@@ -79,20 +81,28 @@ class HexGrid:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] += 0.5
                 print("moved")
+            else:
+                print("at the top / side")
 
         elif _dir == 3:
             if self.playerPosition[1] < self.mySizeY:
                 self.playerPosition[1] += 1
                 print("moved")
+            else:
+                print("at the bottom")
 
         elif _dir == 4:
             if self.playerPosition[1] < self.mySizeY and self.playerPosition[0] > 0:
                 self.playerPosition[0] -= 0.5
                 self.playerPosition[1] += 0.5
                 print("moved")
+            else:
+                print("at the top / side")
 
         elif _dir == 5:
             if self.playerPosition[0] > 0 and self.playerPosition[1] > 0:
                 self.playerPosition[0] -= 0.5
                 self.playerPosition[1] -= 0.5
                 print("moved")
+            else:
+                print("at the top / side")
