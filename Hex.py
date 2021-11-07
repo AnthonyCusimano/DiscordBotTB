@@ -5,7 +5,7 @@ from random import randrange
 class HexTile:
 
     #
-    def __init__(self, _neighbours):
+    def __init__(self):
 
         self.myColour = self.determineHexColour()
         self.myPrimaryBiome = self.determineBiome()
