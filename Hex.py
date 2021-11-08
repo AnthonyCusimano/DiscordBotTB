@@ -42,3 +42,18 @@ class HexTile:
             return "Emerald"
         else:
             return "Red"
+
+    #
+    def determineRiverLocations(self, _neighborRiver=0):
+        # no neighborRiver
+        if _neighborRiver != 0:
+            T_riverStart = randrange(1, 12)
+            if T_riverStart < 7:
+                self.myRiver[0] = T_riverStart
+
+        # TODO how often should a new river begin in a hex?
+        T_riverEnd = randrange(1, 36)
+        if T_riverEnd < 7:
+            self.myRiver.append(T_riverEnd)
+
+
