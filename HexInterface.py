@@ -45,5 +45,5 @@ class HexInterface(commands.Cog):
         T_YFactor = HexInterface.theGrid.playerPosition[1] * 2.0 * HexInterface.theGrid.mySizeMaxX
 
         T_currentHexAddress = HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)]
-        # await ctx.channel.send("The current hex is a: " +
-        #                        str(HexInterface.theGrid.myGrid[T_currentHexAddress].myPrimaryBiome))
+        await ctx.channel.send("The current hex is a: " +
+                               str(HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)].myPrimaryBiome))
