@@ -37,8 +37,11 @@ class HexInterface(commands.Cog):
         await ctx.channel.send("The PCs are at hex: " + str(HexInterface.theGrid.playerPosition[0]) + ", " +
                                str(HexInterface.theGrid.playerPosition[1]))
 
-    #
+    # TODO turbo broken lole
     @commands.command(name="getCurrentHexInfo", aliases=["currentHexInfo"])
     async def getCurrentHexInfo(self, ctx):
-        T_currentHexAddress = HexInterface.theGrid[HexInterface.theGrid]
-        await ctx.channel.send("The current hex is a: " + str(HexInterface.theGrid[0]))
+        ""
+        # TODO try Y*2*X = Y &&&&& X*2
+        # T_currentHexAddress = HexInterface.theGrid[HexInterface.theGrid.playerPosition[0] *
+        #                                            [HexInterface.theGrid.playerPosition[1]]]
+        # await ctx.channel.send("The current hex is a: " + str(HexInterface.theGrid[T_currentHexAddress].myPrimaryBiome))
