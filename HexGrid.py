@@ -37,11 +37,23 @@ class HexGrid:
 
         for x in range(self.mySizeMaxX):
             for y in range(self.mySizeY):
-                #
+
                 self.myGrid.append(HexTile())
                 # TODO this is where we fix everything lole
-                self.myGrid[-1].myPosition[0] = x
-                self.myGrid[-1].myPosition[1] = y
+                # working out X
+                if x == 0:
+                    self.myGrid[-1].myPosition[0] = 0
+                else:
+                    self.myGrid[-1].myPosition[0] = x / 2
+
+                # working out y
+                if y == 0:
+                    self.myGrid[-1].myPosition[1] = 0
+                else:
+                    self.myGrid[-1].myPosition[1] = y / 2
+                #
+                # self.myGrid[-1].myPosition[0] = x
+                # self.myGrid[-1].myPosition[1] = y
 
     #
     def getPlayerPosition(self):
