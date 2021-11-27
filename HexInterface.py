@@ -40,8 +40,10 @@ class HexInterface(commands.Cog):
     # TODO turbo broken lole
     @commands.command(name="getCurrentHexInfo", aliases=["currentHexInfo"])
     async def getCurrentHexInfo(self, ctx):
-        ""
         # TODO try Y*2*X = Y &&&&& X*2
-        # T_currentHexAddress = HexInterface.theGrid[HexInterface.theGrid.playerPosition[0] *
-        #                                            [HexInterface.theGrid.playerPosition[1]]]
-        # await ctx.channel.send("The current hex is a: " + str(HexInterface.theGrid[T_currentHexAddress].myPrimaryBiome))
+        T_XFactor = HexInterface.theGrid.playerPosition[0] * 2.0
+        T_YFactor = HexInterface.theGrid.playerPosition[1] * 2.0 * HexInterface.theGrid.mySizeMaxX
+
+        T_currentHexAddress = HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)]
+        # await ctx.channel.send("The current hex is a: " +
+        #                        str(HexInterface.theGrid.myGrid[T_currentHexAddress].myPrimaryBiome))
