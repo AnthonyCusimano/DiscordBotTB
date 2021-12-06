@@ -10,6 +10,7 @@ class HexTile:
         self.myColour = self.determineHexColour()
         self.myPrimaryBiome = self.determineBiome()
         self.myRiver = [-1]
+        self.determineRiverLocations()
         self.myPosition = [0, 0]
 
         self.isExplored = False
@@ -18,21 +19,30 @@ class HexTile:
     def determineBiome(self):
         # TODO need detail on how to deterime a biome type
         T_Rando = randrange(1, 8)
+
         if T_Rando == 1:
+            print("forest")
             return "forest"
         elif T_Rando == 2:
+            print("grassland")
             return "grassland"
         elif T_Rando == 3:
+            print("hills")
             return "hills"
         elif T_Rando == 4:
+            print("mountain")
             return "mountain"
         elif T_Rando == 5:
+            print("swamp")
             return "swamp"
         elif T_Rando == 6:
+            print("desert")
             return "desert"
         elif T_Rando == 7:
+            print("taiga")
             return "taiga"
         elif T_Rando == 8:
+            print("lake")
             return "lake"
 
     #
