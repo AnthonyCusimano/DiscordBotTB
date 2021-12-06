@@ -63,6 +63,10 @@ class HexInterface(commands.Cog):
                 T_Send = "The hex at position " + \
                          str(HexInterface.theGrid.myGrid[int(_y + (_x * (_y+1)))].myPrimaryBiome)
 
-                # T_Send += " " +
+                if HexInterface.theGrid.myGrid[int(_y + (_x * (_y+1)))].myRiver[0] < -1:
+                    T_Send += " it has a river"
+
+                else:
+                    T_Send += " it does not have a river"
 
                 await ctx.channel.send(T_Send)
