@@ -44,13 +44,18 @@ class HexInterface(commands.Cog):
         T_XFactor = HexInterface.theGrid.playerPosition[0] * 2.0
         T_YFactor = HexInterface.theGrid.playerPosition[1] * 2.0 * HexInterface.theGrid.mySizeMaxX
 
-        T_Return = "The current hex is a: " +\
-                   str(HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)].myPrimaryBiome)
+        T_Return = "The PCs are at hex: " + str(HexInterface.theGrid.playerPosition[0]) + ", " +\
+                   str(HexInterface.theGrid.playerPosition[1])
+
+        T_Return += "\nThe current hex is a: " +\
+                    str(HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)].myPrimaryBiome)
 
         if HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)].myRiver[0] == -1:
             T_Return += ", This hex has no notable traversable river"
 
-        T_currentHexAddress = HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)]
+        T_Return += "\nthe hex's colour is: " + HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)].myColour
+
+        # T_currentHexAddress = HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)]
         await ctx.channel.send(T_Return)
 
     #
@@ -63,7 +68,7 @@ class HexInterface(commands.Cog):
                 T_Send = "The hex at position " + \
                          str(HexInterface.theGrid.myGrid[int(_y + (_x * (_y+1)))].myPrimaryBiome)
 
-                if HexInterface.theGrid.myGrid[int(_y + (_x * (_y+1)))].myRiver[0] < -1:
+                if HexInterface.theGrid.myGrid[int(_y + (_x * (_y+1)))].myRiver[0] > -1:
                     T_Send += " it has a river"
 
                 else:
