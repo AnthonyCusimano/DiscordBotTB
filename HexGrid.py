@@ -1,4 +1,5 @@
 from random import choice
+from random import randrange
 
 from Hex import HexTile
 
@@ -51,9 +52,6 @@ class HexGrid:
                     self.myGrid[-1].myPosition[1] = 0
                 else:
                     self.myGrid[-1].myPosition[1] = y / 2
-                #
-                # self.myGrid[-1].myPosition[0] = x
-                # self.myGrid[-1].myPosition[1] = y
 
     #
     def getPlayerPosition(self):
@@ -69,11 +67,15 @@ class HexGrid:
 
         return T_Return
 
-
     #
     def selectHomeTile(self):
 
+        # TODO consider having it always be an inner hex
         T_Return = choice(self.myGrid)
+
+        # home tile always has a river going somewhere
+        T_Return.myRiver[0] = randrange(0, 5)
+
 
         self.playerPosition.append(T_Return.myPosition[0])
         self.playerPosition.append(T_Return.myPosition[1])
@@ -83,12 +85,13 @@ class HexGrid:
 
         return T_Return
 
+    # TODO this shit broke
     # only works with ints 0-5
     # 0 north, 3 south, 5 north-west
     def moveParty(self, _dir):
 
         if _dir == 0:
-            if self.playerPosition[1] > 0:
+            if self.playerPosition[1] > 0.0:
                 self.playerPosition[1] -= 1
                 print("moved")
             else:
@@ -96,7 +99,7 @@ class HexGrid:
 
         # DEBUG
         elif _dir == 1:
-            if self.playerPosition[1] > 0 and self.playerPosition[0] < self.mySizeMaxX:
+            if self.playerPosition[1] > 0.0 and self.playerPosition[0] < self.mySizeMaxX:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] -= 0.5
                 print("moved")
@@ -105,7 +108,7 @@ class HexGrid:
 
         #
         elif _dir == 2:
-            if self.playerPosition[1] > 0 and self.playerPosition[0] < self.mySizeMaxX:
+            if self.playerPosition[1] > 0.0 and self.playerPosition[0] < self.mySizeMaxX:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] += 0.5
                 print("moved")
@@ -120,7 +123,7 @@ class HexGrid:
                 print("at the bottom")
 
         elif _dir == 4:
-            if self.playerPosition[1] < self.mySizeY and self.playerPosition[0] > 0:
+            if self.playerPosition[1] < self.mySizeY and self.playerPosition[0] > 0.0:
                 self.playerPosition[0] -= 0.5
                 self.playerPosition[1] += 0.5
                 print("moved")
@@ -128,7 +131,7 @@ class HexGrid:
                 print("at the top / side")
 
         elif _dir == 5:
-            if self.playerPosition[0] > 0 and self.playerPosition[1] > 0:
+            if self.playerPosition[0] > 0.0 and self.playerPosition[1] > 0.0:
                 self.playerPosition[0] -= 0.5
                 self.playerPosition[1] -= 0.5
                 print("moved")
