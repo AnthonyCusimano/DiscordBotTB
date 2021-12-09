@@ -49,20 +49,6 @@ class HexGrid:
                       self.myGrid[-1].myPosition[1])
 
     #
-    def getPlayerPosition(self):
-        T_Return = []
-        T_XValue = 0
-        if self.playerPosition[0] == 0:
-            T_XValue = 0
-        # even number check
-        elif self.playerPosition[0] % 2 == 0:
-            ""
-        # T_XValue = self.playerPosition[0] -
-        # T_Return.append()
-
-        return T_Return
-
-    #
     def selectHomeTile(self):
 
         # TODO consider having it always be an inner hex
