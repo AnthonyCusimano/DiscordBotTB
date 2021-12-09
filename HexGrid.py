@@ -7,13 +7,6 @@ from Hex import HexTile
 #
 class HexGrid:
 
-    # defaults
-    # DEBUG this is overridden in __init on purpose atm
-    # mySizeMaxX = 5
-    # mySizeMinX = 3
-
-    # mySizeY = 3
-
     # hexes lole
     myGrid = list()
 
@@ -36,12 +29,11 @@ class HexGrid:
     #
     def initGrid(self):
 
-        for x in range(self.mySizeMaxX):
-            for y in range(self.mySizeY):
+        for y in range(self.mySizeY):
+            for x in range(self.mySizeMaxX):
 
                 self.myGrid.append(HexTile())
-                # TODO this is where we fix everything lole
-                # working out X
+
                 if x == 0:
                     self.myGrid[-1].myPosition[0] = 0
                 else:
@@ -52,6 +44,9 @@ class HexGrid:
                     self.myGrid[-1].myPosition[1] = 0
                 else:
                     self.myGrid[-1].myPosition[1] = y / 2
+
+                print("initGrid positions, X of this hex is: ",  self.myGrid[-1].myPosition[0], " y is: ",
+                      self.myGrid[-1].myPosition[1])
 
     #
     def getPlayerPosition(self):
@@ -75,7 +70,6 @@ class HexGrid:
 
         # home tile always has a river going somewhere
         T_Return.myRiver[0] = randrange(0, 5)
-
 
         self.playerPosition.append(T_Return.myPosition[0])
         self.playerPosition.append(T_Return.myPosition[1])
