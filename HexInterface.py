@@ -65,10 +65,12 @@ class HexInterface(commands.Cog):
         for _y in range(HexInterface.theGrid.mySizeY):
             for _x in range(HexInterface.theGrid.mySizeMaxX):
                 T_Send = ""
+                T_Formula = (_x * HexInterface.theGrid.mySizeMaxX) + _y
+                print(T_Formula)
                 T_Send = "The hex at position " + \
-                         str(HexInterface.theGrid.myGrid[int(_y + (_x * (_y+1)))].myPrimaryBiome)
+                         str(HexInterface.theGrid.myGrid[T_Formula].myPrimaryBiome)
 
-                if HexInterface.theGrid.myGrid[int(_y + (_x * (_y+1)))].myRiver[0] > -1:
+                if HexInterface.theGrid.myGrid[T_Formula].myRiver[0] > -1:
                     T_Send += " it has a river"
 
                 else:
