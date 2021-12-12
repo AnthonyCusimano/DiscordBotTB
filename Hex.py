@@ -18,7 +18,7 @@ class HexTile:
     #
     def determineBiome(self):
         # TODO need detail on how to deterime a biome type
-        T_Rando = randrange(1, 8)
+        T_Rando = randrange(1, 9)
 
         if T_Rando == 1:
             print("forest")
@@ -55,6 +55,9 @@ class HexTile:
 
     #
     def determineRiverLocations(self, _neighborRiver=0):
+        # T_riverStart = randrange(1, 12)
+        # if T_riverStart > 6:
+        #     self.myRiver[0] = 1
         # no neighborRiver
         if _neighborRiver != 0:
             T_riverStart = randrange(1, 12)
