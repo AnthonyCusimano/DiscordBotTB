@@ -49,17 +49,30 @@ class HexGrid:
                       self.myGrid[-1].myPosition[1])
 
     #
+    def deterimineHomeTileRiver(self, _homeTile):
+
+        # does my river start in this tile
+        T_RiverStartsHere = randrange(0, 4)
+
+        _homeTile.myRiver[0] = randrange(0, 5)
+
+        _homeTile.myRiver.append(randrange(0, 5))
+
+
+
+
+    #
     def selectHomeTile(self):
 
         # TODO consider having it always be an inner hex
         T_Return = choice(self.myGrid)
 
-        # home tile always has a river going somewhere
-        T_Return.myRiver[0] = randrange(0, 5)
-
         self.playerPosition.append(T_Return.myPosition[0])
         self.playerPosition.append(T_Return.myPosition[1])
         T_Return.isExplored = True
+
+        # home tile always has a river going somewhere
+        self.deterimineHomeTileRiver(T_Return)
 
         print("your home hex is X: ", T_Return.myPosition[0], " Y: ", T_Return.myPosition[1])
 
