@@ -65,7 +65,7 @@ class HexInterface(commands.Cog):
         for _y in range(HexInterface.theGrid.mySizeY):
             for _x in range(HexInterface.theGrid.mySizeMaxX):
                 T_Send = ""
-                T_Formula = (_x * HexInterface.theGrid.mySizeMaxX) + _y
+                T_Formula = (_y * HexInterface.theGrid.mySizeY) + _x
                 print(T_Formula)
                 T_Send = "The hex at position " + \
                          str(HexInterface.theGrid.myGrid[T_Formula].myPrimaryBiome)
