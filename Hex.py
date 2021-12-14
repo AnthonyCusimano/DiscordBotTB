@@ -9,7 +9,8 @@ class HexTile:
 
         self.myColour = self.determineHexColour()
         self.myPrimaryBiome = self.determineBiome()
-        self.myRiver = [-1]
+        #
+        self.myRiver = [-1, -1]
         self.determineRiverLocations()
         self.myPosition = [0, 0]
 
@@ -67,6 +68,6 @@ class HexTile:
         # TODO how often should a new river begin in a hex?
         T_riverEnd = randrange(1, 36)
         if T_riverEnd < 7:
-            self.myRiver.append(T_riverEnd)
+            self.myRiver[1] = T_riverEnd
 
 
