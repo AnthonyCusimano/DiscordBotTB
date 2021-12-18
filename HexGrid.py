@@ -51,15 +51,86 @@ class HexGrid:
     #
     def deterimineHomeTileRiver(self, _homeTile):
 
-        # does my river start in this tile
-        T_RiverStartsHere = randrange(0, 4)
+        # 6 is starts from within
+        _homeTile.myRiver[0] = randrange(0, 7)
 
-        _homeTile.myRiver[0] = randrange(0, 5)
+        # if the river starts in this hex it can't end here
+        # this is just here for funzies
+        if _homeTile.myRiver[0] == 6:
+            _homeTile.myRiver[1] = randrange(0, 6)
 
-        _homeTile.myRiver.append(randrange(0, 5))
+        else:
+            _homeTile.myRiver[1] = randrange(0, 7)
 
+        # can't have a river flow to and from the same place
+        # this should stop that
+        while _homeTile.myRiver[0] == _homeTile.myRiver[1]:
+            if _homeTile.myRiver[0] == 6:
+                _homeTile.myRiver[1] = randrange(0, 6)
 
+            else:
+                _homeTile.myRiver[1] = randrange(0, 7)
 
+        print("river is " + str(_homeTile.myRiver[0]) + " " + str(_homeTile.myRiver[1]))
+
+    #
+    def printRiverInfo(self, _tile):
+        T_Return = "This tile "
+        if _tile.myRiver[0] == -1:
+            T_Return += "does not have a river flowing into it"
+
+        else:
+            T_Return += "has a river flowing from "
+
+            if _tile.myRiver[0] == 0:
+                T_Return += "the tile north of it"
+
+            elif _tile.myRiver[0] == 1:
+                T_Return += "the tile north east of it"
+
+            elif _tile.myRiver[0] == 2:
+                T_Return += "the tile south east of it"
+
+            elif _tile.myRiver[0] == 3:
+                T_Return += "the tile south of it"
+
+            elif _tile.myRiver[0] == 4:
+                T_Return += "the tile south west of it"
+
+            elif _tile.myRiver[0] == 5:
+                T_Return += "the tile north west of it"
+
+            elif _tile.myRiver[0] == 6:
+                T_Return += "starting from within the hex"
+
+        if _tile.myRiver[1] == -1:
+            T_Return += "\ndoes not have a river flowing out of it"
+
+        else:
+            T_Return += "\nhas a river flowing to "
+
+            if _tile.myRiver[1] == 0:
+                T_Return += "the tile north of it"
+
+            elif _tile.myRiver[1] == 1:
+                T_Return += "the tile north east of it"
+
+            elif _tile.myRiver[1] == 2:
+                T_Return += "the tile south east of it"
+
+            elif _tile.myRiver[1] == 3:
+                T_Return += "the tile south of it"
+
+            elif _tile.myRiver[1] == 4:
+                T_Return += "the tile south west of it"
+
+            elif _tile.myRiver[1] == 5:
+                T_Return += "the tile north west of it"
+
+            elif _tile.myRiver[1] == 6:
+                T_Return += "somewhere within the hex"
+
+        return T_Return
 
     #
     def selectHomeTile(self):
@@ -84,7 +155,7 @@ class HexGrid:
     def moveParty(self, _dir):
 
         if _dir == 0:
-            if self.playerPosition[1] > 0.0:
+            if self.playerPosition[1] > 0.5:
                 self.playerPosition[1] -= 1
                 print("moved")
             else:
