@@ -172,7 +172,7 @@ class HexGrid:
 
         #
         elif _dir == 2:
-            if self.playerPosition[1] > 0.0 and self.playerPosition[0] < self.mySizeMaxX:
+            if self.playerPosition[1] < (self.mySizeY / 2) - 0.5 and self.playerPosition[0] < self.mySizeMaxX:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] += 0.5
                 print("moved")
@@ -180,7 +180,7 @@ class HexGrid:
                 print("at the top / side")
 
         elif _dir == 3:
-            if self.playerPosition[1] < self.mySizeY:
+            if self.playerPosition[1] < (self.mySizeY / 2) - 0.5:
                 self.playerPosition[1] += 1
                 print("moved")
             else:
