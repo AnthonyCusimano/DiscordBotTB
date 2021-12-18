@@ -50,8 +50,9 @@ class HexInterface(commands.Cog):
         T_Return += "\nThe current hex is a: " +\
                     str(HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)].myPrimaryBiome)
 
-        if HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)].myRiver[0] == -1:
-            T_Return += ", This hex has no notable traversable river"
+        # if HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)].myRiver[0] == -1:
+        #    T_Return += ", This hex has no notable traversable river"
+        T_Return += '\n' + HexInterface.theGrid.printRiverInfo(HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)])
 
         T_Return += "\nthe hex's colour is: " + HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)].myColour
 
@@ -62,13 +63,20 @@ class HexInterface(commands.Cog):
     @commands.command(name="gridPrintDebug", aliases=["printGrid", "gridPrint"])
     async def gridPrintDebug(self, ctx):
 
+        T_Send = ""
+
         for _y in range(HexInterface.theGrid.mySizeY):
             for _x in range(HexInterface.theGrid.mySizeMaxX):
-                T_Send = ""
                 T_Formula = (_y * HexInterface.theGrid.mySizeY) + _x
                 print(T_Formula)
-                T_Send = "The hex at position " + \
+                T_Send += "The hex at position " + \
                          str(HexInterface.theGrid.myGrid[T_Formula].myPrimaryBiome)
+
+                if HexInterface.theGrid.myGrid[T_Formula].isExplored:
+                    T_Send += "\nthe hex is explored"
+
+                else:
+                    T_Send += "\nthe hex is not explored"
 
                 if HexInterface.theGrid.myGrid[T_Formula].myRiver[0] > -1:
                     T_Send += " it has a river"
@@ -76,4 +84,6 @@ class HexInterface(commands.Cog):
                 else:
                     T_Send += " it does not have a river"
 
-                await ctx.channel.send(T_Send)
+                T_Send += '\n'
+
+        await ctx.channel.send(T_Send)
