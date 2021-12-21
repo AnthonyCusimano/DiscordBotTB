@@ -162,6 +162,7 @@ class HexGrid:
         if _dir == 0:
             if self.playerPosition[1] > 0.5:
                 self.playerPosition[1] -= 1
+                print("should see in move")
                 self.myGrid[(T_YPosition * self.mySizeY) + T_XPosition].isExplored = True
                 print("moved")
             else:
@@ -172,7 +173,9 @@ class HexGrid:
             if self.playerPosition[1] > 0.0 and self.playerPosition[0] < self.mySizeMaxX:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] -= 0.5
+                print("should see in move")
                 self.myGrid[T_YPosition * self.mySizeY + T_XPosition].isExplored = True
+                print("should not see in move")
                 print("moved")
             else:
                 print("at the top / side")
@@ -182,6 +185,7 @@ class HexGrid:
             if self.playerPosition[1] < (self.mySizeY / 2) - 0.5 and self.playerPosition[0] < self.mySizeMaxX:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] += 0.5
+                print("should see in move")
                 self.myGrid[T_YPosition * self.mySizeY + T_XPosition].isExplored = True
                 print("moved")
             else:
@@ -190,7 +194,8 @@ class HexGrid:
         elif _dir == 3:
             if self.playerPosition[1] < (self.mySizeY / 2) - 0.5:
                 self.playerPosition[1] += 1
-                self.myGrid[T_YPosition* self.mySizeY + T_XPosition].isExplored = True
+                print("should see in move")
+                self.myGrid[T_YPosition * self.mySizeY + T_XPosition].isExplored = True
                 print("moved")
             else:
                 print("at the bottom")
@@ -199,6 +204,7 @@ class HexGrid:
             if self.playerPosition[1] < self.mySizeY and self.playerPosition[0] > 0.0:
                 self.playerPosition[0] -= 0.5
                 self.playerPosition[1] += 0.5
+                print("should see in move")
                 self.myGrid[T_YPosition * self.mySizeY + T_XPosition].isExplored = True
                 print("moved")
             else:
@@ -208,6 +214,7 @@ class HexGrid:
             if self.playerPosition[0] > 0.0 and self.playerPosition[1] > 0.0:
                 self.playerPosition[0] -= 0.5
                 self.playerPosition[1] -= 0.5
+                print("should see in move")
                 self.myGrid[T_YPosition * self.mySizeY + T_XPosition].isExplored = True
                 print("moved")
             else:
