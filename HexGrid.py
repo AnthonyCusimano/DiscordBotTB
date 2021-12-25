@@ -163,15 +163,15 @@ class HexGrid:
             if self.playerPosition[1] > 0.5:
                 self.playerPosition[1] -= 1
 
-                print(self.playerPosition[0] + " " + self.playerPosition[1])
+                print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
                 print("buh")
-                print(T_XPosition + " " + T_YPosition)
+                print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
 
                 print("should see in move " + str(T_YPosition + T_XPosition))
                 T_XPosition = self.playerPosition[0] * 2
                 T_YPosition = self.playerPosition[1] * 2 * self.mySizeMaxX
-                self.myGrid[T_YPosition + T_XPosition].isExplored = True
+                self.myGrid[int(T_YPosition) + int(T_XPosition)].isExplored = True
                 print("moved")
             else:
                 print("at the top")
@@ -182,15 +182,15 @@ class HexGrid:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] -= 0.5
 
-                print(self.playerPosition[0] + " " + self.playerPosition[1])
+                print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
                 print("buh")
-                print(T_XPosition + " " + T_YPosition)
+                print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
 
                 print("should see in move " + str(T_YPosition + T_XPosition))
                 T_XPosition = self.playerPosition[0] * 2
                 T_YPosition = self.playerPosition[1] * 2 * self.mySizeMaxX
-                self.myGrid[T_YPosition + T_XPosition].isExplored = True
+                self.myGrid[int(T_YPosition) + int(T_XPosition)].isExplored = True
                 print("moved")
 
             else:
@@ -202,15 +202,15 @@ class HexGrid:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] += 0.5
 
-                print(self.playerPosition[0] + " " + self.playerPosition[1])
+                print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
                 print("buh")
-                print(T_XPosition + " " + T_YPosition)
+                print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
 
                 print("should see in move " + str(T_YPosition + T_XPosition))
                 T_XPosition = self.playerPosition[0] * 2
                 T_YPosition = self.playerPosition[1] * 2 * self.mySizeMaxX
-                self.myGrid[T_YPosition + T_XPosition].isExplored = True
+                self.myGrid[int(T_YPosition) + int(T_XPosition)].isExplored = True
                 print("moved")
 
             else:
@@ -220,15 +220,15 @@ class HexGrid:
             if self.playerPosition[1] < (self.mySizeY / 2) - 0.5:
                 self.playerPosition[1] += 1
 
-                print(self.playerPosition[0] + " " + self.playerPosition[1])
+                print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
                 print("buh")
-                print(T_XPosition + " " + T_YPosition)
+                print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
 
                 print("should see in move " + str(T_YPosition + T_XPosition))
                 T_XPosition = self.playerPosition[0] * 2
                 T_YPosition = self.playerPosition[1] * 2 * self.mySizeMaxX
-                self.myGrid[T_YPosition + T_XPosition].isExplored = True
+                self.myGrid[int(T_YPosition) + int(T_XPosition)].isExplored = True
                 print("moved")
 
             else:
@@ -239,15 +239,15 @@ class HexGrid:
                 self.playerPosition[0] -= 0.5
                 self.playerPosition[1] += 0.5
 
-                print(self.playerPosition[0] + " " + self.playerPosition[1])
+                print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
                 print("buh")
-                print(T_XPosition + " " + T_YPosition)
+                print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
 
                 print("should see in move " + str(T_YPosition + T_XPosition))
                 T_XPosition = self.playerPosition[0] * 2
                 T_YPosition = self.playerPosition[1] * 2 * self.mySizeMaxX
-                self.myGrid[T_YPosition + T_XPosition].isExplored = True
+                self.myGrid[int(T_YPosition) + int(T_XPosition)].isExplored = True
                 print("moved")
 
             else:
@@ -258,15 +258,15 @@ class HexGrid:
                 self.playerPosition[0] -= 0.5
                 self.playerPosition[1] -= 0.5
 
-                print(self.playerPosition[0] + " " + self.playerPosition[1])
+                print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
                 print("buh")
-                print(T_XPosition + " " + T_YPosition)
+                print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
 
                 print("should see in move " + str(T_YPosition + T_XPosition))
                 T_XPosition = self.playerPosition[0] * 2
                 T_YPosition = self.playerPosition[1] * 2 * self.mySizeMaxX
-                self.myGrid[T_YPosition + T_XPosition].isExplored = True
+                self.myGrid[int(T_YPosition) + int(T_XPosition)].isExplored = True
                 print("moved")
 
             else:
