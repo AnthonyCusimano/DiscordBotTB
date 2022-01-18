@@ -41,12 +41,14 @@ class EncounterBuilder(commands.Cog):
         T_Return = []
 
         for i in range(T_numSlings):
-            EncounterBuilder.monsters.append(Monster([0, 0, 0, 0, 0, 0], ("Goblin Slinger " + str(i))))
+            # fake adding one to i just for user comfort
+            EncounterBuilder.monsters.append(Monster([0, 0, 0, 0, 0, 0], ("Goblin Slinger " + str(i + 1))))
             T_Return.append("sling")
 
+        T_Counter = 1
         # all we have left is ankleshankers currently
         while T_myPointsRemaining > 0:
-            T_Counter = 1
+
             EncounterBuilder.monsters.append(Monster([0, 0, 0, 0, 0, 0], str("Goblin Ankle Shanker " + str(T_Counter))))
             T_Return.append("ankleshanker")
             T_myPointsRemaining -= goblinAnkleShankerPoints
