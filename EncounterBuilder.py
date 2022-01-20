@@ -23,6 +23,7 @@ class EncounterBuilder(commands.Cog):
     def pointCalculator(self):
         return numPlayers * playerLevel
 
+    #
     @commands.command("goblinAmbush")
     async def goblinAmbush(self, ctx, _chaos=0):
 
@@ -42,19 +43,18 @@ class EncounterBuilder(commands.Cog):
 
         for i in range(T_numSlings):
             # fake adding one to i just for user comfort
-            EncounterBuilder.monsters.append(Monster([0, 0, 0, 0, 0, 0], ("Goblin Slinger " + str(i + 1))))
+            EncounterBuilder.monsters.append(Monster("Goblin Slinger " + str(i)))
             T_Return.append("sling")
 
         T_Counter = 1
         # all we have left is ankleshankers currently
         while T_myPointsRemaining > 0:
 
-            EncounterBuilder.monsters.append(Monster([0, 0, 0, 0, 0, 0], str("Goblin Ankle Shanker " + str(T_Counter))))
+            EncounterBuilder.monsters.append(Monster("Goblin Ankle Shanker" + str(T_Counter)))
             T_Return.append("ankleshanker")
             T_myPointsRemaining -= goblinAnkleShankerPoints
             T_Counter += 1
 
-        # + 1 to cancel 0 addressing (not as some cool DnD thing
         print(len(EncounterBuilder.monsters))
         for i in range(len(EncounterBuilder.monsters)):
             print(EncounterBuilder.monsters[i].myName)
