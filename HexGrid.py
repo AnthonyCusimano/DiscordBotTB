@@ -57,11 +57,21 @@ class HexGrid:
                 print("initGrid positions, X of this hex is: ",  self.myGrid[-1].myPosition[0], " y is: ",
                       self.myGrid[-1].myPosition[1])
 
+        # starting the actual river
         print(len(T_MountainList))
+        T_RiverOdds = 0
         for x in range(len(T_MountainList)):
             print("mountain bro")
+            # 2/3 chance of having a river in each mountain
+            T_RiverOdds = randrange(1, 3)
+            if T_RiverOdds != 3:
+                T_MountainList[x].myRiver[0] = 0
 
-    #
+        # removing mountains that don't have a river from the list
+        # for x in range(len(T_MountainList)):
+        #     if
+
+    # TODO order of operations is changing to determine rivers THEN home tile
     def deterimineHomeTileRiver(self, _homeTile):
 
         # 6 is starts from within
@@ -85,6 +95,10 @@ class HexGrid:
                 _homeTile.myRiver[1] = randrange(0, 7)
 
         print("river is " + str(_homeTile.myRiver[0]) + " " + str(_homeTile.myRiver[1]))
+
+    #
+    def riverStepTwo(self, _mountainList):
+        """"""""
 
     #
     def printRiverInfo(self, _tile):
