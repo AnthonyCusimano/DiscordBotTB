@@ -2,6 +2,7 @@ from random import choice
 from random import randrange
 
 from Hex import HexTile
+from Time import Time
 
 
 #
@@ -29,6 +30,10 @@ class HexGrid:
     #
     def initGrid(self):
 
+        # used to make sure we get a river starting from a mountain
+        T_MountainList = list()
+        # swamps matter
+
         for y in range(self.mySizeY):
             for x in range(self.mySizeMaxX):
 
@@ -45,8 +50,16 @@ class HexGrid:
                 else:
                     self.myGrid[-1].myPosition[1] = y / 2
 
+                # river prio
+                if self.myGrid[-1].myPrimaryBiome == "mountain":
+                    T_MountainList.append(self.myGrid[-1])
+
                 print("initGrid positions, X of this hex is: ",  self.myGrid[-1].myPosition[0], " y is: ",
                       self.myGrid[-1].myPosition[1])
+
+        print(len(T_MountainList))
+        for x in range(len(T_MountainList)):
+            print("mountain bro")
 
     #
     def deterimineHomeTileRiver(self, _homeTile):
@@ -198,7 +211,7 @@ class HexGrid:
 
         #
         elif _dir == 2:
-            if self.playerPosition[1] < (self.mySizeY / 2) - 0.5 and self.playerPosition[0] < self.mySizeMaxX:
+            if self.playerPosition[1] < self.mySizeY and self.playerPosition[0] < self.mySizeMaxX:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] += 0.5
 
