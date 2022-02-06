@@ -81,7 +81,7 @@ class HexGrid:
 
         # removing mountains that don't have a river from the list
         # T_MountainList[:] = [nn for nn in T_MountainList if nn.myRiver[0] != 0]
-        print(len(T_MountainList))
+        # print(len(T_MountainList))
         print(len(self.myRivers))
         for n in self.myRivers:
             print(len(n))
@@ -205,6 +205,7 @@ class HexGrid:
 
         T_XPosition = self.playerPosition[0] * 2
         T_YPosition = self.playerPosition[1] * 2 * self.mySizeMaxX
+        print("HexGrid Positions are: ", T_XPosition, " ", T_YPosition)
 
         # if self.playerPosition
 
@@ -227,7 +228,7 @@ class HexGrid:
 
         # DEBUG
         elif _dir == 1:
-            if self.playerPosition[1] > 0.0 and self.playerPosition[0] < self.mySizeMaxX:
+            if self.playerPosition[1] > 0.0 and self.playerPosition[0] < self.mySizeMaxX / 2:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] -= 0.5
 
@@ -247,7 +248,10 @@ class HexGrid:
 
         #
         elif _dir == 2:
-            if self.playerPosition[1] < self.mySizeY and self.playerPosition[0] < self.mySizeMaxX:
+            print("testing 2")
+            print(int(self.playerPosition[0]))
+            print(int(self.playerPosition[1]))
+            if self.playerPosition[1] < self.mySizeY / 2 and self.playerPosition[0] < self.mySizeMaxX / 2:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] += 0.5
 
@@ -284,7 +288,7 @@ class HexGrid:
                 print("at the bottom")
 
         elif _dir == 4:
-            if self.playerPosition[1] < self.mySizeY and self.playerPosition[0] > 0.0:
+            if self.playerPosition[1] < self.mySizeY / 2 and self.playerPosition[0] > 0.0:
                 self.playerPosition[0] -= 0.5
                 self.playerPosition[1] += 0.5
 
