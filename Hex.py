@@ -11,8 +11,8 @@ class HexTile:
         self.myPrimaryBiome = self.determineBiome(4)
         # self.myPrimaryBiome = "mountain"
         #
-        self.myRiver = [-1, -1]
-        self.determineRiverLocations()
+        # self.myRiver = [-1, -1]
+        # self.determineRiverLocations()
         self.myPosition = [0, 0]
 
         self.isExplored = False
@@ -60,19 +60,19 @@ class HexTile:
             return "Red"
 
     #
-    def determineRiverLocations(self, _neighborRiver=0):
+    # def determineRiverLocations(self, _neighborRiver=0):
         # T_riverStart = randrange(1, 12)
         # if T_riverStart > 6:
         #     self.myRiver[0] = 1
         # no neighborRiver
-        if _neighborRiver != 0:
-            T_riverStart = randrange(1, 12)
-            if T_riverStart < 7:
-                self.myRiver[0] = T_riverStart
+    #   if _neighborRiver != 0:
+    #        T_riverStart = randrange(1, 12)
+    #        if T_riverStart < 7:
+    #            self.myRiver[0] = T_riverStart
 
         # TODO how often should a new river begin in a hex?
-        T_riverEnd = randrange(1, 36)
-        if T_riverEnd < 7:
-            self.myRiver[1] = T_riverEnd
+    #    T_riverEnd = randrange(1, 36)
+    #    if T_riverEnd < 7:
+    #        self.myRiver[1] = T_riverEnd
 
 
