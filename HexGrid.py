@@ -68,8 +68,8 @@ class HexGrid:
                 T_MountainList[x].myRiver[0] = 0
 
         # removing mountains that don't have a river from the list
-        # for x in range(len(T_MountainList)):
-        #     if
+        T_MountainList[:] = [nn for nn in T_MountainList if nn.myRiver[0] != 0]
+        print(len(T_MountainList))
 
     # TODO order of operations is changing to determine rivers THEN home tile
     def deterimineHomeTileRiver(self, _homeTile):
