@@ -22,6 +22,9 @@ class HexGrid:
 
         self.mySizeY = 3
 
+        #
+        self.myRivers = list()
+
         # self.myGrid = {HexTile()}
         self.initGrid()
 
@@ -30,8 +33,10 @@ class HexGrid:
     #
     def initGrid(self):
 
-        # used to make sure we get a river starting from a mountain
+        # used to make sure we get a river starting from a mountain & hills
         T_MountainList = list()
+        # TODO
+        T_HillList = list()
         # swamps matter
 
         for y in range(self.mySizeY):
@@ -52,7 +57,12 @@ class HexGrid:
 
                 # river prio
                 if self.myGrid[-1].myPrimaryBiome == "mountain":
+                    # [-1] is fine cus we're still filling out the grid
                     T_MountainList.append(self.myGrid[-1])
+
+                # some river prio
+                elif self.myGrid[-1].myPrimaryBiome == "hills":
+                    print("Hills don't have rivers yet, ignored")
 
                 print("initGrid positions, X of this hex is: ",  self.myGrid[-1].myPosition[0], " y is: ",
                       self.myGrid[-1].myPosition[1])
@@ -60,41 +70,53 @@ class HexGrid:
         # starting the actual river
         print(len(T_MountainList))
         T_RiverOdds = 0
-        for x in range(len(T_MountainList)):
+        for x in T_MountainList:
             print("mountain bro")
             # 2/3 chance of having a river in each mountain
+            # TODO randrange 1, 4
             T_RiverOdds = randrange(1, 3)
             if T_RiverOdds != 3:
-                T_MountainList[x].myRiver[0] = 0
+                # T_MountainList[x].myRiver[0] = 0
+                self.myRivers.append([x])
 
         # removing mountains that don't have a river from the list
-        T_MountainList[:] = [nn for nn in T_MountainList if nn.myRiver[0] != 0]
+        # T_MountainList[:] = [nn for nn in T_MountainList if nn.myRiver[0] != 0]
         print(len(T_MountainList))
+        print(len(self.myRivers))
+        for n in self.myRivers:
+            print(len(n))
+
+        # using this list to begin our rivers
+        T_ResultList = T_MountainList + T_HillList
+        # for reach river
+        for r in T_ResultList:
+            """"""""
+
 
     # TODO order of operations is changing to determine rivers THEN home tile
-    def deterimineHomeTileRiver(self, _homeTile):
-
-        # 6 is starts from within
-        _homeTile.myRiver[0] = randrange(0, 7)
-
-        # if the river starts in this hex it can't end here
-        # this is just here for funzies
-        if _homeTile.myRiver[0] == 6:
-            _homeTile.myRiver[1] = randrange(0, 6)
-
-        else:
-            _homeTile.myRiver[1] = randrange(0, 7)
-
-        # can't have a river flow to and from the same place
-        # this should stop that
-        while _homeTile.myRiver[0] == _homeTile.myRiver[1]:
-            if _homeTile.myRiver[0] == 6:
-                _homeTile.myRiver[1] = randrange(0, 6)
-
-            else:
-                _homeTile.myRiver[1] = randrange(0, 7)
-
-        print("river is " + str(_homeTile.myRiver[0]) + " " + str(_homeTile.myRiver[1]))
+    # def deterimineHomeTileRiver(self, _homeTile):
+    #
+    #     # 6 is starts from within
+    #     _homeTile.myRiver[0] = randrange(0, 7)
+    #
+    #     # if the river starts in this hex it can't end here
+    #     # this is just here for funzies
+    #     if _homeTile.myRiver[0] == 6:
+    #         _homeTile.myRiver[1] = randrange(0, 6)
+    #
+    #     else:
+    #         _homeTile.myRiver[1] = randrange(0, 7)
+    #
+    #     # can't have a river flow to and from the same place
+    #     # this should stop that
+    #     while _homeTile.myRiver[0] == _homeTile.myRiver[1]:
+    #         if _homeTile.myRiver[0] == 6:
+    #             _homeTile.myRiver[1] = randrange(0, 6)
+    #
+    #         else:
+    #             _homeTile.myRiver[1] = randrange(0, 7)
+    #
+    #     print("river is " + str(_homeTile.myRiver[0]) + " " + str(_homeTile.myRiver[1]))
 
     #
     def riverStepTwo(self, _mountainList):
@@ -170,7 +192,7 @@ class HexGrid:
         T_Return.isExplored = True
 
         # home tile always has a river going somewhere
-        self.deterimineHomeTileRiver(T_Return)
+        # self.deterimineHomeTileRiver(T_Return)
 
         print("your home hex is X: ", T_Return.myPosition[0], " Y: ", T_Return.myPosition[1])
 
