@@ -88,9 +88,15 @@ class HexGrid:
 
         # using this list to begin our rivers
         T_ResultList = T_MountainList + T_HillList
+        # might need to make this global
+        T_LastNumber = 0
         # for reach river
         for r in T_ResultList:
-            """"""""
+            # need to use some sort of attrition to cause rivers to become more likely to stop as they get larger
+            T_NextTile = randrange(1, 6)
+            # making sure you can't go right back into the same tile
+            while T_NextTile + T_LastNumber == 6:
+                T_NextTile = randrange(1, 6)
 
 
     # TODO order of operations is changing to determine rivers THEN home tile
@@ -205,9 +211,6 @@ class HexGrid:
 
         T_XPosition = self.playerPosition[0] * 2
         T_YPosition = self.playerPosition[1] * 2 * self.mySizeMaxX
-        print("HexGrid Positions are: ", T_XPosition, " ", T_YPosition)
-
-        # if self.playerPosition
 
         if _dir == 0:
             if self.playerPosition[1] > 0.5:
@@ -248,9 +251,6 @@ class HexGrid:
 
         #
         elif _dir == 2:
-            print("testing 2")
-            print(int(self.playerPosition[0]))
-            print(int(self.playerPosition[1]))
             if self.playerPosition[1] < self.mySizeY / 2 and self.playerPosition[0] < self.mySizeMaxX / 2:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] += 0.5
