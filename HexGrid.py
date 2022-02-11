@@ -87,16 +87,11 @@ class HexGrid:
             print(len(n))
 
         # using this list to begin our rivers
-        T_ResultList = T_MountainList + T_HillList
+        self.myRivers = T_MountainList + T_HillList
         # might need to make this global
-        T_LastNumber = 0
-        # for reach river
-        for r in T_ResultList:
-            # need to use some sort of attrition to cause rivers to become more likely to stop as they get larger
-            T_NextTile = randrange(1, 6)
-            # making sure you can't go right back into the same tile
-            while T_NextTile + T_LastNumber == 6:
-                T_NextTile = randrange(1, 6)
+
+
+
 
 
     # TODO order of operations is changing to determine rivers THEN home tile
@@ -125,8 +120,17 @@ class HexGrid:
     #     print("river is " + str(_homeTile.myRiver[0]) + " " + str(_homeTile.myRiver[1]))
 
     #
-    def riverStepTwo(self, _mountainList):
+    def riverStepTwo(self):
         """"""""
+        T_LastNumber = 0
+        # for reach river
+        for r in self.myRivers:
+        # need to use some sort of attrition to cause rivers to become more likely to stop as they get larger
+            T_NextTile = randrange(1, 6)
+        # making sure you can't go right back into the same tile
+            while T_NextTile + T_LastNumber == 5:
+                print("Protecting from going back a tile in river creation")
+                T_NextTile = randrange(1, 6)
 
     #
     def printRiverInfo(self, _tile):
