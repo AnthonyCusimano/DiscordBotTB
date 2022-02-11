@@ -88,11 +88,7 @@ class HexGrid:
 
         # using this list to begin our rivers
         self.myRivers = T_MountainList + T_HillList
-        # might need to make this global
-
-
-
-
+        self.riverStepTwo()
 
     # TODO order of operations is changing to determine rivers THEN home tile
     # def deterimineHomeTileRiver(self, _homeTile):
@@ -122,15 +118,38 @@ class HexGrid:
     #
     def riverStepTwo(self):
         """"""""
+        T_NextTileDelta = [0, 0]
         T_LastNumber = 0
         # for reach river
         for r in self.myRivers:
-        # need to use some sort of attrition to cause rivers to become more likely to stop as they get larger
-            T_NextTile = randrange(1, 6)
-        # making sure you can't go right back into the same tile
+            # need to use some sort of attrition to cause rivers to become more likely to stop as they get larger
+            T_NextTile = randrange(0, 6)
+            # making sure you can't go right back into the same tile
             while T_NextTile + T_LastNumber == 5:
                 print("Protecting from going back a tile in river creation")
-                T_NextTile = randrange(1, 6)
+                T_NextTile = randrange(0, 6)
+            # up
+            if T_NextTile == 0:
+                T_NextTileDelta[0] = 0
+                T_NextTileDelta[1] = -1
+            elif T_NextTile == 1:
+                T_NextTileDelta[0] = 0.5
+                T_NextTileDelta[1] = -0.5
+            elif T_NextTile == 2:
+                T_NextTileDelta[0] = 0.5
+                T_NextTileDelta[1] = 0.5
+            # down
+            elif T_NextTile == 3:
+                T_NextTileDelta[0] = 0
+                T_NextTileDelta[1] = 1
+            elif T_NextTile == 4:
+                T_NextTileDelta[0] = -0.5
+                T_NextTileDelta[1] = 0.5
+            elif T_NextTile == 5:
+                T_NextTileDelta[0] = -0.5
+                T_NextTileDelta[1] = -0.5
+            # OoB check here
+
 
     #
     def printRiverInfo(self, _tile):
