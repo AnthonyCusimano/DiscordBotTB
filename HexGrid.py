@@ -148,7 +148,12 @@ class HexGrid:
             elif T_NextTile == 5:
                 T_NextTileDelta[0] = -0.5
                 T_NextTileDelta[1] = -0.5
+
             # OoB check here
+            # HARD TODO
+            if 0 < r.myPosition[0] + T_NextTileDelta[0] > self.mySizeMaxX and \
+                    0 < r.myPosition[1] + T_NextTileDelta[1] > self.mySizeY:
+                ""
 
 
     #
