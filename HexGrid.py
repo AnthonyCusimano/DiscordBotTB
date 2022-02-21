@@ -117,7 +117,6 @@ class HexGrid:
 
     #
     def riverStepTwo(self):
-        """"""""
         T_NextTileDelta = [0, 0]
         T_LastNumber = 0
         # for reach river
@@ -150,19 +149,23 @@ class HexGrid:
                 T_NextTileDelta[1] = -0.5
 
             # OoB check here
-            # HARD TODO
             print("beginning OoB check")
-            print(r.myPosition[0])
-            print(T_NextTileDelta[0])
-            print(r.myPosition[1])
-            print(T_NextTileDelta[1])
-            print()
+
+            # print(r.myPosition[0])
+            # print(T_NextTileDelta[0])
+            # print(r.myPosition[1])
+            # print(T_NextTileDelta[1])
+            # print()
+
             # if 0 < r.myPosition[0] + T_NextTileDelta[0] > self.mySizeMaxX and \
             #         0 < r.myPosition[1] + T_NextTileDelta[1] > self.mySizeY:
             if 0 < r.myPosition[0] + T_NextTileDelta[0] < self.mySizeMaxX / 2 and \
                     0 < r.myPosition[1] + T_NextTileDelta[1] < self.mySizeY / 2:
-                ""
                 print("through the OoB check")
+                print("rolled a ", T_NextTile)
+                T_XFactor = (r.myPosition[0] + T_NextTileDelta[0]) * 2
+                T_YFactor = (r.myPosition[1] + T_NextTileDelta[1]) * 2 * self.mySizeMaxX
+                r.append(self.myGrid[T_XFactor + T_YFactor])
 
     #
     def printRiverInfo(self, _tile):
