@@ -154,10 +154,13 @@ class HexGrid:
             print("beginning OoB check")
             print(r.myPosition[0])
             print(T_NextTileDelta[0])
+            print(r.myPosition[1])
+            print(T_NextTileDelta[1])
+            print()
             # if 0 < r.myPosition[0] + T_NextTileDelta[0] > self.mySizeMaxX and \
             #         0 < r.myPosition[1] + T_NextTileDelta[1] > self.mySizeY:
-            if 0 < r.myPosition[0] + T_NextTileDelta[0] and r.myPosition[0] + T_NextTileDelta[0] > self.mySizeMaxX and \
-                    0 < r.myPosition[1] + T_NextTileDelta[1] and r.myPosition[1] + T_NextTileDelta[1] > self.mySizeY:
+            if 0 < r.myPosition[0] + T_NextTileDelta[0] < self.mySizeMaxX / 2 and \
+                    0 < r.myPosition[1] + T_NextTileDelta[1] < self.mySizeY / 2:
                 ""
                 print("through the OoB check")
 
