@@ -151,10 +151,15 @@ class HexGrid:
 
             # OoB check here
             # HARD TODO
-            if 0 < r.myPosition[0] + T_NextTileDelta[0] > self.mySizeMaxX and \
-                    0 < r.myPosition[1] + T_NextTileDelta[1] > self.mySizeY:
+            print("beginning OoB check")
+            print(r.myPosition[0])
+            print(T_NextTileDelta[0])
+            # if 0 < r.myPosition[0] + T_NextTileDelta[0] > self.mySizeMaxX and \
+            #         0 < r.myPosition[1] + T_NextTileDelta[1] > self.mySizeY:
+            if 0 < r.myPosition[0] + T_NextTileDelta[0] and r.myPosition[0] + T_NextTileDelta[0] > self.mySizeMaxX and \
+                    0 < r.myPosition[1] + T_NextTileDelta[1] and r.myPosition[1] + T_NextTileDelta[1] > self.mySizeY:
                 ""
-
+                print("through the OoB check")
 
     #
     def printRiverInfo(self, _tile):
