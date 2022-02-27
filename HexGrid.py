@@ -174,8 +174,7 @@ class HexGrid:
                     print("rolled a ", T_NextTile)
                     T_XFactor = (r.myPosition[0] + T_NextTileDelta[0]) * 2
                     T_YFactor = (r.myPosition[1] + T_NextTileDelta[1]) * 2 * self.mySizeMaxX
-                    # TODO list indices must be integers or slices, not float
-                    n.append(self.myGrid[T_XFactor + T_YFactor])
+                    n.append(self.myGrid[int(T_XFactor + T_YFactor)])
 
     #
     def printRiverInfo(self, _tile):
