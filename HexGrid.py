@@ -85,8 +85,6 @@ class HexGrid:
         # T_MountainList[:] = [nn for nn in T_MountainList if nn.myRiver[0] != 0]
         # print(len(T_MountainList))
         print(len(self.myRivers))
-        for n in self.myRivers:
-            print(len(n))
 
         # using this list to begin our rivers
         self.myRivers = T_MountainList + T_HillList
@@ -119,11 +117,15 @@ class HexGrid:
 
     #
     def riverStepTwo(self):
+
+        for n in self.myRivers:
+            print(len(n))
+
         T_NextTileDelta = [0, 0]
         T_LastNumber = 0
         # for reach river
         for n in self.myRivers:
-            for r in n:
+            for r in range(len(n)):
                 # need to use some sort of attrition to cause rivers to become more likely to stop as they get larger
                 T_NextTile = randrange(0, 6)
                 # making sure you can't go right back into the same tile
