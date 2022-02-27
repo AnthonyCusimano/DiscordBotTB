@@ -77,7 +77,9 @@ class HexGrid:
             T_RiverOdds = randrange(1, 3)
             if T_RiverOdds != 3:
                 # T_MountainList[x].myRiver[0] = 0
-                self.myRivers.append([x])
+                # self.myRivers.append([x])
+                self.myRivers.append(list())
+                self.myRivers[:-1].append(x)
 
         # removing mountains that don't have a river from the list
         # T_MountainList[:] = [nn for nn in T_MountainList if nn.myRiver[0] != 0]
@@ -120,52 +122,53 @@ class HexGrid:
         T_NextTileDelta = [0, 0]
         T_LastNumber = 0
         # for reach river
-        for r in self.myRivers:
-            # need to use some sort of attrition to cause rivers to become more likely to stop as they get larger
-            T_NextTile = randrange(0, 6)
-            # making sure you can't go right back into the same tile
-            while T_NextTile + T_LastNumber == 5:
-                print("Protecting from going back a tile in river creation")
+        for n in self.myRivers:
+            for r in n:
+                # need to use some sort of attrition to cause rivers to become more likely to stop as they get larger
                 T_NextTile = randrange(0, 6)
-            # up
-            if T_NextTile == 0:
-                T_NextTileDelta[0] = 0
-                T_NextTileDelta[1] = -1
-            elif T_NextTile == 1:
-                T_NextTileDelta[0] = 0.5
-                T_NextTileDelta[1] = -0.5
-            elif T_NextTile == 2:
-                T_NextTileDelta[0] = 0.5
-                T_NextTileDelta[1] = 0.5
-            # down
-            elif T_NextTile == 3:
-                T_NextTileDelta[0] = 0
-                T_NextTileDelta[1] = 1
-            elif T_NextTile == 4:
-                T_NextTileDelta[0] = -0.5
-                T_NextTileDelta[1] = 0.5
-            elif T_NextTile == 5:
-                T_NextTileDelta[0] = -0.5
-                T_NextTileDelta[1] = -0.5
+                # making sure you can't go right back into the same tile
+                while T_NextTile + T_LastNumber == 5:
+                    print("Protecting from going back a tile in river creation")
+                    T_NextTile = randrange(0, 6)
+                # up
+                if T_NextTile == 0:
+                    T_NextTileDelta[0] = 0
+                    T_NextTileDelta[1] = -1
+                elif T_NextTile == 1:
+                    T_NextTileDelta[0] = 0.5
+                    T_NextTileDelta[1] = -0.5
+                elif T_NextTile == 2:
+                    T_NextTileDelta[0] = 0.5
+                    T_NextTileDelta[1] = 0.5
+                # down
+                elif T_NextTile == 3:
+                    T_NextTileDelta[0] = 0
+                    T_NextTileDelta[1] = 1
+                elif T_NextTile == 4:
+                    T_NextTileDelta[0] = -0.5
+                    T_NextTileDelta[1] = 0.5
+                elif T_NextTile == 5:
+                    T_NextTileDelta[0] = -0.5
+                    T_NextTileDelta[1] = -0.5
 
-            # OoB check here
-            print("beginning OoB check")
+                # OoB check here
+                print("beginning OoB check")
 
-            # print(r.myPosition[0])
-            # print(T_NextTileDelta[0])
-            # print(r.myPosition[1])
-            # print(T_NextTileDelta[1])
-            # print()
+                # print(r.myPosition[0])
+                # print(T_NextTileDelta[0])
+                # print(r.myPosition[1])
+                # print(T_NextTileDelta[1])
+                # print()
 
-            # if 0 < r.myPosition[0] + T_NextTileDelta[0] > self.mySizeMaxX and \
-            #         0 < r.myPosition[1] + T_NextTileDelta[1] > self.mySizeY:
-            if 0 < r.myPosition[0] + T_NextTileDelta[0] < self.mySizeMaxX / 2 and \
-                    0 < r.myPosition[1] + T_NextTileDelta[1] < self.mySizeY / 2:
-                print("through the OoB check")
-                print("rolled a ", T_NextTile)
-                T_XFactor = (r.myPosition[0] + T_NextTileDelta[0]) * 2
-                T_YFactor = (r.myPosition[1] + T_NextTileDelta[1]) * 2 * self.mySizeMaxX
-                r.append(self.myGrid[T_XFactor + T_YFactor])
+                # if 0 < r.myPosition[0] + T_NextTileDelta[0] > self.mySizeMaxX and \
+                #         0 < r.myPosition[1] + T_NextTileDelta[1] > self.mySizeY:
+                if 0 < r.myPosition[0] + T_NextTileDelta[0] < self.mySizeMaxX / 2 and \
+                        0 < r.myPosition[1] + T_NextTileDelta[1] < self.mySizeY / 2:
+                    print("through the OoB check")
+                    print("rolled a ", T_NextTile)
+                    T_XFactor = (r.myPosition[0] + T_NextTileDelta[0]) * 2
+                    T_YFactor = (r.myPosition[1] + T_NextTileDelta[1]) * 2 * self.mySizeMaxX
+                    r.append(self.myGrid[T_XFactor + T_YFactor])
 
     #
     def printRiverInfo(self, _tile):
