@@ -79,7 +79,7 @@ class HexGrid:
                 # T_MountainList[x].myRiver[0] = 0
                 # self.myRivers.append([x])
                 self.myRivers.append(list())
-                self.myRivers[:-1].append(x)
+                self.myRivers[-1].append(x)
 
         # removing mountains that don't have a river from the list
         # T_MountainList[:] = [nn for nn in T_MountainList if nn.myRiver[0] != 0]
@@ -125,7 +125,8 @@ class HexGrid:
         T_LastNumber = 0
         # for reach river
         for n in self.myRivers:
-            for r in range(len(n)):
+            print("in the first for loop")
+            for r in n:
 
                 print("In nested for loops")
 
@@ -173,7 +174,8 @@ class HexGrid:
                     print("rolled a ", T_NextTile)
                     T_XFactor = (r.myPosition[0] + T_NextTileDelta[0]) * 2
                     T_YFactor = (r.myPosition[1] + T_NextTileDelta[1]) * 2 * self.mySizeMaxX
-                    r.append(self.myGrid[T_XFactor + T_YFactor])
+                    # TODO list indices must be integers or slices, not float
+                    n.append(self.myGrid[T_XFactor + T_YFactor])
 
     #
     def printRiverInfo(self, _tile):
