@@ -87,7 +87,7 @@ class HexGrid:
         print(len(self.myRivers))
 
         # using this list to begin our rivers
-        self.myRivers = T_MountainList + T_HillList
+        # self.myRivers = T_MountainList + T_HillList
         self.riverStepTwo()
 
     # TODO order of operations is changing to determine rivers THEN home tile
@@ -126,6 +126,9 @@ class HexGrid:
         # for reach river
         for n in self.myRivers:
             for r in range(len(n)):
+
+                print("In nested for loops")
+
                 # need to use some sort of attrition to cause rivers to become more likely to stop as they get larger
                 T_NextTile = randrange(0, 6)
                 # making sure you can't go right back into the same tile
