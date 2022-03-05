@@ -161,19 +161,18 @@ class HexGrid:
                 print("beginning OoB check")
 
                 # print(r.myPosition[0])
-                # print(T_NextTileDelta[0])
+                print(T_NextTileDelta[0], ", ", T_NextTileDelta[1])
                 # print(r.myPosition[1])
-                # print(T_NextTileDelta[1])
-                # print()
 
                 # if 0 < r.myPosition[0] + T_NextTileDelta[0] > self.mySizeMaxX and \
                 #         0 < r.myPosition[1] + T_NextTileDelta[1] > self.mySizeY:
-                if 0 < r.myPosition[0] + T_NextTileDelta[0] < self.mySizeMaxX / 2 and \
-                        0 < r.myPosition[1] + T_NextTileDelta[1] < self.mySizeY / 2:
+                if 0 < r.myPosition[0] + T_NextTileDelta[0] <= self.mySizeMaxX / 2 and \
+                        0 < r.myPosition[1] + T_NextTileDelta[1] <= self.mySizeY / 2:
                     print("through the OoB check")
                     print("rolled a ", T_NextTile)
                     T_XFactor = (r.myPosition[0] + T_NextTileDelta[0]) * 2
                     T_YFactor = (r.myPosition[1] + T_NextTileDelta[1]) * 2 * self.mySizeMaxX
+                    print("X + Y is ", T_XFactor + T_YFactor)
                     n.append(self.myGrid[int(T_XFactor + T_YFactor)])
 
         print("End of river step 2, there are ", len(self.myRivers), " rivers")
