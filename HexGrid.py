@@ -176,6 +176,11 @@ class HexGrid:
                     T_YFactor = (r.myPosition[1] + T_NextTileDelta[1]) * 2 * self.mySizeMaxX
                     n.append(self.myGrid[int(T_XFactor + T_YFactor)])
 
+        print("End of river step 2, there are ", len(self.myRivers), " rivers")
+
+        for r in self.myRivers:
+            print(len(r))
+
     #
     def printRiverInfo(self, _tile):
         T_Return = "This tile "
