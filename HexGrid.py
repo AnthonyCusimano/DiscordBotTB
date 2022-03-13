@@ -272,7 +272,6 @@ class HexGrid:
                 self.playerPosition[1] -= 1
 
                 print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
-                print("buh")
                 print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
 
@@ -291,7 +290,6 @@ class HexGrid:
                 self.playerPosition[1] -= 0.5
 
                 print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
-                print("buh")
                 print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
 
@@ -311,7 +309,6 @@ class HexGrid:
                 self.playerPosition[1] += 0.5
 
                 print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
-                print("buh")
                 print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
 
@@ -329,7 +326,6 @@ class HexGrid:
                 self.playerPosition[1] += 1
 
                 print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
-                print("buh")
                 print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
 
@@ -348,7 +344,6 @@ class HexGrid:
                 self.playerPosition[1] += 0.5
 
                 print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
-                print("buh")
                 print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
 
@@ -367,7 +362,6 @@ class HexGrid:
                 self.playerPosition[1] -= 0.5
 
                 print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
-                print("buh")
                 print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
 
