@@ -8,7 +8,7 @@ class HexTile:
     def __init__(self):
 
         self.myColour = self.determineHexColour()
-        self.myPrimaryBiome = self.determineBiome(4)
+        self.myPrimaryBiome = self.determineBiome()
         # self.myPrimaryBiome = "mountain"
         #
         # self.myRiver = [-1, -1]
