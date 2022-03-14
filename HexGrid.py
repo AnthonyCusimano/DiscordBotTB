@@ -118,17 +118,14 @@ class HexGrid:
     #
     def riverStepTwo(self):
 
-        for n in self.myRivers:
-            print(len(n))
-
         T_NextTileDelta = [0, 0]
         T_LastNumber = 0
         # for reach river
         for n in self.myRivers:
-            print("in the first for loop")
+            #
             for r in n:
 
-                print("In nested for loops")
+                print("In nested for loop within riverStepTwo")
 
                 # need to use some sort of attrition to cause rivers to become more likely to stop as they get larger
                 T_NextTile = randrange(0, 6)
@@ -159,10 +156,7 @@ class HexGrid:
 
                 # OoB check here
                 print("beginning OoB check")
-
-                # print(r.myPosition[0], ", ", r.myPosition[1])
-                # print(T_NextTileDelta[0], ", ", T_NextTileDelta[1])
-                print(r.myPosition[0] + T_NextTileDelta[0], ", ", r.myPosition[1] + T_NextTileDelta[1])
+                # print(r.myPosition[0] + T_NextTileDelta[0], ", ", r.myPosition[1] + T_NextTileDelta[1])
 
                 # if 0 < r.myPosition[0] + T_NextTileDelta[0] > self.mySizeMaxX and \
                 #         0 < r.myPosition[1] + T_NextTileDelta[1] > self.mySizeY:
