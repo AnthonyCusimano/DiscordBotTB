@@ -118,32 +118,36 @@ class HexGrid:
     def riverStepTwo(self):
 
         T_NextTileDelta = [0, 0]
-        # T_LastNumber = 0
+        T_LastNumber = 0
         # for reach river
         for n in self.myRivers:
             #
             for r in n:
-                print("length of n")
+                # print("length of n")
                 print(len(n))
 
                 # T_Gamer = 0
                 # using a while loop here we can set every river to be the same size
-                while len(n) < min(self.mySizeY, self.mySizeMaxX):
+                T_Rando = randrange(2, min(self.mySizeY, self.mySizeMaxX) + 1)
+                while T_Rando > len(n) < min(self.mySizeY, self.mySizeMaxX):
                     # print("In nested for loop within riverStepTwo, T_LastNumber is ", T_LastNumber)
                     # T_Chance = randrange(1, 4)
                     # if T_Gamer > 1 and T_Chance > 0:
                     #     break
-                    T_Gamer += 1
-                    print("gamer: ", T_Gamer)
+                    # T_Gamer += 1
+                    # print("gamer: ", T_Gamer)
+
                     # need to use some sort of attrition to cause rivers to become more likely to stop as they get larger
                     T_NextTile = randrange(0, 6)
-                    if len(n) < 2:
-                        print("detecting a one length river")
-                        T_NextTile = randrange(0, 5)
+
+                    # if len(n) < 2:
+                    #     print("detecting a one length river")
+                    #     T_NextTile = randrange(0, 5)
                     # making sure you can't go right back into the same tile
-                    # while T_NextTile + T_LastNumber == 5:
-                    #     print("Protecting from going back a tile in river creation")
-                    #     T_NextTile = randrange(0, 6)
+                    while T_NextTile + T_LastNumber == 5:
+                        print("Protecting from going back a tile in river creation")
+                        T_NextTile = randrange(0, 6)
+
                     # up
                     if T_NextTile == 0:
                         T_NextTileDelta[0] = 0
