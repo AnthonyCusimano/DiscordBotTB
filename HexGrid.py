@@ -126,9 +126,12 @@ class HexGrid:
             for r in n:
 
                 print("In nested for loop within riverStepTwo")
+                print("T_LastNumber is ", T_LastNumber)
 
                 # need to use some sort of attrition to cause rivers to become more likely to stop as they get larger
                 T_NextTile = randrange(0, 6)
+                if len(n) < 2:
+                    T_NextTile = randrange(0, 5)
                 # making sure you can't go right back into the same tile
                 while T_NextTile + T_LastNumber == 5:
                     print("Protecting from going back a tile in river creation")
@@ -153,6 +156,8 @@ class HexGrid:
                 elif T_NextTile == 5:
                     T_NextTileDelta[0] = -0.5
                     T_NextTileDelta[1] = -0.5
+
+                T_LastNumber = T_NextTile
 
                 # OoB check here
                 print("beginning OoB check")
