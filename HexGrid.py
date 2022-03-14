@@ -126,9 +126,15 @@ class HexGrid:
                 print("length of n")
                 print(len(n))
 
-                while len(n) == 1:
+                # T_Gamer = 0
+                # using a while loop here we can set every river to be the same size
+                while len(n) < min(self.mySizeY, self.mySizeMaxX):
                     # print("In nested for loop within riverStepTwo, T_LastNumber is ", T_LastNumber)
-
+                    # T_Chance = randrange(1, 4)
+                    # if T_Gamer > 1 and T_Chance > 0:
+                    #     break
+                    T_Gamer += 1
+                    print("gamer: ", T_Gamer)
                     # need to use some sort of attrition to cause rivers to become more likely to stop as they get larger
                     T_NextTile = randrange(0, 6)
                     if len(n) < 2:
