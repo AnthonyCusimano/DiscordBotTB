@@ -173,6 +173,9 @@ class HexGrid:
 
                     T_LastNumber = T_NextTile
 
+                    T_XFactor = (r.myPosition[0] + T_NextTileDelta[0]) * 2.0
+                    T_YFactor = (r.myPosition[1] + T_NextTileDelta[1]) * 2.0 * self.mySizeMaxX
+
                     # OoB check here
                     # print("beginning OoB check")
                     # print(r.myPosition[0] + T_NextTileDelta[0], ", ", r.myPosition[1] + T_NextTileDelta[1])
@@ -183,11 +186,13 @@ class HexGrid:
                             0 <= r.myPosition[1] + T_NextTileDelta[1] < self.mySizeY / 2:
                         # print("through the OoB check")
                         # print("rolled a ", T_NextTile)
-                        T_XFactor = (r.myPosition[0] + T_NextTileDelta[0]) * 2.0
-                        T_YFactor = (r.myPosition[1] + T_NextTileDelta[1]) * 2.0 * self.mySizeMaxX
+                        # T_XFactor = (r.myPosition[0] + T_NextTileDelta[0]) * 2.0
+                        # T_YFactor = (r.myPosition[1] + T_NextTileDelta[1]) * 2.0 * self.mySizeMaxX
+                        # worker gamer
                         if self.myGrid[(int(T_XFactor) + int(T_YFactor))].myPosition[0] == n[-1].myPosition[0] and \
                                 self.myGrid[(int(T_XFactor) + int(T_YFactor))].myPosition[1] == n[-1].myPosition[1]:
                             print("LOLE")
+                            continue
                         # print("X + Y is ", T_XFactor + T_YFactor)
                         n.append(self.myGrid[int(T_XFactor + T_YFactor)])
 
