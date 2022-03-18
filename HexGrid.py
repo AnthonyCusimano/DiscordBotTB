@@ -124,7 +124,7 @@ class HexGrid:
             #
             for r in n:
                 # print("length of n")
-                print(len(n))
+                # print(len(n))
 
                 # T_Gamer = 0
                 # using a while loop here we can set every river to be the same size
@@ -144,9 +144,11 @@ class HexGrid:
                     #     print("detecting a one length river")
                     #     T_NextTile = randrange(0, 5)
                     # making sure you can't go right back into the same tile
-                    while T_NextTile + T_LastNumber == 5:
-                        print("Protecting from going back a tile in river creation")
+                    # while T_NextTile + T_LastNumber == 5:
+                    while T_NextTile - T_LastNumber == 3 or T_NextTile - T_LastNumber == -3:
+                        print("Protecting from going back a tile in river creation, we rolled a ", T_NextTile)
                         T_NextTile = randrange(0, 6)
+                        print("New roll is a ", T_NextTile)
 
                     # up
                     if T_NextTile == 0:
@@ -172,18 +174,21 @@ class HexGrid:
                     T_LastNumber = T_NextTile
 
                     # OoB check here
-                    print("beginning OoB check")
+                    # print("beginning OoB check")
                     # print(r.myPosition[0] + T_NextTileDelta[0], ", ", r.myPosition[1] + T_NextTileDelta[1])
 
                     # if 0 < r.myPosition[0] + T_NextTileDelta[0] > self.mySizeMaxX and \
                     #         0 < r.myPosition[1] + T_NextTileDelta[1] > self.mySizeY:
                     if 0 <= r.myPosition[0] + T_NextTileDelta[0] < self.mySizeMaxX / 2 and \
                             0 <= r.myPosition[1] + T_NextTileDelta[1] < self.mySizeY / 2:
-                        print("through the OoB check")
-                        print("rolled a ", T_NextTile)
+                        # print("through the OoB check")
+                        # print("rolled a ", T_NextTile)
                         T_XFactor = (r.myPosition[0] + T_NextTileDelta[0]) * 2.0
                         T_YFactor = (r.myPosition[1] + T_NextTileDelta[1]) * 2.0 * self.mySizeMaxX
-                        print("X + Y is ", T_XFactor + T_YFactor)
+                        if self.myGrid[(int(T_XFactor) + int(T_YFactor))].myPosition[0] == n[-1].myPosition[0] and \
+                                self.myGrid[(int(T_XFactor) + int(T_YFactor))].myPosition[1] == n[-1].myPosition[1]:
+                            print("LOLE")
+                        # print("X + Y is ", T_XFactor + T_YFactor)
                         n.append(self.myGrid[int(T_XFactor + T_YFactor)])
 
         print("End of river step 2, there are ", len(self.myRivers), " rivers")
