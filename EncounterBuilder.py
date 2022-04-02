@@ -43,14 +43,15 @@ class EncounterBuilder(commands.Cog):
 
         for i in range(T_numSlings):
             # fake adding one to i just for user comfort
-            EncounterBuilder.monsters.append(Monster("Goblin Slinger " + str(i)))
+            EncounterBuilder.monsters.append(Monster("Goblin Slinger " + str(i), _hitpoints=random.randrange(2, 5)))
             T_Return.append("sling")
+            # print(EncounterBuilder.monsters[-1].myHitPoints)
 
         T_Counter = 1
-        # all we have left is ankleshankers currently
+        # all we have left is ankle shankers currently
         while T_myPointsRemaining > 0:
 
-            EncounterBuilder.monsters.append(Monster("Goblin Ankle Shanker" + str(T_Counter)))
+            EncounterBuilder.monsters.append(Monster("Goblin Ankle Shanker " + str(T_Counter)))
             T_Return.append("ankleshanker")
             T_myPointsRemaining -= goblinAnkleShankerPoints
             T_Counter += 1
@@ -59,6 +60,11 @@ class EncounterBuilder(commands.Cog):
         for i in range(len(EncounterBuilder.monsters)):
             print(EncounterBuilder.monsters[i].myName)
         await ctx.channel.send(T_Return)
+
+
+    @commands.command("roamingDragon")
+    async def roamingDragon(self, ctx, _colour="any"):
+        T_Colours = {"red", "green", "blue", "black", "white"}
 
     @commands.command("roamingAnkheg")
     async def roamingAnkheg(self, ctx):
@@ -71,7 +77,7 @@ class EncounterBuilder(commands.Cog):
 
         # TODO
 
-    @commands.command("singleMonster")
-    async def singleMonster(self, HD=1):
-        ""
+    # @commands.command("singleMonster")
+    # async def singleMonster(self, HD=1):
+    #     ""
 
