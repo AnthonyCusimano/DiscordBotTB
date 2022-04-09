@@ -22,13 +22,13 @@ class Time:
     # TODO ranger check, road check, terrain modifier
     def HexMovementTimeChange(self):
         # by default 6 hours pass
-        self.timeOfDay[0] += 6
-        self.manageOverFlows()
+        Time.timeOfDay[0] += 6
+        Time.manageOverFlows()
 
     #
     def monthOverflowCheck(self):
         #
-        if self.month > 12:
+        if Time.month > 12:
             Time.month -= 12
 
 
@@ -55,11 +55,11 @@ class Time:
 
     #
     def manageOverFlows(self):
-        self.minuteOverflowCheck()
-        self.hourOverflowCheck()
-        self.dayOverflowCheck()
-        self.monthOverflowCheck()
-        
+        Time.minuteOverflowCheck()
+        Time.hourOverflowCheck()
+        Time.dayOverflowCheck()
+        Time.monthOverflowCheck()
+
     #
     def getMonthName(self):
-        return Time.monthsOfTheYear(self.month)
+        return Time.monthsOfTheYear(Time.month)
