@@ -23,14 +23,13 @@ class Time:
     def HexMovementTimeChange(self):
         # by default 6 hours pass
         Time.timeOfDay[0] += 6
-        Time.manageOverFlows()
+        self.manageOverFlows()
 
     #
     def monthOverflowCheck(self):
         #
         if Time.month > 12:
             Time.month -= 12
-
 
     #
     def dayOverflowCheck(self):
@@ -55,10 +54,11 @@ class Time:
 
     #
     def manageOverFlows(self):
-        Time.minuteOverflowCheck()
-        Time.hourOverflowCheck()
-        Time.dayOverflowCheck()
-        Time.monthOverflowCheck()
+        print("in Time.manageOverFlows")
+        self.minuteOverflowCheck()
+        self.hourOverflowCheck()
+        self.dayOverflowCheck()
+        self.monthOverflowCheck()
 
     #
     def getMonthName(self):
