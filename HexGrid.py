@@ -3,6 +3,7 @@ from random import randrange
 
 from Hex import HexTile
 from Time import Time
+from TimeInterface import tim
 
 
 #
@@ -17,10 +18,10 @@ class HexGrid:
         # TODO move elsewhere
         self.playerPosition = []
 
-        self.mySizeMaxX = 3
+        self.mySizeMaxX = 4
         # self.mySizeMinX = 3
 
-        self.mySizeY = 3
+        self.mySizeY = 4
 
         #
         self.myRivers = list()
@@ -291,6 +292,9 @@ class HexGrid:
         if _dir == 0:
             if self.playerPosition[1] > 0.5:
                 self.playerPosition[1] -= 1
+
+                # print("TIM MONTH LOLE ", tim.month)
+                tim.HexMovementTimeChange()
 
                 print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
                 print(str(T_XPosition) + " " + str(T_YPosition))
