@@ -293,7 +293,6 @@ class HexGrid:
             if self.playerPosition[1] > 0.5:
                 self.playerPosition[1] -= 1
 
-                # print("TIM MONTH LOLE ", tim.month)
                 tim.HexMovementTimeChange()
 
                 print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
@@ -314,6 +313,8 @@ class HexGrid:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] -= 0.5
 
+                tim.HexMovementTimeChange()
+
                 print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
                 print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
@@ -333,6 +334,8 @@ class HexGrid:
                 self.playerPosition[0] += 0.5
                 self.playerPosition[1] += 0.5
 
+                tim.HexMovementTimeChange()
+
                 print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
                 print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
@@ -349,6 +352,8 @@ class HexGrid:
         elif _dir == 3:
             if self.playerPosition[1] < (self.mySizeY / 2) - 0.5:
                 self.playerPosition[1] += 1
+
+                tim.HexMovementTimeChange()
 
                 print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
                 print(str(T_XPosition) + " " + str(T_YPosition))
@@ -368,6 +373,8 @@ class HexGrid:
                 self.playerPosition[0] -= 0.5
                 self.playerPosition[1] += 0.5
 
+                tim.HexMovementTimeChange()
+
                 print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
                 print(str(T_XPosition) + " " + str(T_YPosition))
                 print(str(T_XPosition + T_YPosition))
@@ -385,6 +392,8 @@ class HexGrid:
             if self.playerPosition[0] > 0.0 and self.playerPosition[1] > 0.0:
                 self.playerPosition[0] -= 0.5
                 self.playerPosition[1] -= 0.5
+
+                tim.HexMovementTimeChange()
 
                 print(str(self.playerPosition[0]) + " " + str(self.playerPosition[1]))
                 print(str(T_XPosition) + " " + str(T_YPosition))
