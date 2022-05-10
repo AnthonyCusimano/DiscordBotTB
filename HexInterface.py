@@ -46,7 +46,7 @@ class HexInterface(commands.Cog):
         T_XFactor = HexInterface.theGrid.playerPosition[0] * 2.0
         T_YFactor = HexInterface.theGrid.playerPosition[1] * 2.0 * HexInterface.theGrid.mySizeMaxX
 
-        await ctx.channel.send(HexInterface.theGrid[T_XFactor + T_YFactor].myPrimaryBiome)
+        await ctx.channel.send(HexInterface.theGrid.myGrid[int(T_XFactor + T_YFactor)].myPrimaryBiome)
 
     #
     @commands.command(name="getCurrentHexInfo", aliases=["currentHexInfo"])
