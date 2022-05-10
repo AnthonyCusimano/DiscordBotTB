@@ -11,12 +11,12 @@ class HexInterface(commands.Cog):
     #
     @commands.command(name="HexStartup")
     async def HexStartup(self, ctx):
-        ""
         # currently unneeded cus HexGrid calls this in it's constructor
         # HexGrid.initGrid()
+        await ctx.channel.send("currently unused sorry bud!")
 
     #
-    @commands.command(name="movePCs", aliases=["moveOnHex"])
+    @commands.command(name="movePCs", aliases=["moveOnHex", "moveParty"])
     async def movePCs(self, ctx, _direct):
 
         try:
@@ -32,10 +32,21 @@ class HexInterface(commands.Cog):
             await ctx.channel.send("Please send a real number for movement (0-5)")
 
     #
-    @commands.command(name="getCurrentPosition", aliases=["getOurCurrentPosition", "getPCCurrentPosition"])
+    @commands.command(name="getCurrentPosition", aliases=["getOurCurrentPosition", "getPCCurrentPosition",
+                                                          "currentPosition"])
     async def getCurrentPosition(self, ctx):
         await ctx.channel.send("The PCs are at hex: " + str(HexInterface.theGrid.playerPosition[0]) + ", " +
                                str(HexInterface.theGrid.playerPosition[1]))
+
+
+    #
+    @commands.command(name="getHexType", aliases=["hexType"])
+    async def getHexType(self, ctx):
+
+        T_XFactor = HexInterface.theGrid.playerPosition[0] * 2.0
+        T_YFactor = HexInterface.theGrid.playerPosition[1] * 2.0 * HexInterface.theGrid.mySizeMaxX
+
+        await ctx.channel.send(HexInterface.theGrid[T_XFactor + T_YFactor].myPrimaryBiome)
 
     #
     @commands.command(name="getCurrentHexInfo", aliases=["currentHexInfo"])
@@ -52,7 +63,7 @@ class HexInterface(commands.Cog):
 
         # if HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)].myRiver[0] == -1:
         #    T_Return += ", This hex has no notable traversable river"
-        T_Return += '\n' + HexInterface.theGrid.printRiverInfo(HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)])
+        # T_Return += '\n' + HexInterface.theGrid.printRiverInfo(HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)])
 
         T_Return += "\nthe hex's colour is: " + HexInterface.theGrid.myGrid[int(T_YFactor + T_XFactor)].myColour
 
@@ -70,7 +81,7 @@ class HexInterface(commands.Cog):
                 T_Formula = (_y * HexInterface.theGrid.mySizeY) + _x
                 print(T_Formula)
                 T_Send += "The hex at position " + \
-                         str(HexInterface.theGrid.myGrid[T_Formula].myPrimaryBiome)
+                          str(HexInterface.theGrid.myGrid[T_Formula].myPrimaryBiome)
 
                 if HexInterface.theGrid.myGrid[T_Formula].isExplored:
                     T_Send += "\nthe hex is explored"
