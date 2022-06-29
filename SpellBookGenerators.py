@@ -12,7 +12,7 @@ LOTFPCoreMU1Spells = ["Bookspeak", "Charm Person", "Comprehend Languages / Obscu
 
 DND3P5CoreWZ1Spells = []
 
-DBD5CoreWZ0Spells = ["Acid Splash", "Blade Ward", "Chill Touch", "Dancing Lights", "Fire Bolt", "Friends", "Light",
+DND5CoreWZ0Spells = ["Acid Splash", "Blade Ward", "Chill Touch", "Dancing Lights", "Fire Bolt", "Friends", "Light",
                      "Mage Hand", "Mending", "Message", "Minor Illusion", "Poison Spray", "Prestidigitation",
                      "Ray of Frost", "Shocking Grasp", "True Strike"]
 
@@ -58,7 +58,7 @@ class SpellBookGenerators(commands.Cog):
     async def DnD5WZSpellBook(self, ctx):
         T_Return = "Cantrips known: "
         T_DupProt = DND5CoreWZ1Spells
-        T_DupProtCant = DBD5CoreWZ0Spells
+        T_DupProtCant = DND5CoreWZ0Spells
         for i in range(3):
             T_Gamer = randrange(len(T_DupProtCant))
             T_NextSpell = T_DupProtCant[T_Gamer]
