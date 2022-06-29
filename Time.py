@@ -6,14 +6,14 @@ class Time:
     #
     daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     #
-    monthsOfTheYear = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October",
+    monthsOfTheYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
                        "November", "December"]
 
     # hours, minutes
     # starting at 8AM on day 0
     timeOfDay = [8, 0]
     # they called it March for this exact reason
-    month = 3
+    month = 2
     # don't 0 address this
     day = 1
     # days we've spent in this world
@@ -62,4 +62,4 @@ class Time:
 
     #
     def getMonthName(self):
-        return Time.monthsOfTheYear(Time.month)
+        return Time.monthsOfTheYear[Time.month]
