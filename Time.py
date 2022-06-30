@@ -9,6 +9,9 @@ class Time:
     monthsOfTheYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
                        "November", "December"]
 
+    # number of days in each month
+    numberOfDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
     # hours, minutes
     # starting at 8AM on day 0
     timeOfDay = [8, 0]
@@ -28,15 +31,14 @@ class Time:
     #
     def monthOverflowCheck(self):
         #
-        if Time.month > 12:
-            Time.month -= 12
+        if Time.month > 11:
+            Time.month -= 11
 
     #
     def dayOverflowCheck(self):
-        # TODO every month has 30 days? Nah
-        if Time.day > 30:
+        if Time.day > Time.numberOfDays[Time.month]:
+            Time.day -= Time.numberOfDays[Time.month]
             Time.month += 1
-            Time.day -= 30
 
     #
     def hourOverflowCheck(self):
