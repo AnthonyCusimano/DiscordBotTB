@@ -265,11 +265,26 @@ class HexGrid:
 
         return T_Return
 
-    #
+    # TODO pass T_ForceInnterHex value
     def selectHomeTile(self):
 
-        # TODO consider having it always be an inner hex
-        T_Return = choice(self.myGrid)
+        # TODO test having it always be an inner hex
+        T_ForceInnerHex = False
+
+        T_Return = 0
+
+        if not T_ForceInnerHex:
+            T_Return = choice(self.myGrid)
+
+        else:
+            # do while
+            T_Return = choice(self.myGrid)
+
+            #
+            while T_Return.myPosition[0] == 0 or T_Return.myPosition[0] == self.mySizeMaxX or \
+                    T_Return.myPosition[1] == 0 or T_Return.myPosition[1] == self.mySizeY:
+                #
+                T_Return = choice(self.myGrid)
 
         self.playerPosition.append(T_Return.myPosition[0])
         self.playerPosition.append(T_Return.myPosition[1])
