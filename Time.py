@@ -22,6 +22,19 @@ class Time:
     # days we've spent in this world
     totalDays = 0
 
+    #
+    def timeOfDayToString(self):
+        T_Return = str(self.timeOfDay[0])
+        T_Return += ':'
+
+        if self.timeOfDay[1] == 0:
+            T_Return += "00"
+
+        else:
+            T_Return += str(self.timeOfDay[1])
+
+        return T_Return
+
     # TODO ranger check, road check, terrain modifier
     def HexMovementTimeChange(self):
         # by default 6 hours pass
