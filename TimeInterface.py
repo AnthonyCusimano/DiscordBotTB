@@ -13,7 +13,8 @@ class TimeInterface(commands.Cog):
     async def whatTimeIsIt(self, ctx):
 
         T_Post = "The current in game time is "
-        T_Post += str(tim.timeOfDay[0]) + ":" + str(tim.timeOfDay[1])
+        # T_Post += str(tim.timeOfDay[0]) + ":" + str(tim.timeOfDay[1])
+        T_Post += tim.timeOfDayToString()
         await ctx.channel.send(T_Post)
 
     #
