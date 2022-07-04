@@ -3,9 +3,10 @@ from random import randrange
 from discord.ext import commands
 
 
-#
+# TODO start with 5e DMG process
 class DungeonGenerator(commands.Cog):
 
+    # 
     def __init__(self):
         # D10
         sizeSeed = randrange(9)
