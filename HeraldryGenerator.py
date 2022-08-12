@@ -1,3 +1,17 @@
+from random import choice, randint
+# TODO DB time
+colourShades = ["pale", "light", "", "dark", "blackened"]
+
+colours = ["green", "purple", "yellow", "black", "red", "blue"]
+
+inanimateCharges = ["moon", "lightning bolt"]
+mammalCharges = ["lion", "wolf", "dog"]
+aquaticCharges = ["squid", "trout"]
+toolCharges = ["sword", "shovel", "dagger", "spear"]
+modularSideCharges = ["star", "snowflake"]
+treeCharges = ["evergreen tree", "oak tree"]
+
+# TODO field & design changes
 
 
 # TODO
@@ -10,9 +24,10 @@ class HeraldryGenerator:
     def createField(self):
         T_Return = "on a "
 
-        T_Return += "dark "
+        T_Return += choice(colourShades) + " "
 
-        T_Return += "Blue "
+        T_Return += choice(colours)
+        T_Return += " "
 
         T_Return += "Field."
 
@@ -20,10 +35,25 @@ class HeraldryGenerator:
 
     #
     def createCharge(self):
-        T_Return = "black "
+        T_Return = choice(colours)
+        T_Return += " "
 
-        T_Return += "snowflake "
+        T_ChargeType = randint(0, 5)
 
+        if T_ChargeType == 0:
+            T_Return += choice(inanimateCharges)
+        elif T_ChargeType == 1:
+            T_Return += choice(mammalCharges)
+        elif T_ChargeType == 2:
+            T_Return += choice(aquaticCharges)
+        elif T_ChargeType == 3:
+            T_Return += choice(toolCharges)
+        elif T_ChargeType == 2:
+            T_Return += choice(modularSideCharges)
+        elif T_ChargeType == 5:
+            T_Return += choice(treeCharges)
+
+        T_Return += " "
         return T_Return
 
     def createHeraldry(self):
