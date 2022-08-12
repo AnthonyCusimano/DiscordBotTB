@@ -2,582 +2,264 @@ from random import randrange
 
 from discord.ext import commands
 
+from DDCTables import DDCTables
 
-# rolls dice man
-class DiceRolls(commands.Cog):
-    """lole"""
 
-    #
-    @commands.command(name="d2", aliases=["coinFlip", "flipACoin"])
-    async def d2(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
+#
+class CharacterGenerators(commands.Cog):
 
-            T_Current = 0
-            T_Total = 0
-            # treating number of dice as an int
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 3)
-                T_Total += T_Current
-                T_Return += str(T_Current)
-                #
-                if x != _DC - 1:
-                    T_Return += ", "
+    # system / modifier agnostic
+    @commands.command(name="3d6InARow", aliases=["3d6DownTheLine", "threed6InARow", "threed6DownTheLine"])
+    async def threed6InARow(self, ctx):
 
-            if _DC > 1:
-                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
+        T_Attributes = []
+        T_AttributeMods = []
+        T_Rolls = [0, 0, 0]
 
+        T_Return = ""
+
+        for i in range(6):
+            for j in range(3):
+                T_Rolls[j] = randrange(1, 7)
+            T_Attributes.append(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
+            T_Return += (str(T_Attributes[i]))
+            T_Return += "\n"
+
+        await ctx.channel.send(T_Return)
+
+    # TODO add class gold
+    @commands.command(name="fourd6droplow5e", aliases=["4d6DropLowest", "4d6Char", "4d6DropLow", "fd6DropLow"])
+    async def fourd6droplow5e(self, ctx, _playerClass=""):
+        # using append instead of 0, 0, 0, 0, 0, 0]
+        T_Attributes = []
+        T_AttributeMods = []
+        T_TotalModifier = 0
+        # compare rolls
+        T_Rolls = [0, 0, 0, 0]
+
+        for i in range(6):
+            for j in range(4):
+                T_Rolls[j] = randrange(1, 7)
+            # places lowest roll at the back
+            T_Rolls = sorted(T_Rolls, reverse=True)
+            T_Attributes.append(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
+            # could use [-1] I think
+            if T_Attributes[i] == 1:
+                T_AttributeMods.append(-5)
+            elif T_Attributes[i] < 4:
+                T_AttributeMods.append(-4)
+            elif T_Attributes[i] < 6:
+                T_AttributeMods.append(-3)
+            elif T_Attributes[i] < 8:
+                T_AttributeMods.append(-2)
+            elif T_Attributes[i] < 10:
+                T_AttributeMods.append(-1)
+            elif T_Attributes[i] < 12:
+                T_AttributeMods.append(0)
+            elif T_Attributes[i] < 14:
+                T_AttributeMods.append(+1)
+            elif T_Attributes[i] < 16:
+                T_AttributeMods.append(+2)
+            elif T_Attributes[i] < 18:
+                T_AttributeMods.append(+3)
             else:
-                await ctx.channel.send(T_Return)
+                T_AttributeMods.append(+4)
+            T_TotalModifier += T_AttributeMods[i]
 
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
+        T_Return = "Strength:         **{str}**({strMod}):" \
+                   "\nDexterity:        **{dex}**({dexMod}):" \
+                   "\nConstitution:     **{con}**({conMod}):" \
+                   "\nIntelligence:     **{int}**({intMod}):" \
+                   "\nWisdom:           **{wis}**({wisMod}):" \
+                   "\nCharisma:           **{cha}**({chaMod}):" \
+                   .format(cha=T_Attributes[5], chaMod=T_AttributeMods[5], con=T_Attributes[2],
+                           conMod=T_AttributeMods[2], dex=T_Attributes[1],
+                           dexMod=T_AttributeMods[1], int=T_Attributes[3],
+                           intMod=T_AttributeMods[3], str=T_Attributes[0],
+                           strMod=T_AttributeMods[0], wis=T_Attributes[4],
+                           wisMod=T_AttributeMods[4])
 
-    #
-    @commands.command(name="d3")
-    async def d3(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
+        #
+        T_Gold = 0
 
-            T_Current = 0
-            T_Total = 0
-            # treating number of dice as an int
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 4)
-                T_Total += T_Current
-                T_Return += str(T_Current)
-                #
-                if x != _DC - 1:
-                    T_Return += ", "
+        if _playerClass == "monk":
+            T_Return += "\n" + str(randrange(1, 5))
+            T_Return += " starting gold"
 
-            if _DC > 1:
-                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
+        elif _playerClass == "druid" or _playerClass == "barbarian":
 
-            else:
-                await ctx.channel.send(T_Return)
+            for k in range(2):
+                T_Gold += randrange(1, 5)
 
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
+            T_Return += '\n' + str(T_Gold) + " starting gold"
 
-    #
-    @commands.command(name="d4")
-    async def d4(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
+        elif _playerClass == "sorcerer":
 
-            T_Current = 0
-            T_Total = 0
-            # treating number of dice as an int
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 5)
-                T_Total += T_Current
-                T_Return += str(T_Current)
-                #
-                if x != _DC - 1:
-                    T_Return += ", "
+            for k in range(3):
+                T_Gold += randrange(1, 5)
 
-            if _DC > 1:
-                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
+            T_Return += '\n' + str(T_Gold) + " starting gold"
 
-            else:
-                await ctx.channel.send(T_Return)
+        elif _playerClass == "rogue" or _playerClass == "wizard" or _playerClass == "warlock":
 
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
+            for k in range(4):
+                T_Gold += randrange(1, 5)
 
-    #
-    @commands.command(name="d5")
-    async def d5(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
+            T_Return += '\n' + str(T_Gold) + " starting gold"
 
-            T_Current = 0
-            T_Total = 0
-            # treating number of dice as an int
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 6)
-                T_Total += T_Current
-                T_Return += str(T_Current)
-                #
-                if x != _DC - 1:
-                    T_Return += ", "
+        elif _playerClass == "bard" or _playerClass == "cleric" or _playerClass == "fighter" or \
+                _playerClass == "paladin" or _playerClass == "ranger":
 
-            if _DC > 1:
-                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
+            for k in range(5):
+                T_Gold += randrange(1, 5)
 
-            else:
-                await ctx.channel.send(T_Return)
-
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
-
-    #
-    @commands.command(name="d6")
-    async def d6(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
-
-            # result of all our die rolls
-            T_Current = 0
-            T_Total = 0
-            # treating number of dice as an int
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 7)
-                T_Total += T_Current
-                T_Return += str(T_Current)
-                #
-                if x != _DC - 1:
-                    T_Return += ", "
-
-            if _DC > 1:
-                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
-
-            else:
-                await ctx.channel.send(T_Return)
-
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
-
-    #
-    @commands.command(name="ReactionRoll", aliases=["disposition"])
-    async def ReactionRoll(self, ctx):
-        T_Result = randrange(1, 7) + randrange(1, 7)
-        T_Return = "The result of the reaction roll is "
-        if T_Result < 3:
-            T_Return += "the subject is hostile"
-        elif T_Result < 6:
-            T_Return += "the subject does not like the party, prone to attack"
-        elif T_Result < 10:
-            T_Return += "the subject is interested in parlaying with the party peacefully"
-        else:
-            T_Return += "the subject is interested in cooperation with the party"
+            T_Return += '\n' + str(T_Gold) + " starting gold"
 
         await ctx.channel.send(T_Return)
 
     #
-    @commands.command(name="d6E", aliases=["D6Exlosion"])
-    async def d6E(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
+    @commands.command(name="LamentationsCharacter", aliases=["Lamentations", "LOTFP"])
+    async def LamentationsCharacter(self, ctx):
+        # alphabetical
+        # 7th attribute is starting money
+        T_Attributes = [0, 0, 0, 0, 0, 0, 0]
+        T_AttributeMods = [0, 0, 0, 0, 0, 0]
+        T_Rolls = []
+        T_TotalModifier = 0
+        for i in range(7):
+            for j in range(3):
+                T_Rolls.append(randrange(1, 7))
+                T_Attributes[i] += T_Rolls[-1]
 
-            # result of all our die rolls
-            T_Current = 0
-            T_Total = 0
-            # treating number of dice as an int
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 7)
-                while T_Current % 6 == 0:
-                    T_Current += randrange(1, 7)
-                T_Total += T_Current
-                T_Return += str(T_Current)
-                #
-                if x != _DC - 1:
-                    T_Return += ", "
+        # checking modifiers
+        for i in range(6):
+            if T_Attributes[i] == 3:
+                T_TotalModifier -= 3
+                T_AttributeMods[i] = -3
 
-            if _DC > 1:
-                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
+            # 4-5
+            elif T_Attributes[i] < 6:
+                T_TotalModifier -= 2
+                T_AttributeMods[i] = -2
 
-            else:
-                await ctx.channel.send(T_Return)
+            # 6-8
+            elif T_Attributes[i] < 9:
+                T_TotalModifier -= 1
+                T_AttributeMods[i] = -1
 
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
+            # 9-12
+            # still doing this cus I suck lole
+            elif T_Attributes[i] < 13:
+                T_AttributeMods[i] = 0
+            # 13-15
+            elif T_Attributes[i] < 16:
+                T_TotalModifier += 1
+                T_AttributeMods[i] = 1
 
-    # fudge dice
-    @commands.command(name="df")
-    async def df(self, ctx, _DC=4):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
+            # 16-17
+            elif T_Attributes[i] < 18:
+                T_TotalModifier += 2
+                T_AttributeMods[i] = 2
 
-            T_Current = 0
-            T_Suc = 0
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 7)
-                if T_Current > 4:
-                    T_Suc += 1
-                elif T_Current < 3:
-                    T_Suc -= 1
-                T_Return += str(T_Current)
-                T_Return += ' '
-            await ctx.channel.send("**" + str(T_Suc) + "** success : " + T_Return)
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
+            # not using else here because we skipped 9-12
+            elif T_Attributes[i] == 18:
+                T_TotalModifier += 3
+                T_AttributeMods[i] = 3
 
-    #
-    @commands.command(name="d7")
-    async def d7(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
+        T_Attributes[6] *= 10
+        T_Return = "Charisma:           **{cha}**({chaMod}):        {cha1}, {cha2}, {cha3}" \
+                   "\nConstitution:     **{con}**({conMod}):    {con1}, {con2}, {con3}" \
+                   "\nDexterity:        **{dex}**({dexMod}):        {dex1}, {dex2}, {dex2}" \
+                   "\nIntelligence:     **{int}**({intMod}):     {int1}, {int2}, {int3}" \
+                   "\nStrength:         **{str}**({strMod}):         {str1}, {str2}, {str3}" \
+                   "\nWisdom:           **{wis}**({wisMod}):         {wis1}, {wis2}, {wis3}" \
+                   "\nStarting money:   {mon}".format(cha=T_Attributes[0], chaMod=T_AttributeMods[0], cha1=T_Rolls[0],
+                                                      cha2=T_Rolls[1], cha3=T_Rolls[2], con=T_Attributes[1],
+                                                      conMod=T_AttributeMods[1], con1=T_Rolls[3], con2=T_Rolls[4],
+                                                      con3=T_Rolls[5], dex=T_Attributes[2], dexMod=T_AttributeMods[2],
+                                                      dex1=T_Rolls[6], dex2=T_Rolls[7], dex3=T_Rolls[8],
+                                                      int=T_Attributes[3], intMod=T_AttributeMods[3], int1=T_Rolls[9],
+                                                      int2=T_Rolls[10], int3=T_Rolls[11], str=T_Attributes[4],
+                                                      strMod=T_AttributeMods[4], str1=T_Rolls[12], str2=T_Rolls[13],
+                                                      str3=T_Rolls[14], wis=T_Attributes[5], wisMod=T_AttributeMods[5],
+                                                      wis1=T_Rolls[15], wis2=T_Rolls[16], wis3=T_Rolls[17],
+                                                      mon=T_Attributes[6])
 
-            T_Current = 0
-            T_Total = 0
-            # treating number of dice as an int
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 8)
-                T_Total += T_Current
-                T_Return += str(T_Current)
-                #
-                if x != _DC - 1:
-                    T_Return += ", "
-
-            if _DC > 1:
-                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
-
-            else:
-                await ctx.channel.send(T_Return)
-
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
-
-    #
-    @commands.command(name="d8")
-    async def d8(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
-
-            T_Current = 0
-            T_Total = 0
-            # treating number of dice as an int
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 9)
-                T_Total += T_Current
-                T_Return += str(T_Current)
-                #
-                if x != _DC - 1:
-                    T_Return += ", "
-
-            if _DC > 1:
-                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
-
-            else:
-                await ctx.channel.send(T_Return)
-
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
-
-    #
-    @commands.command(name="d10")
-    async def d10(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            # total result of all die rolls
-            T_Return = ""
-            # each roll
-            T_ReturnCurrent = 0
-            T_ReturnTotal = 0
-            for x in range(_DC):
-                T_ReturnCurrent = randrange(1, 11)
-                T_ReturnTotal += T_ReturnCurrent
-                T_Return += str(T_ReturnCurrent)
-                # not putting a coma after the final die
-                if x != _DC - 1:
-                    T_Return += ", "
-            if _DC > 1:
-                # bold for visual clarity
-                # sending more info back for multiple dice
-                await ctx.channel.send("The total is: **" + str(T_ReturnTotal) + "** : " + T_Return)
-            else:
-                await ctx.channel.send(T_Return)
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
-
-    #
-    @commands.command(name="d10E")
-    async def d10E(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            # total result of all die rolls
-            T_Return = ""
-            # each roll
-            T_ReturnCurrent = 0
-            T_ReturnTotal = 0
-            for x in range(_DC):
-                T_ReturnCurrent = randrange(1, 11)
-                while T_ReturnCurrent % 10 == 0:
-                    T_ReturnCurrent += randrange(1, 11)
-                T_ReturnTotal += T_ReturnCurrent
-                T_Return += str(T_ReturnCurrent)
-                # not putting a coma after the final die
-                if x != _DC - 1:
-                    T_Return += ", "
-            if _DC > 1:
-                # bold for visual clarity
-                # sending more info back for multiple dice
-                await ctx.channel.send("The total is: **" + str(T_ReturnTotal) + "** : " + T_Return)
-            else:
-                await ctx.channel.send(T_Return)
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
-
-    # exalted style successes
-    # TODO I forget if 0's are crit successes in exalted LOLE
-    @commands.command(name="d10s")
-    async def d10f(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
-
-            T_Current = 0
-            T_Suc = 0
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 11)
-                if T_Current > 6:
-                    T_Suc += 1
-                T_Return += str(T_Current)
-                T_Return += ' '
-            await ctx.channel.send("**" + str(T_Suc) + "** success : " + T_Return)
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
-
-    #
-    @commands.command(name="d12")
-    async def d12(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            # total result of all die rolls
-            T_Return = ""
-            # each roll
-            T_ReturnCurrent = 0
-            T_ReturnTotal = 0
-            for x in range(_DC):
-                T_ReturnCurrent = randrange(1, 13)
-                T_ReturnTotal += T_ReturnCurrent
-                T_Return += str(T_ReturnCurrent)
-                # not putting a coma after the final die
-                if x != _DC - 1:
-                    T_Return += ", "
-            if _DC > 1:
-                # bold for visual clarity
-                # sending more info back for multiple dice
-                await ctx.channel.send("The total is: **" + str(T_ReturnTotal) + "** : " + T_Return)
-            else:
-                await ctx.channel.send(T_Return)
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
-
-    #
-    @commands.command(name="d14")
-    async def d14(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            # total result of all die rolls
-            T_Return = ""
-            # each roll
-            T_ReturnCurrent = 0
-            T_ReturnTotal = 0
-            for x in range(_DC):
-                T_ReturnCurrent = randrange(1, 15)
-                T_ReturnTotal += T_ReturnCurrent
-                T_Return += str(T_ReturnCurrent)
-                # not putting a coma after the final die
-                if x != _DC - 1:
-                    T_Return += ", "
-            if _DC > 1:
-                # bold for visual clarity
-                # sending more info back for multiple dice
-                await ctx.channel.send("The total is: **" + str(T_ReturnTotal) + "** : " + T_Return)
-            else:
-                await ctx.channel.send(T_Return)
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
-
-    #
-    @commands.command(name="d16")
-    async def d16(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
-
-            T_Current = 0
-            T_Total = 0
-            # treating number of dice as an int
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 17)
-                T_Total += T_Current
-                T_Return += str(T_Current)
-                #
-                if x != _DC - 1:
-                    T_Return += ", "
-
-            if _DC > 1:
-                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
-
-            else:
-                await ctx.channel.send(T_Return)
-
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
-
-    #
-    @commands.command(name="d20")
-    async def d20(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
-
-            T_Current = 0
-            T_Total = 0
-            # treating number of dice as an int
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 21)
-                T_Total += T_Current
-                T_Return += str(T_Current)
-                #
-                if x != _DC - 1:
-                    T_Return += ", "
-
-            if _DC > 1:
-                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
-
-            else:
-                await ctx.channel.send(T_Return)
-
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
-
-    #
-    @commands.command(name="d20A", aliases=["D20WithAdvantage, d20Advantage, d20Adv"])
-    async def d20A(self, ctx):
-        T_ReturnA = randrange(1, 21)
-        T_ReturnB = randrange(1, 21)
-        if T_ReturnA > T_ReturnB:
-            T_ReturnB = "~~" + str(T_ReturnB) + "~~"
-        else:
-            T_ReturnA = "~~" + str(T_ReturnA) + "~~"
-
-        await ctx.channel.send(str(T_ReturnA) + " " + str(T_ReturnB))
-
-    #
-    @commands.command(name="D20DA", aliases=["D20WithDisadvantage", "d20Disadvantage", "d20Dis", "d20DisAdv"])
-    async def d20DA(self, ctx):
-        T_ReturnA = randrange(1, 21)
-        T_ReturnB = randrange(1, 21)
-        if T_ReturnA < T_ReturnB:
-            T_ReturnB = "~~" + str(T_ReturnB) + "~~"
-        else:
-            T_ReturnA = "~~" + str(T_ReturnA) + "~~"
-
-        await ctx.channel.send(str(T_ReturnA) + " " + str(T_ReturnB))
-
-    #
-    @commands.command(name="d24", _DC=1)
-    async def d24(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
-
-            T_Current = 0
-            T_Total = 0
-            # treating number of dice as an int
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 25)
-                T_Total += T_Current
-                T_Return += str(T_Current)
-                #
-                if x != _DC - 1:
-                    T_Return += ", "
-
-            if _DC > 1:
-                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
-
-            else:
-                await ctx.channel.send(T_Return)
-
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
-
-    #
-    @commands.command(name="d30")
-    async def d30(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
-
-            T_Current = 0
-            T_Total = 0
-            # treating number of dice as an int
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 31)
-                T_Total += T_Current
-                T_Return += str(T_Current)
-                #
-                if x != _DC - 1:
-                    T_Return += ", "
-
-            if _DC > 1:
-                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
-
-            else:
-                await ctx.channel.send(T_Return)
-
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
-
-    #
-    @commands.command(name="d100")
-    async def d100(self, ctx, _DC=1):
-        try:
-            if _DC == 0:
-                raise TypeError
-            T_Return = ''
-
-            T_Current = 0
-            T_Total = 0
-            # treating number of dice as an int
-            for x in range(int(_DC)):
-                T_Current = randrange(1, 101)
-                T_Total += T_Current
-                T_Return += str(T_Current)
-                #
-                if x != _DC - 1:
-                    T_Return += ", "
-
-            if _DC > 1:
-                await ctx.channel.send("The total is: **" + str(T_Total) + "** : " + T_Return)
-
-            else:
-                await ctx.channel.send(T_Return)
-
-        except (TypeError, ValueError):
-            await ctx.channel.send("Please send a real number for number of dice")
-
-    # lole
-    # returns a D6 roll + a D8 roll
-    @commands.command(name="di")
-    async def di(self, ctx):
-        # result of all our die rolls
-        T_Return = randrange(1, 7)
-        T_Return += randrange(1, 9)
+        if T_TotalModifier < 0:
+            T_Return += "\n this character may be rerolled"
         await ctx.channel.send(T_Return)
 
-    # core error handler for this cog
-    async def cog_command_error(self, ctx, error):
-        if isinstance(error, commands.BadArgument):
-            await ctx.send("Please send a real number for number of dice")
+    # TODO currently characters don't die for having 0hp
+    @commands.command(name="DDC3d6", aliases=["dungeoncrawlclassicscharacter", "DDCChar", "ddccharacter"])
+    async def DDC3d6(self, ctx, _count='1'):
+        try:
+            if _count == 0:
+                raise TypeError
+            T_DDCTables = DDCTables()
+
+            for C in range(int(_count)):
+
+                T_Attributes = []
+                T_AttributeMods = []
+                T_Rolls = [0, 0, 0]
+
+                for i in range(6):
+
+                    for j in range(3):
+
+                        T_HP = randrange(1, 5)
+
+                        T_Rolls[j] = randrange(1, 7)
+                    T_Attributes.append(T_Rolls[0] + T_Rolls[1] + T_Rolls[2])
+
+                    if T_Attributes[i] == 3:
+                        T_AttributeMods.append("-3")
+                    elif T_Attributes[i] < 6:
+                        T_AttributeMods.append("-2")
+                    elif T_Attributes[i] < 9:
+                        T_AttributeMods.append("-1")
+                    elif T_Attributes[i] < 13:
+                        T_AttributeMods.append("0")
+                    elif T_Attributes[i] < 16:
+                        T_AttributeMods.append("+1")
+                    elif T_Attributes[i] < 18:
+                        T_AttributeMods.append("+2")
+                    elif T_Attributes[i] == 18:
+                        T_AttributeMods.append("+3")
+
+                # TODO check T_HP + int(T_AttributeMods[2]) here for death during character creation
+
+                T_Return = "HP: **{HP}**" \
+                           "\nStrength:         **{str}**({strMod}):" \
+                           "\nAgility:        **{agi}**({agiMod}):" \
+                           "\nStamina:     **{con}**({conMod}):" \
+                           "\nPersonality:     **{per}**({perMod}):" \
+                           "\nIntelligence:           **{int}**({intMod}):" \
+                           "\nLuck:           **{luc}**({lucMod}):" \
+                    .format(HP=T_HP + int(T_AttributeMods[2]),
+                            str=T_Attributes[0], strMod=T_AttributeMods[0],
+                            agi=T_Attributes[1], agiMod=T_AttributeMods[1],
+                            con=T_Attributes[2], conMod=T_AttributeMods[2],
+                            per=T_Attributes[3], perMod=T_AttributeMods[3],
+                            int=T_Attributes[4], intMod=T_AttributeMods[4],
+                            luc=T_Attributes[5], lucMod=T_AttributeMods[5])
+
+                T_Gold = 0
+                for x in range(6):
+                    T_Gold += randrange(1, 13)
+
+                T_Return += "\nfunds: " + str(T_Gold) + " copper pieces"
+
+                T_Return += "\n" + T_DDCTables.luckTable()
+
+                T_Return += T_DDCTables.occupationTable()
+
+                T_Return += T_DDCTables.equipmentTable()
+
+                await ctx.channel.send(T_Return)
+
+    # trying to only allow positive numbers
+        except (TypeError, ValueError):
+            await ctx.channel.send("Please send a real number of characters to be generated")
+
+
