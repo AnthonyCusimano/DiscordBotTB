@@ -3,12 +3,13 @@ from random import choice, randint
 colourShades = ["pale", "light", "", "dark", "blackened"]
 
 colours = ["green", "purple", "yellow", "black", "red", "blue"]
+chargeNumbers = ["two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "many"]
 
 inanimateCharges = ["moon", "lightning bolt"]
 mammalCharges = ["lion", "wolf", "dog"]
 aquaticCharges = ["squid", "trout"]
 toolCharges = ["sword", "shovel", "dagger", "spear"]
-modularSideCharges = ["star", "snowflake"]
+modularSideCharges = ["star*", "snowflake*"]
 treeCharges = ["evergreen tree", "oak tree"]
 
 # TODO field & design changes
@@ -35,25 +36,35 @@ class HeraldryGenerator:
 
     #
     def createCharge(self):
-        T_Return = choice(colours)
-        T_Return += " "
+        T_Colour = choice(colours)
 
         T_ChargeType = randint(0, 5)
 
+        T_Charge = " "
         if T_ChargeType == 0:
-            T_Return += choice(inanimateCharges)
+            T_Charge += choice(inanimateCharges)
         elif T_ChargeType == 1:
-            T_Return += choice(mammalCharges)
+            T_Charge += choice(mammalCharges)
         elif T_ChargeType == 2:
-            T_Return += choice(aquaticCharges)
+            T_Charge += choice(aquaticCharges)
         elif T_ChargeType == 3:
-            T_Return += choice(toolCharges)
+            T_Charge += choice(toolCharges)
         elif T_ChargeType == 2:
-            T_Return += choice(modularSideCharges)
+            T_Charge += choice(modularSideCharges)
         elif T_ChargeType == 5:
-            T_Return += choice(treeCharges)
+            T_Charge += choice(treeCharges)
 
-        T_Return += " "
+        # T_Charge = choice(modularSideCharges)
+        T_Sides = ""
+
+        # sides check
+        if T_Charge[-1] == '*':
+            # removing the identifier for multiple sides
+            T_Charge = T_Charge[0:-1]
+            T_Siderando = randint(3, 11)
+            T_Sides += " " + str(T_Siderando) + " sided "
+
+        T_Return = T_Colour + T_Sides + T_Charge + " "
         return T_Return
 
     def createHeraldry(self):
