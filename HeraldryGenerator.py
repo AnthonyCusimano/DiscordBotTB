@@ -49,10 +49,12 @@ class HeraldryGenerator:
             T_Charge += choice(aquaticCharges)
         elif T_ChargeType == 3:
             T_Charge += choice(toolCharges)
-        elif T_ChargeType == 2:
+        elif T_ChargeType == 4:
             T_Charge += choice(modularSideCharges)
         elif T_ChargeType == 5:
             T_Charge += choice(treeCharges)
+        print(T_ChargeType)
+        print(T_Charge)
 
         # T_Charge = choice(modularSideCharges)
         T_Sides = ""
@@ -62,7 +64,7 @@ class HeraldryGenerator:
             # removing the identifier for multiple sides
             T_Charge = T_Charge[0:-1]
             T_Siderando = randint(3, 11)
-            T_Sides += " " + str(T_Siderando) + " sided "
+            T_Sides += " " + str(T_Siderando) + " sided"
 
         T_Return = T_Colour + T_Sides + T_Charge + " "
         return T_Return
