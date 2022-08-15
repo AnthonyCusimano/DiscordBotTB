@@ -3,14 +3,19 @@ from random import choice, randint
 colourShades = ["pale", "light", "", "dark", "blackened"]
 
 colours = ["green", "purple", "yellow", "black", "red", "blue"]
+# probably just make it str() and have "many" show up toward the end
+# cultural numbers
 chargeNumbers = ["two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "many"]
 
-inanimateCharges = ["moon", "lightning bolt"]
+inanimateCharges = ["moon", "lightning bolt", "star*"]
 mammalCharges = ["lion", "wolf", "dog"]
-aquaticCharges = ["squid", "trout"]
-toolCharges = ["sword", "shovel", "dagger", "spear"]
-modularSideCharges = ["star*", "snowflake*"]
-treeCharges = ["evergreen tree", "oak tree"]
+aquaticCharges = ["squid", "trout", "snail shell", "clam shell", "seagull"]
+toolCharges = ["sword", "shovel", "dagger", "spear", "shield"]
+winterCharges = ["snowflake*", "evergreen tree"]
+treeCharges = ["oak tree", "palm tree"]
+# TODO unused
+avianCharges = ["eagle"]
+epicCharges = ["kraken", "dragon", "direwolf"]
 
 # TODO field & design changes
 
@@ -50,7 +55,7 @@ class HeraldryGenerator:
         elif T_ChargeType == 3:
             T_Charge += choice(toolCharges)
         elif T_ChargeType == 4:
-            T_Charge += choice(modularSideCharges)
+            T_Charge += choice(winterCharges)
         elif T_ChargeType == 5:
             T_Charge += choice(treeCharges)
         print(T_ChargeType)
