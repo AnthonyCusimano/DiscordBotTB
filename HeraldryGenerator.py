@@ -15,12 +15,13 @@ winterCharges = ["snowflake*", "evergreen tree"]
 treeCharges = ["oak tree", "palm tree"]
 # TODO unused
 avianCharges = ["eagle"]
-epicCharges = ["kraken", "dragon", "direwolf"]
+epicCharges = ["kraken", "dragon"]
 
 # TODO field & design changes
 
 
 # TODO
+# https://awoiaf.westeros.org/index.php/Heraldry
 class HeraldryGenerator:
 
     #
@@ -79,3 +80,7 @@ class HeraldryGenerator:
         T_Return += self.createField()
 
         return T_Return
+
+    # marshals / colour inversions & quartering
+    def createPersonalCoatOfArms(self):
+        return "Unused method"
