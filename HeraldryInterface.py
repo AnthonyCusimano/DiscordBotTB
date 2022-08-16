@@ -11,3 +11,8 @@ class HeraldryInterface(commands.Cog):
     @commands.command(name="createHeraldry", aliases=["heraldry"])
     async def createHeraldry(self, ctx):
         await ctx.channel.send(self.gamer.createHeraldry())
+        
+    #
+    @commands.command(name="createPersonalHeraldry")
+    async def createPersonalHeraldry(self, ctx):
+        await ctx.channel.send(self.gamer.createPersonalCoatOfArms())
