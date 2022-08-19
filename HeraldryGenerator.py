@@ -15,6 +15,7 @@ winterCharges = ["snowflake*", "evergreen tree"]
 treeCharges = ["oak tree", "palm tree"]
 # TODO unused
 avianCharges = ["eagle"]
+avianChargeModifiers = ["soaring ", "perched "]
 epicCharges = ["kraken", "dragon"]
 
 # TODO field & design changes
@@ -26,7 +27,7 @@ class HeraldryGenerator:
 
     #
     def __init__(self):
-        """"""""
+        print("HeraldryGenerator constructor called")
 
     def createField(self):
         T_Return = "on a "
@@ -44,7 +45,10 @@ class HeraldryGenerator:
     def createCharge(self):
         T_Colour = choice(colours)
 
-        T_ChargeType = randint(0, 5)
+        T_ChargeType = randint(0, 6)
+        T_ChargeType = 6
+
+        T_Sides = ""
 
         T_Charge = " "
         if T_ChargeType == 0:
@@ -59,11 +63,17 @@ class HeraldryGenerator:
             T_Charge += choice(winterCharges)
         elif T_ChargeType == 5:
             T_Charge += choice(treeCharges)
-        print(T_ChargeType)
-        print(T_Charge)
+        elif T_ChargeType == 6:
+            T_Extra = randint(0, 4)
+            if T_Extra == 4:
+                T_Charge = " " + choice(avianChargeModifiers) + choice(avianCharges)
+            else:
+                T_Charge = " " + choice(avianCharges)
+
+        # print(T_ChargeType)
+        # print(T_Charge)
 
         # T_Charge = choice(modularSideCharges)
-        T_Sides = ""
 
         # sides check
         if T_Charge[-1] == '*':
