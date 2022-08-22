@@ -2,20 +2,25 @@ from random import choice, randint
 # TODO DB time
 colourShades = ["pale", "light", "", "dark", "blackened"]
 
-colours = ["green", "purple", "yellow", "black", "red", "blue"]
+colours = ["green", "purple", "yellow", "black", "red", "blue", "indigo"]
 # probably just make it str() and have "many" show up toward the end
 # cultural numbers
 chargeNumbers = ["two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "many"]
 
 inanimateCharges = ["moon", "lightning bolt", "star*"]
+
 mammalCharges = ["lion", "wolf", "dog"]
+mammalChargeModifiers = ["pouncing", "running"]
+
 aquaticCharges = ["squid", "trout", "snail shell", "clam shell", "seagull"]
 toolCharges = ["sword", "shovel", "dagger", "spear", "shield"]
 winterCharges = ["snowflake*", "evergreen tree"]
 treeCharges = ["oak tree", "palm tree"]
-# TODO unused
-avianCharges = ["eagle"]
+
+avianCharges = ["eagle", "falcon"]
 avianChargeModifiers = ["soaring ", "perched "]
+
+# TODO unused
 epicCharges = ["kraken", "dragon"]
 
 # TODO field & design changes
@@ -48,9 +53,8 @@ class HeraldryGenerator:
         T_ChargeType = randint(0, 6)
         T_ChargeType = 6
 
-        T_Sides = ""
-
         T_Charge = " "
+
         if T_ChargeType == 0:
             T_Charge += choice(inanimateCharges)
         elif T_ChargeType == 1:
@@ -66,23 +70,20 @@ class HeraldryGenerator:
         elif T_ChargeType == 6:
             T_Extra = randint(0, 4)
             if T_Extra == 4:
-                T_Charge = " " + choice(avianChargeModifiers) + choice(avianCharges)
+                T_Charge = " " + choice(avianChargeModifiers) + " " + T_Colour + " " + choice(avianCharges) + " "
+                return T_Charge
             else:
                 T_Charge = " " + choice(avianCharges)
-
-        # print(T_ChargeType)
-        # print(T_Charge)
-
-        # T_Charge = choice(modularSideCharges)
 
         # sides check
         if T_Charge[-1] == '*':
             # removing the identifier for multiple sides
             T_Charge = T_Charge[0:-1]
-            T_Siderando = randint(3, 11)
-            T_Sides += " " + str(T_Siderando) + " sided"
+            T_Sides = str(randint(3, 11)) + " sided "
+            T_Return = T_Sides + T_Colour + " " + T_Charge + " "
+            return T_Return
 
-        T_Return = T_Colour + T_Sides + T_Charge + " "
+        T_Return = T_Colour + T_Charge + " "
         return T_Return
 
     def createHeraldry(self):
