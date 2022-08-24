@@ -24,15 +24,15 @@ cityOne[-1] = cityOne[-1][:-1]
 # cityTwo[-1] = cityTwo[-1][:-1]
 
 #
-with open("Ship.txt") as s:
-    shipLines = s.readlines()
-shipOne = shipLines[0].split(',')
-shipTwo = shipLines[1].split(',')
-shipThree = shipLines[2].split(',')
-shipFour = shipLines[3].split(',')
-shipOne[-1] = shipOne[-1][:-1]
-shipTwo[-1] = shipTwo[-1][:-1]
-shipThree[-1] = shipThree[-1][:-1]
+# with open("Ship.txt") as s:
+#     shipLines = s.readlines()
+# shipOne = shipLines[0].split(',')
+# shipTwo = shipLines[1].split(',')
+# shipThree = shipLines[2].split(',')
+# shipFour = shipLines[3].split(',')
+# shipOne[-1] = shipOne[-1][:-1]
+# shipTwo[-1] = shipTwo[-1][:-1]
+# shipThree[-1] = shipThree[-1][:-1]
 
 #
 with open("WeaponNames.txt") as w:
@@ -64,7 +64,9 @@ locationPrefixMountain = locationLines[0].split(',')
 locationPrefixGrassland = locationLines[1].split(',')
 locationBaseSwamp = locationLines[2].split(',')
 locationLocationMountain = locationLines[3].split(',')
-locationTitle = locationLines[6].split(',')
+# TODO
+# locationTitle = locationLines[6].split(',')
+locationTitle = "The "
 locationPrefixMountain[-1] = locationPrefixMountain[-1][:-1]
 locationPrefixGrassland[-1] = locationPrefixGrassland[-1][:-1]
 locationBaseSwamp[-1] = locationBaseSwamp[-1][:-1]
@@ -163,27 +165,39 @@ def FormSilverDragonName():
 
     return T_Return
 
+
+#
+def FormGreenDragonName():
+
+    T_First = choice(greenDragonFirstNames)
+    T_Last = choice(greenDragonLastNames)
+
+    T_Return = T_First + " of " + T_Last
+    return T_Return
+
+
 # TODO type 4 name should read "Joho's Valor"
 def FormShipName():
     T_TypeRando = randrange(0, 4)
     T_Return = ""
-    if T_TypeRando == 0:
-        T_Return = "The "
-        T_Return += choice(shipOne)
-        T_Return += " "
-        T_Return += choice(shipTwo)
-
-    elif T_TypeRando == 1:
-        T_Return = "The "
-        T_Return += choice(shipTwo)
-        T_Return += " of the sea"
-
-    elif T_TypeRando == 2:
-        T_Return = choice(shipThree)
-    elif T_TypeRando == 3:
-        T_Return = choice(shipFour)
-        T_Return += "'s "
-        T_Return += choice(shipThree)
+    T_Return = "broken method sorry"
+    # if T_TypeRando == 0:
+    #     T_Return = "The "
+    #     T_Return += choice(shipOne)
+    #     T_Return += " "
+    #     T_Return += choice(shipTwo)
+    #
+    # elif T_TypeRando == 1:
+    #     T_Return = "The "
+    #     T_Return += choice(shipTwo)
+    #     T_Return += " of the sea"
+    #
+    # elif T_TypeRando == 2:
+    #     T_Return = choice(shipThree)
+    # elif T_TypeRando == 3:
+    #     T_Return = choice(shipFour)
+    #     T_Return += "'s "
+    #     T_Return += choice(shipThree)
     return T_Return
 
 
@@ -309,3 +323,8 @@ class NameGenerators(commands.Cog):
     @commands.command(name="silverDragonName")
     async def silverDragonName(self, ctx):
         await ctx.channel.send(FormSilverDragonName())
+
+    #
+    @commands.command(name="greenDragonName", aliases =["formGreenDragonName"])
+    async def greenDragonName(self, ctx):
+        await ctx.channel.send(FormGreenDragonName())
