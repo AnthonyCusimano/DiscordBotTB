@@ -172,7 +172,10 @@ def FormGreenDragonName():
     T_First = choice(greenDragonFirstNames)
     T_Last = choice(greenDragonLastNames)
 
-    T_Return = T_First + " of " + T_Last
+    T_GreenMiddleParts = [" of ", " with "]
+    T_Middle = choice(T_GreenMiddleParts)
+
+    T_Return = T_First + T_Middle + T_Last
     return T_Return
 
 
@@ -280,6 +283,47 @@ def FormNobleName(_gender):
     return T_Return
 
 
+#
+def FormFirstName(_gender="none"):
+    T_Return = ""
+
+    T_UnisexNameChance = 33
+    T_UnisexRoll = randrange(1, 100)
+
+    if _gender == '0' or _gender == "male" or _gender == 'm':
+
+        if T_UnisexRoll > T_UnisexNameChance:
+            T_Return += choice(creatureFirstNameMale)
+        else:
+            T_Return += choice(creatureFirstNameUnisex)
+
+    elif _gender == '1' or _gender == "female" or _gender == 'f':
+
+        if T_UnisexRoll > T_UnisexNameChance:
+            T_Return += choice(creatureFirstNameFemale)
+        else:
+            T_Return += choice(creatureFirstNameUnisex)
+
+    elif _gender == "none":
+        T_MaleBiasedCoinFlip = randrange(1, 10)
+        if T_MaleBiasedCoinFlip > 4:
+
+            if T_UnisexRoll > T_UnisexNameChance:
+                T_Return += choice(creatureFirstNameMale)
+            else:
+                T_Return += choice(creatureFirstNameUnisex)
+
+        else:
+
+            if T_UnisexRoll > T_UnisexNameChance:
+                T_Return += choice(creatureFirstNameFemale)
+            else:
+                T_Return += choice(creatureFirstNameUnisex)
+
+    else:
+        T_Return = "Please provide a valid gender code."
+
+    return T_Return
 #
 class NameGenerators(commands.Cog):
 
