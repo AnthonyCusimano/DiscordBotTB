@@ -30,6 +30,8 @@ epicCharges = ["kraken", "dragon"]
 # https://awoiaf.westeros.org/index.php/Heraldry
 class HeraldryGenerator:
 
+    ourChargeColour = ""
+
     #
     def __init__(self):
         print("HeraldryGenerator constructor called")
@@ -46,7 +48,9 @@ class HeraldryGenerator:
         # TODO
         #orle should usually but not always match the charge's colour
         if T_Rando == 16:
-            T_Return += "framed by an orle "
+            T_Return += "framed by a "
+            T_Return += HeraldryGenerator.ourChargeColour
+            T_Return += " orle "
 
         T_Return += "on a "
         T_Rando = randint(1, 4)
@@ -54,8 +58,14 @@ class HeraldryGenerator:
         if T_Rando == 4:
             T_Return += choice(colourShades) + " "
 
-        T_Return += choice(colours)
-        T_Return += " "
+        T_ColourChoice = choice(colours)
+
+        while T_ColourChoice == HeraldryGenerator.ourChargeColour:
+            print("blocking a bad colour choice, the choices were " + T_ColourChoice + " " +
+                  HeraldryGenerator.ourChargeColour)
+            T_ColourChoice = choice(colours)
+
+        T_Return += T_ColourChoice + " "
 
         T_Return += "Field."
 
@@ -63,7 +73,7 @@ class HeraldryGenerator:
 
     #
     def createCharge(self):
-        T_Colour = choice(colours)
+        HeraldryGenerator.ourChargeColour = choice(colours)
 
         T_ChargeType = randint(0, 6)
         T_ChargeType = 6
@@ -85,7 +95,7 @@ class HeraldryGenerator:
         elif T_ChargeType == 6:
             T_Extra = randint(0, 4)
             if T_Extra == 4:
-                T_Charge = " " + choice(avianChargeModifiers) + T_Colour + " " + choice(avianCharges) + " "
+                T_Charge = " " + choice(avianChargeModifiers) + HeraldryGenerator.ourChargeColour + " " + choice(avianCharges) + " "
                 return T_Charge
             else:
                 T_Charge = " " + choice(avianCharges)
@@ -95,10 +105,10 @@ class HeraldryGenerator:
             # removing the identifier for multiple sides
             T_Charge = T_Charge[0:-1]
             T_Sides = str(randint(3, 11)) + " sided "
-            T_Return = T_Sides + T_Colour + " " + T_Charge + " "
+            T_Return = T_Sides + HeraldryGenerator.ourChargeColour + " " + T_Charge + " "
             return T_Return
 
-        T_Return = T_Colour + T_Charge + " "
+        T_Return = HeraldryGenerator.ourChargeColour + T_Charge + " "
         return T_Return
 
     def createHeraldry(self):
