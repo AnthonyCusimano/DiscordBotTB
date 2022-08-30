@@ -1,6 +1,6 @@
 from random import choice, randint
 # TODO DB time
-colourShades = ["pale", "light", "", "dark", "blackened"]
+colourShades = ["pale", "light", "dark", "blackened"]
 
 colours = ["green", "purple", "yellow", "black", "red", "blue", "indigo"]
 # probably just make it str() and have "many" show up toward the end
@@ -34,10 +34,25 @@ class HeraldryGenerator:
     def __init__(self):
         print("HeraldryGenerator constructor called")
 
+    #
     def createField(self):
-        T_Return = "on a "
 
-        T_Return += choice(colourShades) + " "
+        T_Return = ""
+
+        # field modifier
+        T_Rando = randint(1, 16)
+        T_Rando = 16
+
+        # TODO
+        #orle should usually but not always match the charge's colour
+        if T_Rando == 16:
+            T_Return += "framed by an orle "
+
+        T_Return += "on a "
+        T_Rando = randint(1, 4)
+
+        if T_Rando == 4:
+            T_Return += choice(colourShades) + " "
 
         T_Return += choice(colours)
         T_Return += " "
@@ -70,7 +85,7 @@ class HeraldryGenerator:
         elif T_ChargeType == 6:
             T_Extra = randint(0, 4)
             if T_Extra == 4:
-                T_Charge = " " + choice(avianChargeModifiers) + " " + T_Colour + " " + choice(avianCharges) + " "
+                T_Charge = " " + choice(avianChargeModifiers) + T_Colour + " " + choice(avianCharges) + " "
                 return T_Charge
             else:
                 T_Charge = " " + choice(avianCharges)
