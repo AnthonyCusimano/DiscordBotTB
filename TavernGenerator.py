@@ -10,6 +10,10 @@ import NameGenerators
 class TavernGenerator(commands.Cog):
 
     #
+    def __init__(self):
+        self.mySize = 0
+
+    #
     def getMyRoomsAvailable(self):
         if self.mySize == 1:
             # rooms available low
@@ -50,7 +54,6 @@ class TavernGenerator(commands.Cog):
         T_Name = NameGenerators.FormTavernName()
         # TODO think about mySize
         self.mySize = randrange(1, 6)
-        # await ctx.channel.send(T_Name)
         await ctx.channel.send((T_Name + " Has " + str(self.getMyRoomsAvailable()) + " rooms available"))
         await ctx.channel.send("For breakfast they are serving " + self.getMyBreakfast())
         await ctx.channel.send("For lunch and dinner they are serving " + self.getMyDinner())
