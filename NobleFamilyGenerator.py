@@ -29,7 +29,8 @@ class NobleFamily:
 
         # TODO protect T_Return from repeat names
         for x in range(self.numChildren):
-            T_Return.append(FormFirstName())
+            T_CopyProtection = FormFirstName()
+            T_Return.append(T_CopyProtection)
             print(T_Return[-1])
 
         return T_Return
