@@ -13,5 +13,5 @@ class NobleFamilyInterface(commands.Cog):
     @commands.command(name="formNobleFamily")
     async def formNobleFamily(self, ctx):
         T_FamilyName = self.NFG.determineFamilyName()
-        self.NFG.getFamilyCurrentSize()
-        await ctx.channel.send(T_FamilyName + " " + str(self.NFG.determineChildrenName()))
+        self.NFG.determineHeraldry()
+        await ctx.channel.send(f"House {T_FamilyName}. Their coat of arms is {self.NFG.myHeraldry}")
