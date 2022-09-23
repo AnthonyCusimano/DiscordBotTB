@@ -43,12 +43,14 @@ class HeraldryGenerator:
 
         # field modifier
         T_Rando = randint(1, 16)
-        T_Rando = 16
+        # DEBUG
+        # T_Rando = 16
 
         # TODO
-        #orle should usually but not always match the charge's colour
+        # orle should usually but not always match the charge's colour
         if T_Rando == 16:
             T_Return += "framed by a "
+
             T_Return += HeraldryGenerator.ourChargeColour
             T_Return += " orle "
 
@@ -71,12 +73,14 @@ class HeraldryGenerator:
 
         return T_Return
 
-    #
+    # TODO
+    # currently begins all charges with "A ", even when "An " would be more appropriate
+    # also the "A " is spaghetti 
     def createCharge(self):
         HeraldryGenerator.ourChargeColour = choice(colours)
 
         T_ChargeType = randint(0, 6)
-        T_ChargeType = 6
+        # T_ChargeType = 6
 
         T_Charge = " "
 
@@ -94,8 +98,9 @@ class HeraldryGenerator:
             T_Charge += choice(treeCharges)
         elif T_ChargeType == 6:
             T_Extra = randint(0, 4)
+            T_Extra = 4
             if T_Extra == 4:
-                T_Charge = " " + choice(avianChargeModifiers) + HeraldryGenerator.ourChargeColour + " " + choice(avianCharges) + " "
+                T_Charge += "A " + choice(avianChargeModifiers) + HeraldryGenerator.ourChargeColour + " " + choice(avianCharges) + " "
                 return T_Charge
             else:
                 T_Charge = " " + choice(avianCharges)
@@ -105,13 +110,14 @@ class HeraldryGenerator:
             # removing the identifier for multiple sides
             T_Charge = T_Charge[0:-1]
             T_Sides = str(randint(3, 11)) + " sided "
-            T_Return = T_Sides + HeraldryGenerator.ourChargeColour + " " + T_Charge + " "
+            T_Return = "A " + T_Sides + HeraldryGenerator.ourChargeColour + " " + T_Charge + " "
             return T_Return
 
-        T_Return = HeraldryGenerator.ourChargeColour + T_Charge + " "
+        T_Return = "A " + HeraldryGenerator.ourChargeColour + T_Charge + " "
         return T_Return
 
     def createHeraldry(self):
+
         T_Return = self.createCharge()
         T_Return += self.createField()
 
