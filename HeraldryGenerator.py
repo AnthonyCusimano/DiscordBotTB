@@ -5,9 +5,11 @@ colourShades = ["pale", "light", "dark", "blackened"]
 colours = ["green", "purple", "yellow", "black", "red", "blue", "indigo"]
 # probably just make it str() and have "many" show up toward the end
 # cultural numbers
-chargeNumbers = ["two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "many"]
+# chargeNumbers = ["two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "many"]
 
-inanimateCharges = ["moon", "lightning bolt", "star*"]
+inanimateCharges = ["moon", "lightning bolt", "star*", "closed gauntleted fist", \
+                    "gauntleted fist with it's first finger pointing down", \
+                    "gauntleted fist with it's first finger pointing up"]
 
 mammalCharges = ["lion", "wolf", "dog"]
 mammalChargeModifiers = ["pouncing", "running"]
@@ -75,7 +77,7 @@ class HeraldryGenerator:
 
     # TODO
     # currently begins all charges with "A ", even when "An " would be more appropriate
-    # also the "A " is spaghetti 
+    # also the "A " is spaghetti
     def createCharge(self):
         HeraldryGenerator.ourChargeColour = choice(colours)
 
