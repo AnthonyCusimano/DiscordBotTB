@@ -43,18 +43,7 @@ class HeraldryGenerator:
 
         T_Return = ""
 
-        # field modifier
-        T_Rando = randint(1, 16)
-        # DEBUG
-        # T_Rando = 16
-
-        # TODO
-        # orle should usually but not always match the charge's colour
-        if T_Rando == 16:
-            T_Return += "framed by a "
-
-            T_Return += HeraldryGenerator.ourChargeColour
-            T_Return += " orle "
+        T_Return += self.modifyField(T_Return)
 
         T_Return += "on a "
         T_Rando = randint(1, 4)
@@ -74,6 +63,57 @@ class HeraldryGenerator:
         T_Return += "Field."
 
         return T_Return
+
+    #
+    def modifyField(self, _field):
+        T_Rando = randint(1, 16)
+
+        # TODO
+        # orle should usually but not always match the charge's colour
+        if T_Rando == 16:
+            _field += "framed by a "
+
+            _field += HeraldryGenerator.ourChargeColour
+            _field += " orle "
+            return _field
+
+        # DEBUG
+        # could have other types of modifications become slightly more likely as we go
+        # tressure
+        T_Rando = randint(1, 16)
+
+        # TODO
+        # tressure should usually but not always match the charge's colour
+        if T_Rando == 16:
+            _field += "framed by a "
+
+            _field += HeraldryGenerator.ourChargeColour
+            _field += " tressure "
+            return _field
+
+        # double tressure
+        T_Rando = randint(1, 16)
+
+        # TODO
+        # double tressures should usually but not always match the charge's colour
+        # could also have inner / outer tressure match the charge
+        if T_Rando == 16:
+            _field += "framed by a "
+
+            _field += HeraldryGenerator.ourChargeColour
+            _field += " double tressure "
+            return _field
+
+        # border
+        T_Rando = randint(1, 16)
+
+        if T_Rando == 16:
+            _field += "framed by a "
+
+            _field += HeraldryGenerator.ourChargeColour
+            _field += " border "
+            return _field
+
 
     # TODO
     # currently begins all charges with "A ", even when "An " would be more appropriate
